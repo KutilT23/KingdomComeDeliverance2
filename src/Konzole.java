@@ -37,6 +37,7 @@ public class Konzole {
 
     public void start(){
         svet.nacistMapu();
+        Mapa.setCurrentPosition(12);
         inicializace();
         System.out.println("Vítejte ve hře Ztracený Hraničář :-D");
         System.out.println("Pro přehled příkazů napište: prikazy");
