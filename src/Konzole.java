@@ -14,6 +14,16 @@ public class Konzole {
     public void inicializace(){
         prikazy.put("pohyb",new Pohyb());
         prikazy.put("konec",new Konec());
+        prikazy.put("prevoz",new Prevoz());
+        prikazy.put("vstup",new Vstup());
+        prikazy.put("travel",new FastTravel());
+        prikazy.put("kostky", new Kostky());
+        prikazy.put("lov",new Lov());
+        prikazy.put("krast",new Krast());
+        prikazy.put("souboj",new Souboj());
+        prikazy.put("obchodovat",new Obchodovat());
+        prikazy.put("profil",new Profil());
+        prikazy.put("batoh",new Batoh());
 
     }
 
