@@ -1,4 +1,62 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.TreeSet;
+
 public class FastTravel extends Command{
+
+
+    private static TreeSet<String> mestaT = new TreeSet<>();
+    private static TreeSet<String> mestaK = new TreeSet<>();
+    Scanner sc = new Scanner(System.in);
+
+    public static TreeSet<String> getMestaT() {
+        return mestaT;
+    }
+
+    public static TreeSet<String> getMestaK() {
+        return mestaK;
+    }
+    public void TravelFast(){
+        if(Mapa.getRegion().equals(Region.TROSECKO) && !mestaT.isEmpty()){
+            System.out.println("Do kterého města chcete cestovat?: ");
+            String jmeno = sc.next().toLowerCase();
+            for (int i = 0; i < mestaT.size(); i++){
+                if(mestaT.contains(jmeno)){
+                    switch (jmeno){
+                        case "hradtrosky":
+                            Mapa.setCurrentPosition(13);
+                            break;
+                        case "troskovice":
+                            Mapa.setCurrentPosition(36);
+                            System.out.println("Přesunuto na : " + Mapa.getNazevAktualniLokace());
+                            break;
+                        case "semín":
+                            Mapa.setCurrentPosition(49);
+                            break;
+                        default:
+                            System.out.println("Město neobjeveno");
+                    }
+                }else{
+                    System.out.println("Město neobjeveno");
+                }
+            }
+        }
+
+
+        if (Mapa.getRegion().equals(Region.KUTNOHORSKO) && !mestaK.isEmpty()){
+            String jmeno = sc.next().toLowerCase();
+            for (int i = 0; i < mestaK.size(); i++){
+                switch (jmeno){
+
+                }
+            }
+
+
+        }
+
+
+    }
+
     @Override
     public void execute() {
 

@@ -11,8 +11,7 @@ public class Mapa{
     static private HashMap<Integer, Lokace> svet = new HashMap<>();
     private static int start = 36;
     private static int currentPosition = start;
-
-
+    private static Region region;
     public boolean nacistMapu() {
         try (BufferedReader br = new BufferedReader(new FileReader("MapKing.txt"))) {
             String line;
@@ -24,6 +23,7 @@ public class Mapa{
                         Arrays.copyOfRange(lines, 2, 6)
                 );
                 svet.put(Integer.valueOf(lines[0]), location);
+                region = Region.TROSECKO;
             }
 
             return true;
@@ -33,12 +33,15 @@ public class Mapa{
 
     }
 
+    public static Region getRegion() {
+        return region;
+    }
 
-    public Lokace getCurrentPosition1(){
+    public static Lokace getCurrentPosition1(){
         return svet.get(currentPosition);
     }
 
-    public String getNazevAktualniLokace() {
+    public static String getNazevAktualniLokace() {
         Lokace aktualniLokace = getCurrentPosition1();
         if (aktualniLokace != null) {
             return aktualniLokace.getName();
@@ -46,7 +49,7 @@ public class Mapa{
             return "Lokace nenalezena.";
         }
     }
-    public int getIDAktualniLokace() {
+    public static int getIDAktualniLokace() {
         Lokace aktualniLokace = getCurrentPosition1();
         if (aktualniLokace != null) {
             return aktualniLokace.getID();
