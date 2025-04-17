@@ -9,9 +9,9 @@ import java.util.HashMap;
 
 public class Mapa{
     static private HashMap<Integer, Lokace> svet = new HashMap<>();
-    private static int start = 0;
+    private static int start = 36;
     private static int currentPosition = start;
-    public static boolean maMapu = false;
+
 
     public boolean nacistMapu() {
         try (BufferedReader br = new BufferedReader(new FileReader("MapKing.txt"))) {
@@ -33,13 +33,33 @@ public class Mapa{
 
     }
 
+
     public Lokace getCurrentPosition1(){
         return svet.get(currentPosition);
+    }
+
+    public String getNazevAktualniLokace() {
+        Lokace aktualniLokace = getCurrentPosition1();
+        if (aktualniLokace != null) {
+            return aktualniLokace.getName();
+        } else {
+            return "Lokace nenalezena.";
+        }
+    }
+    public int getIDAktualniLokace() {
+        Lokace aktualniLokace = getCurrentPosition1();
+        if (aktualniLokace != null) {
+            return aktualniLokace.getID();
+        } else {
+            return -1;
+        }
     }
 
     static public int getCurrentPosition() {
         return currentPosition;
     }
+
+
 
     public static void setCurrentPosition(int currentPosition) {
         Mapa.currentPosition = currentPosition;
