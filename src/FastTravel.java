@@ -25,6 +25,7 @@ public class FastTravel extends Command{
                     switch (jmeno){
                         case "hradtrosky":
                             Mapa.setCurrentPosition(13);
+                            System.out.println("Přesunuto na : " + Mapa.getNazevAktualniLokace());
                             break;
                         case "troskovice":
                             Mapa.setCurrentPosition(36);
@@ -32,6 +33,7 @@ public class FastTravel extends Command{
                             break;
                         case "semín":
                             Mapa.setCurrentPosition(49);
+                            System.out.println("Přesunuto na : " + Mapa.getNazevAktualniLokace());
                             break;
                         default:
                             System.out.println("Město neobjeveno");
