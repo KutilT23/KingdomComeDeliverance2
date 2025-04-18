@@ -24,6 +24,7 @@ public class Mapa{
                 );
                 svet.put(Integer.valueOf(lines[0]), location);
                 region = Region.TROSECKO;
+                FastTravel.getMestaT().add("troskovice");
             }
 
             return true;
@@ -73,6 +74,7 @@ public class Mapa{
     }
 
     public String pohyb(String smer) {
+
         int dirIndex;
 
         switch (smer.toLowerCase()) {
@@ -99,6 +101,24 @@ public class Mapa{
         }
 
             currentPosition = newPosition;
+        System.out.println(Mapa.getNazevAktualniLokace());
+        switch (Mapa.getNazevAktualniLokace().toLowerCase()) {
+            case "hradtrosky":
+                System.out.println("HradTrosky přidáno do FastTravel");
+                FastTravel.getMestaT().add("hradtrosky");
+                break;
+            case "troskovice":
+                System.out.println("Troskovice přidáno do FastTravel");
+                FastTravel.getMestaT().add("troskovice");
+                break;
+            case "semín":
+                System.out.println("Semín přidáno do FastTravel");
+                FastTravel.getMestaT().add("semín");
+                break;
+            default:
+                System.out.println("test");
+        }
+
 
             return "Přesunuli jste se na lokaci:  " + svet.get(currentPosition).getName().toUpperCase();
         }

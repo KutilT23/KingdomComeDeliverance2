@@ -7,6 +7,8 @@ public class FastTravel extends Command{
 
     private static TreeSet<String> mestaT = new TreeSet<>();
     private static TreeSet<String> mestaK = new TreeSet<>();
+    private boolean maMestoT = false;
+    private boolean maMestoK = false;
     Scanner sc = new Scanner(System.in);
 
     public static TreeSet<String> getMestaT() {
@@ -17,10 +19,10 @@ public class FastTravel extends Command{
         return mestaK;
     }
     public void TravelFast(){
-        if(Mapa.getRegion().equals(Region.TROSECKO) && !mestaT.isEmpty()){
+        if(Mapa.getRegion().equals(Region.TROSECKO)){
             System.out.println("Do kterého města chcete cestovat?: ");
+            System.out.println(getMestaT());
             String jmeno = sc.next().toLowerCase();
-            for (int i = 0; i < mestaT.size(); i++){
                 if(mestaT.contains(jmeno)){
                     switch (jmeno){
                         case "hradtrosky":
@@ -41,27 +43,35 @@ public class FastTravel extends Command{
                 }else{
                     System.out.println("Město neobjeveno");
                 }
-            }
+
         }
 
 
-        if (Mapa.getRegion().equals(Region.KUTNOHORSKO) && !mestaK.isEmpty()){
-            String jmeno = sc.next().toLowerCase();
-            for (int i = 0; i < mestaK.size(); i++){
-                switch (jmeno){
+        if (Mapa.getRegion().equals(Region.KUTNOHORSKO)){
+            if(mestaK.isEmpty()){
+                System.out.println("Dosud nebylo objeveno město v Kutnohorsku");
+            }else{
 
+                System.out.println("Do kterého města chcete cestovat?: ");
+                System.out.println("test");
+                String jmeno = sc.next().toLowerCase();
+                for (int i = 0; i < mestaK.size(); i++){
+                    switch (jmeno){
+
+                    }
                 }
+
+
             }
 
 
         }
-
 
     }
 
     @Override
     public void execute() {
-
+    TravelFast();
     }
 
     @Override
