@@ -14,6 +14,7 @@ public class Mapa{
     private static int currentPosition = start;
     private static Region region;
     public boolean nacistMapuTros() {
+        trosecko.clear();
         try (BufferedReader br = new BufferedReader(new FileReader("MapaTros.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -35,6 +36,7 @@ public class Mapa{
 
     }
     public boolean nacistMapuKut() {
+        kutnohorsko.clear();
         try (BufferedReader br = new BufferedReader(new FileReader("MapaKut.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -55,12 +57,36 @@ public class Mapa{
         }
 
     }
+    public boolean nacistMesto(String mapa,HashMap<Integer, Lokace> test) {
+        try (BufferedReader br = new BufferedReader(new FileReader(mapa))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] lines = line.split(";");
+                Lokace location = new Lokace(
+                        lines[1],
+                        Integer.parseInt(lines[0]),
+                        Arrays.copyOfRange(lines, 2, 6)
+                );
+                test.put(Integer.valueOf(lines[0]), location);
+
+            }
+
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+
+    }
 
     public static Region getRegion() {
         return region;
     }
 
-    public static Lokace getCurrentPosition1(){
+    public static void setRegion(Region region) {
+        Mapa.region = region;
+    }
+
+    public static Lokace getCurrentPosition1(){ //musím nastavit obecně nebo předělat
         return trosecko.get(currentPosition);
     }
 
@@ -72,6 +98,7 @@ public class Mapa{
             return "Lokace nenalezena.";
         }
     }
+    /*
     public static int getIDAktualniLokace() {
         Lokace aktualniLokace = getCurrentPosition1();
         if (aktualniLokace != null) {
@@ -80,6 +107,8 @@ public class Mapa{
             return -1;
         }
     }
+
+     */
 
     static public int getCurrentPosition() {
         return currentPosition;
@@ -95,7 +124,11 @@ public class Mapa{
         return trosecko;
     }
 
-    public String pohyb(String smer,HashMap<Integer, Lokace> test) {
+    public HashMap<Integer, Lokace> getKutnohorsko() {
+        return kutnohorsko;
+    }
+
+    public String pohyb(String smer, HashMap<Integer, Lokace> test) {
 
         int dirIndex;
 
