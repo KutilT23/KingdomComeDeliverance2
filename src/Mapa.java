@@ -46,6 +46,7 @@ public class Mapa{
                 );
                 kutnohorsko.put(Integer.valueOf(lines[0]), location);
                 region = Region.KUTNOHORSKO;
+
             }
 
             return true;
@@ -94,7 +95,7 @@ public class Mapa{
         return trosecko;
     }
 
-    public String pohyb(String smer) {
+    public String pohyb(String smer,HashMap<Integer, Lokace> test) {
 
         int dirIndex;
 
@@ -116,7 +117,7 @@ public class Mapa{
         }
 
 
-        int newPosition = trosecko.get(currentPosition).getLocations()[dirIndex];
+        int newPosition = test.get(currentPosition).getLocations()[dirIndex];
         if (newPosition == -1) {
             return "Tímto směrem nelze jít⛔.";
         }
@@ -137,11 +138,11 @@ public class Mapa{
                 FastTravel.getMestaT().add("semín");
                 break;
             default:
-                System.out.println("test");
+
         }
 
 
-            return "Přesunuli jste se na lokaci:  " + trosecko.get(currentPosition).getName().toUpperCase();
+            return "Přesunuli jste se na lokaci:  " + test.get(currentPosition).getName().toUpperCase();
         }
 
 

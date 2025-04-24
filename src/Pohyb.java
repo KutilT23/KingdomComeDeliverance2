@@ -15,7 +15,7 @@ public class Pohyb extends Command{
             direction = sc.next();
             direction.toLowerCase();
         }
-        System.out.println(svet.pohyb(direction));
+        System.out.println(svet.pohyb(direction,svet.getTrosecko()));
     }
 
     @Override
