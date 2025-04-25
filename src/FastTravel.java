@@ -53,14 +53,28 @@ public class FastTravel extends Command{
             }else{
 
                 System.out.println("Do kterého města chcete cestovat?: ");
-                System.out.println("test");
+                System.out.println(getMestaK());
                 String jmeno = sc.next().toLowerCase();
-                for (int i = 0; i < mestaK.size(); i++){
+                if (mestaK.contains(jmeno)){
                     switch (jmeno){
-
+                        case "čertovka":
+                            Mapa.setCurrentPosition(68);
+                            System.out.println("Přesunuto na : " + Mapa.getNazevAktualniLokace());
+                            break;
+                        case "suchdol":
+                            Mapa.setCurrentPosition(98);
+                            System.out.println("Přesunuto na : " + Mapa.getNazevAktualniLokace());
+                            break;
+                        case "kutnáhora":
+                            Mapa.setCurrentPosition(110);
+                            System.out.println("Přesunuto na : " + Mapa.getNazevAktualniLokace());
+                            break;
+                        default:
+                            System.out.println("Město neobjeveno");
                     }
+                }else{
+                    System.out.println("Město neobjeveno");
                 }
-
 
             }
 

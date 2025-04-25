@@ -20,10 +20,8 @@ public class Mapa{
             while ((line = br.readLine()) != null) {
                 String[] lines = line.split(";");
                 Lokace location = new Lokace(
-                        lines[1],
-                        Integer.parseInt(lines[0]),
-                        Arrays.copyOfRange(lines, 2, 6)
-                );
+                        lines[1], Integer.parseInt(lines[0]),
+                        Arrays.copyOfRange(lines, 2, 6));
                 kraje.put(Integer.valueOf(lines[0]), location);
                 region = Region.TROSECKO;
                 FastTravel.getMestaT().add("troskovice");
@@ -42,10 +40,8 @@ public class Mapa{
             while ((line = br.readLine()) != null) {
                 String[] lines = line.split(";");
                 Lokace location = new Lokace(
-                        lines[1],
-                        Integer.parseInt(lines[0]),
-                        Arrays.copyOfRange(lines, 2, 6)
-                );
+                        lines[1], Integer.parseInt(lines[0]),
+                        Arrays.copyOfRange(lines, 2, 6));
                 kraje.put(Integer.valueOf(lines[0]), location);
                 region = Region.KUTNOHORSKO;
 
@@ -63,12 +59,9 @@ public class Mapa{
             while ((line = br.readLine()) != null) {
                 String[] lines = line.split(";");
                 Lokace location = new Lokace(
-                        lines[1],
-                        Integer.parseInt(lines[0]),
-                        Arrays.copyOfRange(lines, 2, 6)
-                );
+                        lines[1], Integer.parseInt(lines[0]),
+                        Arrays.copyOfRange(lines, 2, 6));
                 test.put(Integer.valueOf(lines[0]), location);
-
             }
 
             return true;
@@ -114,8 +107,6 @@ public class Mapa{
         return currentPosition;
     }
 
-
-
     public static void setCurrentPosition(int currentPosition) {
         Mapa.currentPosition = currentPosition;
     }
@@ -144,8 +135,6 @@ public class Mapa{
             default:
                 return "Neplatný směr! Použijte Sever, Jih, Východ nebo Západ.";
         }
-
-
         int newPosition = kraje.get(currentPosition).getLocations()[dirIndex];
         if (newPosition == -1) {
             return "Tímto směrem nelze jít⛔.";
@@ -165,6 +154,18 @@ public class Mapa{
             case "semín":
                 System.out.println("Semín přidáno do FastTravel");
                 FastTravel.getMestaT().add("semín");
+                break;
+            case "čertovka":
+                System.out.println("Čertovka přidáno do FastTravel");
+                FastTravel.getMestaK().add("čertovka");
+                break;
+            case "kutnáhora":
+                System.out.println("Kutná Hora přidáno do FastTravel");
+                FastTravel.getMestaK().add("kutnáhora");
+                break;
+            case "suchdol":
+                System.out.println("Suchdol přidáno do FastTravel");
+                FastTravel.getMestaK().add("suchdol");
                 break;
             default:
 
