@@ -50,8 +50,6 @@ public class Konzole {
         svet.nacistMapuTros();
 
         inicializace();
-        System.out.println("Vítejte ve hře Ztracený Hraničář :-D");
-        System.out.println("Pro přehled příkazů napište: prikazy");
         System.out.println("Nacházíš se na lokaci\uD83D\uDCCD\uD83D\uDDFA\uFE0F: " + svet.getCurrentPosition1().getName().toUpperCase());
         try{
             resetSouboru();

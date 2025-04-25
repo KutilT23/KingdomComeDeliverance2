@@ -8,13 +8,13 @@ import java.util.HashMap;
 
 
 public class Mapa{
-    static private HashMap<Integer, Lokace> trosecko = new HashMap<>();
-    static private HashMap<Integer, Lokace> kutnohorsko = new HashMap<>();
+    static private HashMap<Integer, Lokace> kraje = new HashMap<>();
+
     private static int start = 36;
     private static int currentPosition = start;
     private static Region region;
     public boolean nacistMapuTros() {
-        trosecko.clear();
+        kraje.clear();
         try (BufferedReader br = new BufferedReader(new FileReader("MapaTros.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -24,7 +24,7 @@ public class Mapa{
                         Integer.parseInt(lines[0]),
                         Arrays.copyOfRange(lines, 2, 6)
                 );
-                trosecko.put(Integer.valueOf(lines[0]), location);
+                kraje.put(Integer.valueOf(lines[0]), location);
                 region = Region.TROSECKO;
                 FastTravel.getMestaT().add("troskovice");
             }
@@ -36,7 +36,7 @@ public class Mapa{
 
     }
     public boolean nacistMapuKut() {
-        kutnohorsko.clear();
+        kraje.clear();
         try (BufferedReader br = new BufferedReader(new FileReader("MapaKut.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -46,7 +46,7 @@ public class Mapa{
                         Integer.parseInt(lines[0]),
                         Arrays.copyOfRange(lines, 2, 6)
                 );
-                kutnohorsko.put(Integer.valueOf(lines[0]), location);
+                kraje.put(Integer.valueOf(lines[0]), location);
                 region = Region.KUTNOHORSKO;
 
             }
@@ -86,8 +86,8 @@ public class Mapa{
         Mapa.region = region;
     }
 
-    public static Lokace getCurrentPosition1(){ //musím nastavit obecně nebo předělat
-        return trosecko.get(currentPosition);
+    public static Lokace getCurrentPosition1(){
+        return kraje.get(currentPosition);
     }
 
     public static String getNazevAktualniLokace() {
@@ -120,15 +120,11 @@ public class Mapa{
         Mapa.currentPosition = currentPosition;
     }
 
-    public HashMap<Integer, Lokace> getTrosecko() {
-        return trosecko;
+    public HashMap<Integer, Lokace> getKraje() {
+        return kraje;
     }
 
-    public HashMap<Integer, Lokace> getKutnohorsko() {
-        return kutnohorsko;
-    }
-
-    public String pohyb(String smer, HashMap<Integer, Lokace> test) {
+    public String pohyb(String smer) {
 
         int dirIndex;
 
@@ -150,13 +146,13 @@ public class Mapa{
         }
 
 
-        int newPosition = test.get(currentPosition).getLocations()[dirIndex];
+        int newPosition = kraje.get(currentPosition).getLocations()[dirIndex];
         if (newPosition == -1) {
             return "Tímto směrem nelze jít⛔.";
         }
 
             currentPosition = newPosition;
-        System.out.println(Mapa.getNazevAktualniLokace());
+        //System.out.println(Mapa.getNazevAktualniLokace());
         switch (Mapa.getNazevAktualniLokace().toLowerCase()) {
             case "hradtrosky":
                 System.out.println("HradTrosky přidáno do FastTravel");
@@ -175,7 +171,7 @@ public class Mapa{
         }
 
 
-            return "Přesunuli jste se na lokaci:  " + test.get(currentPosition).getName().toUpperCase();
+            return "Přesunuli jste se na lokaci:  " + kraje.get(currentPosition).getName().toUpperCase();
         }
 
 
