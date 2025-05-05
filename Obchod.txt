@@ -1,0 +1,5 @@
+mec;100;50;0;
+sekyra;80;40;0;
+dlouhymec;150;75;0;
+palcat;75;35;0;
+palice;60;30;0;

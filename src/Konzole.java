@@ -21,7 +21,7 @@ public class Konzole {
         prikazy.put("lov",new Lov());
         prikazy.put("krast",new Krast());
         prikazy.put("souboj",new Souboj());
-        prikazy.put("obchodovat",new Obchodovat());
+        prikazy.put("obchod",new Obchodovat());
         prikazy.put("profil",new Profil());
         prikazy.put("batoh",new Batoh());
 
