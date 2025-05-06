@@ -1,0 +1,2 @@
+Kralik;20;Ucho;10;1;Packa;30;1;MasoK;20;2;
+Jelen;80;Parohy;50;5;Kuze;40;3;MasoJ;30;4;

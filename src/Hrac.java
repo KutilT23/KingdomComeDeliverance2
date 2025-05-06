@@ -4,6 +4,8 @@ public class Hrac {
      private static int vyrecnost = 5;
      private static int dojem = 5;
      private static int kapacita = 80 + sila*5;
+     private static int zastraseni = 5;
+     private static int reputace = 50;
 
     public static int getSila() {
         return sila;
@@ -43,5 +45,21 @@ public class Hrac {
 
     public static void setKapacita(int kapacita) {
         Hrac.kapacita = kapacita;
+    }
+
+    public static int getZastraseni() {
+        return zastraseni;
+    }
+
+    public static void setZastraseni(int zastraseni) {
+        Hrac.zastraseni = zastraseni;
+    }
+
+    public static int getReputace() {
+        return reputace;
+    }
+
+    public static void setReputace(int reputace) {
+        Hrac.reputace = reputace;
     }
 }
