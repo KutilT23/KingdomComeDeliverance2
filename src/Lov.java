@@ -38,7 +38,10 @@ public class Lov extends Command{
                 while ((radek = br.readLine()) != null) {
                     String[] lines = radek.split(";");
 
-                    Zvire zvire = new Zvire(lines[0],Integer.parseInt(lines[1]),new Predmet(lines[2],Integer.parseInt(lines[3]),Integer.parseInt(lines[4]),TypPredmetu.valueOf(lines[5])),new Predmet(lines[6],Integer.parseInt(lines[7]),Integer.parseInt(lines[8]),TypPredmetu.valueOf(lines[9])),new Predmet(lines[10],Integer.parseInt(lines[11]),Integer.parseInt(lines[12]),TypPredmetu.valueOf(lines[13])));
+                    Zvire zvire = new Zvire(lines[0],Integer.parseInt(lines[1]),new Predmet(lines[2],Integer.parseInt(lines[3]),Integer.parseInt(lines[4]),
+                    TypPredmetu.valueOf(lines[5])),new Predmet(lines[6],Integer.parseInt(lines[7]),Integer.parseInt(lines[8]),TypPredmetu.valueOf(lines[9])),
+                    new Predmet(lines[10],Integer.parseInt(lines[11]),Integer.parseInt(lines[12]),TypPredmetu.valueOf(lines[13])));
+                    //zvire.getKorist().get(0).setJeKradeny(true); až budu okrádat lidi
                     zver.add(zvire);
 
                 }

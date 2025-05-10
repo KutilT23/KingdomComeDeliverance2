@@ -16,12 +16,14 @@ public class Main {
 
         Konzole k = new Konzole();
         k.start();
-        /*
-        Predmet p = new Predmet("něco",20,20);
+/*
+        Predmet p = new Predmet("něco",20,20,TypPredmetu.ULOVEK);
         p.setJeKradeny(true);
         System.out.println(p);
 
-         */
+ */
+
+
 
 
 

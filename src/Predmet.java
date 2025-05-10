@@ -86,31 +86,31 @@ public class Predmet implements Comparable<Predmet>{
     String ZELENA = "\u001B[92m";
     String ZLUTA = "\u001B[38;5;220m"; ;
     String MODRA = "\u001B[38;5;33m";
-    String FIALOVA = "\u001B[95m";
-    String CYAN =  "\u001B[38;5;135m";
+    String CYAN = "\u001B[95m";
+    String FIALOVA =  "\u001B[38;5;135m";
     String BILA = "\u001B[37m";
     @Override
     public String toString() {
-        return "\nNÁZEV: "  + CYAN + nazev+RESET+ ",SILA: " + CERVENA + sila + RESET +",CENA: " +ZLUTA +  cena + RESET +",VAHA: " +MODRA +  vaha + RESET+ ",LECENI: " + ZELENA + leceni + RESET + jeKradeny;
+        return "\nNÁZEV: "  + FIALOVA + nazev+RESET+ ",SILA: " + CERVENA + sila + RESET +",CENA: " +ZLUTA +  cena + RESET +",VAHA: " +MODRA +  vaha + RESET+ ",LECENI: " + ZELENA + leceni + RESET + jeKradeny;
 
     }
 
     public String toString2() {
-        return "\nNÁZEV: "  + CYAN+ nazev+RESET+ ",SILA: " + CERVENA + sila + RESET +",CENA: " +ZLUTA +  cena + RESET+",VAHA: " +MODRA +  vaha + RESET;
+        return "\nNÁZEV: "  + FIALOVA+ nazev+RESET+ ",SILA: " + CERVENA + sila + RESET +",CENA: " +ZLUTA +  cena + RESET+",VAHA: " +MODRA +  vaha + RESET;
 
     }
 
     public String toString3() {
-        return "\nNÁZEV: "  + CYAN+ nazev+RESET+ ",LECENI: " + ZELENA + leceni + RESET +",CENA: " +ZLUTA +  cena + RESET +",VAHA: " +MODRA +  vaha + RESET;
+        return "\nNÁZEV: "  + FIALOVA+ nazev+RESET+ ",LECENI: " + ZELENA + leceni + RESET +",CENA: " +ZLUTA +  cena + RESET +",VAHA: " +MODRA +  vaha + RESET;
 
     }
     public String toString4() {
-        return "\nNÁZEV: "  + CYAN+ nazev+RESET+ ",CENA: " +ZLUTA +  cena + RESET +",VAHA: " +MODRA +  vaha + RESET;
+        return "\nNÁZEV: "  + FIALOVA+ nazev+RESET+ ",CENA: " +ZLUTA +  cena + RESET +",VAHA: " +MODRA +  vaha + RESET;
 
     }
 
     public String toStringJmeno() {
-        return "\nNÁZEV: "  + CYAN+ nazev+RESET;
+        return "\nNÁZEV: "  + FIALOVA+ nazev+RESET;
     }
 
 
