@@ -30,6 +30,7 @@ public class Konzole {
     private Scanner scanner = new Scanner(System.in);
 
     private void proved(){
+
         System.out.println("NAPIŠTE CO CHCETE DĚLAT:");
         String prikaz = scanner.nextLine();
         prikaz = prikaz.trim();

@@ -5,6 +5,7 @@ public class Predmet implements Comparable<Predmet>{
     private int leceni;
     private int vaha;
     private TypPredmetu typPredmetu;
+    private boolean jeKradeny = false;
 
 
     public Predmet(String nazev, int cena, int sila, int vaha, TypPredmetu typPredmetu, int leceni) {
@@ -16,10 +17,11 @@ public class Predmet implements Comparable<Predmet>{
         this.leceni = leceni;
     }
 
-    public Predmet(String nazev, int cena, int vaha) {
+    public Predmet(String nazev, int cena, int vaha, TypPredmetu typPredmetu) {
         this.nazev = nazev;
         this.cena = cena;
         this.vaha = vaha;
+        this.typPredmetu = typPredmetu;
     }
 
     public String getNazev() {
@@ -50,6 +52,14 @@ public class Predmet implements Comparable<Predmet>{
         return leceni;
     }
 
+    public boolean isJeKradeny() {
+        return jeKradeny;
+    }
+
+    public void setJeKradeny(boolean jeKradeny) {
+        this.jeKradeny = jeKradeny;
+    }
+
     public void setLeceni(int leceni) {
         this.leceni = leceni;
     }
@@ -74,33 +84,33 @@ public class Predmet implements Comparable<Predmet>{
     String CERNA = "\u001B[30m";
     String CERVENA = "\u001B[91m";
     String ZELENA = "\u001B[92m";
-    String ZLUTA = "\u001B[93m";
-    String MODRA = "\u001B[94m";
+    String ZLUTA = "\u001B[38;5;220m"; ;
+    String MODRA = "\u001B[38;5;33m";
     String FIALOVA = "\u001B[95m";
-    String CYAN = "\u001B[36m";
+    String CYAN ="\u001B[38;5;177m";
     String BILA = "\u001B[37m";
     @Override
     public String toString() {
-        return "\nNÁZEV: "  + FIALOVA+ nazev+RESET+ ",SILA: " + CERVENA + sila + RESET +",CENA: " +ZLUTA +  cena + RESET +",VAHA: " +MODRA +  vaha + RESET+ ",LECENI: " + ZELENA + leceni + RESET;
+        return "\nNÁZEV: "  + CYAN + nazev+RESET+ ",SILA: " + CERVENA + sila + RESET +",CENA: " +ZLUTA +  cena + RESET +",VAHA: " +MODRA +  vaha + RESET+ ",LECENI: " + ZELENA + leceni + RESET + jeKradeny;
 
     }
 
     public String toString2() {
-        return "\nNÁZEV: "  + FIALOVA+ nazev+RESET+ ",SILA: " + CERVENA + sila + RESET +",CENA: " +ZLUTA +  cena + RESET+",VAHA: " +MODRA +  vaha + RESET;
+        return "\nNÁZEV: "  + CYAN+ nazev+RESET+ ",SILA: " + CERVENA + sila + RESET +",CENA: " +ZLUTA +  cena + RESET+",VAHA: " +MODRA +  vaha + RESET;
 
     }
 
     public String toString3() {
-        return "\nNÁZEV: "  + FIALOVA+ nazev+RESET+ ",LECENI: " + ZELENA + leceni + RESET +",CENA: " +ZLUTA +  cena + RESET +",VAHA: " +MODRA +  vaha + RESET;
+        return "\nNÁZEV: "  + CYAN+ nazev+RESET+ ",LECENI: " + ZELENA + leceni + RESET +",CENA: " +ZLUTA +  cena + RESET +",VAHA: " +MODRA +  vaha + RESET;
 
     }
     public String toString4() {
-        return "\nNÁZEV: "  + FIALOVA+ nazev+RESET+ ",CENA: " +ZLUTA +  cena + RESET +",VAHA: " +MODRA +  vaha + RESET;
+        return "\nNÁZEV: "  + CYAN+ nazev+RESET+ ",CENA: " +ZLUTA +  cena + RESET +",VAHA: " +MODRA +  vaha + RESET;
 
     }
 
     public String toStringJmeno() {
-        return "\nNÁZEV: "  + FIALOVA+ nazev+RESET;
+        return "\nNÁZEV: "  + CYAN+ nazev+RESET;
     }
 
 

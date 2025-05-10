@@ -16,6 +16,7 @@ public class Pohyb extends Command{
             direction.toLowerCase();
         }
         System.out.println(svet.pohyb(direction));
+        Lov.setLovNacteny(false);
     }
 
     @Override

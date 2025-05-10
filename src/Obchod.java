@@ -39,6 +39,8 @@ public class Obchod {
                 case LEKTVAR:
                     System.out.print(obchod.get(i).toString3());
                     break;
+                default:
+                    System.out.println("Chyba");
             }
         }
         System.out.println("");

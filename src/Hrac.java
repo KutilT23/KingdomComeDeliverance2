@@ -2,9 +2,6 @@ public class Hrac {
      private static int sila = 10;
      private static int zivoty = 100;
      private static int vyrecnost = 5;
-     private static int dojem = 5;
-     private static int kapacita = 80 + sila*5;
-     private static int zastraseni = 5;
      private static int reputace = 50;
 
     public static int getSila() {
@@ -29,30 +26,6 @@ public class Hrac {
 
     public static void setVyrecnost(int vyrecnost) {
         Hrac.vyrecnost = vyrecnost;
-    }
-
-    public static int getDojem() {
-        return dojem;
-    }
-
-    public static void setDojem(int dojem) {
-        Hrac.dojem = dojem;
-    }
-
-    public static int getKapacita() {
-        return kapacita;
-    }
-
-    public static void setKapacita(int kapacita) {
-        Hrac.kapacita = kapacita;
-    }
-
-    public static int getZastraseni() {
-        return zastraseni;
-    }
-
-    public static void setZastraseni(int zastraseni) {
-        Hrac.zastraseni = zastraseni;
     }
 
     public static int getReputace() {

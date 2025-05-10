@@ -6,6 +6,7 @@ public class Lokace {
     private String name;
     private int ID;
     private int[] locations;
+    // do budoucna možná přidat zda byla již lokace načtena;
 
     public Lokace(){
 

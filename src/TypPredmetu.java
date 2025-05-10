@@ -1,3 +1,3 @@
 public enum TypPredmetu {
-    ZBRAN,LEKTVAR
+    ZBRAN,LEKTVAR,ULOVEK
 }
