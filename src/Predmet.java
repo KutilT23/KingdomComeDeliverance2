@@ -87,7 +87,7 @@ public class Predmet implements Comparable<Predmet>{
     String ZLUTA = "\u001B[38;5;220m"; ;
     String MODRA = "\u001B[38;5;33m";
     String FIALOVA = "\u001B[95m";
-    String CYAN ="\u001B[38;5;177m";
+    String CYAN =  "\u001B[38;5;135m";
     String BILA = "\u001B[37m";
     @Override
     public String toString() {
