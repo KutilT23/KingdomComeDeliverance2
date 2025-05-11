@@ -8,7 +8,7 @@ public class Batoh extends Command{
     @Override
     public void execute() {
         vypisBatoh();
-        System.out.println(getAktualniKapacita());
+        System.out.println("AKTUÁLNÍ KAPACITA: " + getAktualniKapacita());
     }
 
     @Override
@@ -18,10 +18,12 @@ public class Batoh extends Command{
 
 
     public void  pridatPredmet(Predmet predmet){
-        if(getAktualniKapacita() - predmet.getVaha()>0){
+        if(getAktualniKapacita() - predmet.getVaha()>=0){
             batoh.add(predmet);
             System.out.println("Předmět: " + predmet.getNazev() + " přidán do batohu");
             setAktualniKapacita(getAktualniKapacita()-predmet.getVaha());
+        }else{
+            System.out.println("Batoh je plný");
         }
     }
     public void vypisBatoh(){
@@ -30,13 +32,13 @@ public class Batoh extends Command{
             for (int i = 0; i < batoh.size(); i++) {
                 switch (batoh.get(i).getTypPredmetu()){
                     case ZBRAN:
-                        System.out.print(batoh.get(i).toString2());
+                        System.out.print("I: " + i +", " + batoh.get(i).toString2Test());
                         break;
                     case LEKTVAR:
-                        System.out.print(batoh.get(i).toString3());
+                        System.out.print("I: " + i +", " + batoh.get(i).toString3Test());
                         break;
                     case ULOVEK:
-                        System.out.print(batoh.get(i).toString4());
+                        System.out.print("I: " + i +", " + batoh.get(i).toString4Test());
                         break;
                     default:
                         System.out.println("Chyba");

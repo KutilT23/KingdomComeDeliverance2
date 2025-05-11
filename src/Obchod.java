@@ -13,7 +13,7 @@ public class Obchod {
             while ((radek = br.readLine()) != null&&!predmetyNacteny) {
                 String[] lines = radek.split(";");
 
-                Predmet predmet = new Predmet(lines[0],Integer.parseInt(lines[1]),Integer.parseInt(lines[2]),Integer.parseInt(lines[3]),TypPredmetu.valueOf(lines[4]),Integer.parseInt(lines[5]));
+                Predmet predmet = new Predmet(lines[0],Integer.parseInt(lines[1]),Integer.parseInt(lines[2]),Integer.parseInt(lines[3]),Integer.parseInt(lines[4]),TypPredmetu.valueOf(lines[5]));
                 obchod.add(predmet);
 
             }
@@ -34,10 +34,10 @@ public class Obchod {
         for (int i = 0; i < obchod.size(); i++) {
             switch (obchod.get(i).getTypPredmetu()){
                 case ZBRAN:
-                    System.out.print(obchod.get(i).toString2());
+                    System.out.print("I: " + i +", " +  obchod.get(i).toString2Test());
                     break;
                 case LEKTVAR:
-                    System.out.print(obchod.get(i).toString3());
+                    System.out.print("I: " + i + ", " + obchod.get(i).toString3Test());
                     break;
                 default:
                     System.out.println("Chyba");

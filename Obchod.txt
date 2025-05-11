@@ -1,6 +1,6 @@
-Mec;100;50;5;ZBRAN;0;
-Sekyra;80;40;6;ZBRAN;0;
-DlouhyMec;150;75;10;ZBRAN;0;
-Palcat;75;35;4;ZBRAN;0;
-Palice;60;30;8;ZBRAN;0;
-MesickovyOdvar;50;0;2;LEKTVAR;50;
+Mec;100;50;5;0;ZBRAN;
+Sekyra;80;40;6;0;ZBRAN;
+DlouhyMec;150;75;10;0;ZBRAN;
+Palcat;75;35;4;0;ZBRAN;
+Palice;60;30;8;0;ZBRAN;
+MesickovyOdvar;50;0;2;50;LEKTVAR;

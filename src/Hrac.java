@@ -3,6 +3,7 @@ public class Hrac {
      private static int zivoty = 100;
      private static int vyrecnost = 5;
      private static int reputace = 50;
+     private static int penize = 10; // pak 0
 
     public static int getSila() {
         return sila;
@@ -34,5 +35,13 @@ public class Hrac {
 
     public static void setReputace(int reputace) {
         Hrac.reputace = reputace;
+    }
+
+    public static int getPenize() {
+        return penize;
+    }
+
+    public static void setPenize(int penize) {
+        Hrac.penize = penize;
     }
 }

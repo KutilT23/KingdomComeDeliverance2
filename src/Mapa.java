@@ -175,5 +175,37 @@ public class Mapa{
             return "Přesunuli jste se na lokaci:  " + kraje.get(currentPosition).getName().toUpperCase();
         }
 
+    public String test(String smer) {
+
+        int dirIndex;
+
+        switch (smer.toLowerCase()) {
+            case "s":
+                dirIndex = 0;
+                break;
+            case "j":
+                dirIndex = 1;
+                break;
+            case "v":
+                dirIndex = 2;
+                break;
+            case "z":
+                dirIndex = 3;
+                break;
+            default:
+                return "ahoj";
+        }
+        int newPosition = kraje.get(currentPosition).getLocations()[dirIndex];
+        if (newPosition == -1) {
+            return "Tímto směrem nelze jít⛔.";
+        }
+
+
+        return kraje.get(newPosition).getName().toUpperCase();
+    }
+
+
+
+
 
 }

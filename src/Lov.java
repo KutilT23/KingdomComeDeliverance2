@@ -8,7 +8,7 @@ import java.util.Random;
 public class Lov extends Command{
     @Override
     public void execute() {
-        if(!Mapa.getNazevAktualniLokace().equals("Loviště")){ // bacha na ! potom pryč
+        if(Mapa.getNazevAktualniLokace().equals("Loviště")){
             nacistZver();
             lovit();
         }else{

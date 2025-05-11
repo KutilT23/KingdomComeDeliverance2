@@ -8,13 +8,13 @@ public class Predmet implements Comparable<Predmet>{
     private boolean jeKradeny = false;
 
 
-    public Predmet(String nazev, int cena, int sila, int vaha, TypPredmetu typPredmetu, int leceni) {
+    public Predmet(String nazev, int cena, int sila, int vaha, int leceni, TypPredmetu typPredmetu) {
         this.nazev = nazev;
         this.cena = cena;
         this.sila = sila;
         this.vaha = vaha;
-        this.typPredmetu = typPredmetu;
         this.leceni = leceni;
+        this.typPredmetu = typPredmetu;
     }
 
     public Predmet(String nazev, int cena, int vaha, TypPredmetu typPredmetu) {
@@ -99,13 +99,25 @@ public class Predmet implements Comparable<Predmet>{
         return "\nNÁZEV: "  + FIALOVA+ nazev+RESET+ ",SILA: " + CERVENA + sila + RESET +",CENA: " +ZLUTA +  cena + RESET+",VAHA: " +MODRA +  vaha + RESET;
 
     }
+    public String toString2Test() {
+        return "NÁZEV: "  + FIALOVA+ nazev+RESET+ ",SILA: " + CERVENA + sila + RESET +",CENA: " +ZLUTA +  cena + RESET+",VAHA: " +MODRA +  vaha + RESET + "\n";
+
+    }
 
     public String toString3() {
         return "\nNÁZEV: "  + FIALOVA+ nazev+RESET+ ",LECENI: " + ZELENA + leceni + RESET +",CENA: " +ZLUTA +  cena + RESET +",VAHA: " +MODRA +  vaha + RESET;
 
     }
+    public String toString3Test() {
+        return "NÁZEV: "  + FIALOVA+ nazev+RESET+ ",LECENI: " + ZELENA + leceni + RESET +",CENA: " +ZLUTA +  cena + RESET +",VAHA: " +MODRA +  vaha + RESET + "\n";
+
+    }
     public String toString4() {
         return "\nNÁZEV: "  + FIALOVA+ nazev+RESET+ ",CENA: " +ZLUTA +  cena + RESET +",VAHA: " +MODRA +  vaha + RESET;
+
+    }
+    public String toString4Test() {
+        return "NÁZEV: "  + FIALOVA+ nazev+RESET+ ",CENA: " +ZLUTA +  cena + RESET +",VAHA: " +MODRA +  vaha + RESET + "\n";
 
     }
 

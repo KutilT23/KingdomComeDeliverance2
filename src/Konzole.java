@@ -24,6 +24,7 @@ public class Konzole {
         prikazy.put("obchod",new Obchodovat());
         prikazy.put("profil",new Profil());
         prikazy.put("batoh",new Batoh());
+        prikazy.put("sber",new Sber());
 
     }
 

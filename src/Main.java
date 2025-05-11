@@ -15,6 +15,9 @@ public class Main {
  */
 
         Konzole k = new Konzole();
+        Batoh b = new Batoh();
+        b.pridatPredmet(new Predmet("predmet",20,20,20,0,TypPredmetu.ZBRAN));
+        b.pridatPredmet(new Predmet("odvar", 20,0, 10,50, TypPredmetu.LEKTVAR));
         k.start();
 /*
         Predmet p = new Predmet("něco",20,20,TypPredmetu.ULOVEK);
