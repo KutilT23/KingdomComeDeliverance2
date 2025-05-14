@@ -18,6 +18,8 @@ public class Main {
         Batoh b = new Batoh();
         b.pridatPredmet(new Predmet("predmet",20,20,20,0,TypPredmetu.ZBRAN));
         b.pridatPredmet(new Predmet("odvar", 20,0, 10,50, TypPredmetu.LEKTVAR));
+        b.pridatPredmet(new Predmet("mec",20,30,30,0,TypPredmetu.ZBRAN));
+        b.pridatPredmet(new Predmet("maso",20,30,10,0,TypPredmetu.ULOVEK));
         k.start();
 /*
         Predmet p = new Predmet("něco",20,20,TypPredmetu.ULOVEK);

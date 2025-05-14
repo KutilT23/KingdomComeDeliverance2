@@ -2,12 +2,26 @@ import java.util.Scanner;
 
 public class Obchodovat extends Command{
 
+    private boolean mesto = false;
+
     Scanner sc = new Scanner(System.in);
     @Override
     public void execute() {
+        nenimesto();
+        if(isMesto()){
+            vyber();
+        }else{
+            System.out.println("Nejsi ve městě");
+        }
 
-    vyber();
-
+    }
+    public void nenimesto(){
+        if(!Mapa.getNazevAktualniLokace().equals("Loviště")&&!Mapa.getNazevAktualniLokace().equals("Louka")
+                &&!Mapa.getNazevAktualniLokace().equals("Les")&&!Mapa.getNazevAktualniLokace().equals("Zřícenina")
+                &&!Mapa.getNazevAktualniLokace().equals("NepřátelskýTábor")&&!Mapa.getNazevAktualniLokace().equals("Převozník")
+                &&!Mapa.getNazevAktualniLokace().equals("Cesta")){
+                setMesto(true);
+        }
     }
     public void vyber(){
         Obchod obchod = new Obchod();
@@ -30,6 +44,9 @@ public class Obchodovat extends Command{
 
                     Hrac.setPenize(Hrac.getPenize()+Batoh.getBatoh().get(prodani).getCena());
                     Batoh.setAktualniKapacita(Batoh.getAktualniKapacita()+Batoh.getBatoh().get(prodani).getVaha());
+                    if(Batoh.getBatoh().get(prodani).isPouzivany()){
+                        Hrac.setSila(10);
+                    }
                     Batoh.getBatoh().remove(prodani);
                     batoh.vypisBatoh();
                     System.out.println(Hrac.getPenize());
@@ -70,6 +87,13 @@ public class Obchodovat extends Command{
         }
     }
 
+    public boolean isMesto() {
+        return mesto;
+    }
+
+    public void setMesto(boolean mesto) {
+        this.mesto = mesto;
+    }
 
     @Override
     public boolean exit() {

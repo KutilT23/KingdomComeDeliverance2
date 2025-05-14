@@ -6,6 +6,7 @@ public class Predmet implements Comparable<Predmet>{
     private int vaha;
     private TypPredmetu typPredmetu;
     private boolean jeKradeny = false;
+    private boolean pouzivany = false;
 
 
     public Predmet(String nazev, int cena, int sila, int vaha, int leceni, TypPredmetu typPredmetu) {
@@ -46,6 +47,14 @@ public class Predmet implements Comparable<Predmet>{
 
     public void setSila(int sila) {
         this.sila = sila;
+    }
+
+    public boolean isPouzivany() {
+        return pouzivany;
+    }
+
+    public void setPouzivany(boolean pouzivany) {
+        this.pouzivany = pouzivany;
     }
 
     public int getLeceni() {
@@ -101,6 +110,10 @@ public class Predmet implements Comparable<Predmet>{
     }
     public String toString2Test() {
         return "NÁZEV: "  + FIALOVA+ nazev+RESET+ ",SILA: " + CERVENA + sila + RESET +",CENA: " +ZLUTA +  cena + RESET+",VAHA: " +MODRA +  vaha + RESET + "\n";
+
+    }
+    public String toString5Test() {
+        return "NÁZEV: "  + FIALOVA+ nazev+RESET+ ",SILA: " + CERVENA + sila + RESET +",CENA: " +ZLUTA +  cena + RESET+",VAHA: " +MODRA +  vaha + RESET +",POUŽÍVANÝ: " +MODRA +  pouzivany + RESET +  "\n";
 
     }
 

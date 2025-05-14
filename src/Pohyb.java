@@ -7,7 +7,8 @@ public class Pohyb extends Command{
     public void execute() {
         System.out.println("Nacházíš se na lokaci\uD83D\uDCCD\uD83D\uDDFA\uFE0F: " + svet.getCurrentPosition1().getName().toUpperCase());
         kudyMuze();
-        System.out.println("Zvolte směr, kterým chcete jít\uD83E\uDDED: \ns - sever⬆\uFE0F \nj- jih⬇\uFE0F \nz - zapad⬅\uFE0F \nv - vychod➡\uFE0F");
+        //System.out.println("Zvolte směr, kterým chcete jít\uD83E\uDDED: \ns - sever⬆\uFE0F \nj- jih⬇\uFE0F \nz - zapad⬅\uFE0F \nv - vychod➡\uFE0F");s
+        System.out.println("\"Zvolte směr, kterým chcete jít\uD83E\uDDED:\"");
         String direction = "";
         direction = sc.next();
         direction = direction.toLowerCase();
@@ -20,7 +21,7 @@ public class Pohyb extends Command{
         Lov.setLovNacteny(false);
     }
     public void kudyMuze(){
-        System.out.println("Na sever: " + svet.test("s")  + "\nNa jih: " + svet.test("j") + "\nNa zapad: " + svet.test("z") + "\nNa vychod: " + svet.test("v") );
+        System.out.println("s - Na sever: " + svet.test("s")+" ⬆\uFE0F"  + "\nj - Na jih: " + svet.test("j") +" ⬇\uFE0F" + "\nz - Na zapad: " + svet.test("z")+" ⬅\uFE0F" + "\nv - Na vychod: " + svet.test("v")+" ➡\uFE0F" );
     }
 
     @Override

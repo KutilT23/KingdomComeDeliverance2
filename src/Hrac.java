@@ -18,7 +18,12 @@ public class Hrac {
     }
 
     public static void setZivoty(int zivoty) {
-        Hrac.zivoty = zivoty;
+        if (zivoty > 100) {
+            System.out.println("Nelze mít více než 100");
+            Hrac.zivoty = 100;
+        } else {
+            Hrac.zivoty = zivoty;
+        }
     }
 
     public static int getVyrecnost() {
