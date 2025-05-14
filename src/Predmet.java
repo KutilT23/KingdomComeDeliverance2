@@ -5,7 +5,7 @@ public class Predmet implements Comparable<Predmet>{
     private int leceni;
     private int vaha;
     private TypPredmetu typPredmetu;
-    private boolean jeKradeny = false;
+    private boolean kradeny = false;
     private boolean pouzivany = false;
 
 
@@ -23,6 +23,20 @@ public class Predmet implements Comparable<Predmet>{
         this.cena = cena;
         this.vaha = vaha;
         this.typPredmetu = typPredmetu;
+    }
+    public Predmet(String nazev, int cena, int vaha, TypPredmetu typPredmetu,boolean kradeny) {
+        this.nazev = nazev;
+        this.cena = cena;
+        this.vaha = vaha;
+        this.typPredmetu = typPredmetu;
+        this.kradeny = kradeny;
+    }
+
+    public Predmet(Predmet p) {
+    }
+
+    public Predmet() {
+
     }
 
     public String getNazev() {
@@ -61,12 +75,12 @@ public class Predmet implements Comparable<Predmet>{
         return leceni;
     }
 
-    public boolean isJeKradeny() {
-        return jeKradeny;
+    public boolean isKradeny() {
+        return kradeny;
     }
 
-    public void setJeKradeny(boolean jeKradeny) {
-        this.jeKradeny = jeKradeny;
+    public void setKradeny(boolean kradeny) {
+        this.kradeny = kradeny;
     }
 
     public void setLeceni(int leceni) {
@@ -100,7 +114,7 @@ public class Predmet implements Comparable<Predmet>{
     String BILA = "\u001B[37m";
     @Override
     public String toString() {
-        return "\nNÁZEV: "  + FIALOVA + nazev+RESET+ ",SILA: " + CERVENA + sila + RESET +",CENA: " +ZLUTA +  cena + RESET +",VAHA: " +MODRA +  vaha + RESET+ ",LECENI: " + ZELENA + leceni + RESET + jeKradeny;
+        return "\nNÁZEV: "  + FIALOVA + nazev+RESET+ ",SILA: " + CERVENA + sila + RESET +",CENA: " +ZLUTA +  cena + RESET +",VAHA: " +MODRA +  vaha + RESET+ ",LECENI: " + ZELENA + leceni + RESET + kradeny;
 
     }
 
@@ -112,8 +126,10 @@ public class Predmet implements Comparable<Predmet>{
         return "NÁZEV: "  + FIALOVA+ nazev+RESET+ ",SILA: " + CERVENA + sila + RESET +",CENA: " +ZLUTA +  cena + RESET+",VAHA: " +MODRA +  vaha + RESET + "\n";
 
     }
+
     public String toString5Test() {
-        return "NÁZEV: "  + FIALOVA+ nazev+RESET+ ",SILA: " + CERVENA + sila + RESET +",CENA: " +ZLUTA +  cena + RESET+",VAHA: " +MODRA +  vaha + RESET +",POUŽÍVANÝ: " +MODRA +  pouzivany + RESET +  "\n";
+            return "NÁZEV: "  + FIALOVA+ nazev+RESET+ ",SILA: " + CERVENA + sila + RESET +",CENA: " +ZLUTA +  cena + RESET+",VAHA: " +MODRA +  vaha + RESET +",POUZIVANY: " + ZELENA + pouzivany + RESET + "\n";
+
 
     }
 
@@ -136,6 +152,28 @@ public class Predmet implements Comparable<Predmet>{
 
     public String toStringJmeno() {
         return "\nNÁZEV: "  + FIALOVA+ nazev+RESET;
+    }
+    public String toStringDleTypu() {
+        String text = "";
+
+        switch (typPredmetu) {
+            case ZBRAN:
+                text = String.format("NÁZEV: %-7s SILA: %-3d   CENA: %-3d VAHA: %-2d",
+                        nazev, sila, cena, vaha);
+                break;
+            case LEKTVAR:
+                text = String.format("NÁZEV: %-7s LÉČENÍ: %-3d CENA: %-3d VAHA: %-2d",
+                        nazev, leceni, cena, vaha);
+                break;
+            case ULOVEK:
+                text = String.format("NÁZEV: %-7s             CENA: %-3d VAHA: %-2d",
+                        nazev, cena, vaha);
+                break;
+            default:
+                text = "chyba"; //obarvit horní názvy a čisla atd
+        }
+
+        return text;
     }
 
 

@@ -7,6 +7,8 @@ public class Batoh extends Command{
     private static int kapacita = 30 + Hrac.getSila()*5;
     private static int AktualniKapacita = kapacita;
     Scanner sc = new Scanner(System.in);
+
+
     @Override
     public void execute() {
         volba();
@@ -18,7 +20,7 @@ public class Batoh extends Command{
         return false;
     }
     public void volba(){
-        System.out.println(">> vypis, pouzit");
+        System.out.println(">> VYPIS, POUZIT");
         String odpoved = sc.next();
         odpoved = odpoved.toLowerCase();
         switch (odpoved){
@@ -46,6 +48,7 @@ public class Batoh extends Command{
                                 if(predmet.isPouzivany()){
                                     Hrac.setSila(Hrac.getSila()+predmet.getSila());
                                     System.out.println(predmet.toString5Test());
+
                                    // break;
                                 }
                             }
@@ -78,7 +81,6 @@ public class Batoh extends Command{
         }
     }
 
-
     public void  pridatPredmet(Predmet predmet){
         if(getAktualniKapacita() - predmet.getVaha()>=0){
             batoh.add(predmet);
@@ -90,17 +92,16 @@ public class Batoh extends Command{
     }
     public void vypisBatoh(){
         if(!batoh.isEmpty()){
-            System.out.println("Batoh: ");
             for (int i = 0; i < batoh.size(); i++) {
                 switch (batoh.get(i).getTypPredmetu()){
                     case ZBRAN:
-                        System.out.print("I: " + i +", " + batoh.get(i).toString2Test());
+                        System.out.print("  I: " + i +", " + batoh.get(i).toString2Test());
                         break;
                     case LEKTVAR:
-                        System.out.print("I: " + i +", " + batoh.get(i).toString3Test());
+                        System.out.print("  I: " + i +", " + batoh.get(i).toString3Test());
                         break;
                     case ULOVEK:
-                        System.out.print("I: " + i +", " + batoh.get(i).toString4Test());
+                        System.out.print("  I: " + i +", " + batoh.get(i).toString4Test());
                         break;
                     default:
                         System.out.println("Chyba");
