@@ -27,11 +27,11 @@ Batoh batoh = new Batoh();
     public void vypisStatistik() {
 
         String[] statistiky = {
-                "SÍLA:       " + CERVENA + Hrac.getSila() + RESET,
-                "ŽIVOTY:     " + ZELENA + Hrac.getZivoty() + RESET,
-                "PENÍZE:     " + ZLUTA + Hrac.getPenize() + RESET,
-                "REPUTACE:   " + FIALOVA + Hrac.getReputace() + RESET,
-                "VYŘEČNOST:  " + FIALOVA + Hrac.getVyrecnost() + RESET
+                "    SÍLA:       " + CERVENA + Hrac.getSila() + RESET,
+                "    ŽIVOTY:     " + ZELENA + Hrac.getZivoty() + RESET,
+                "    PENÍZE:     " + ZLUTA + Hrac.getPenize() + RESET,
+                "    REPUTACE:   " + FIALOVA + Hrac.getReputace() + RESET,
+                "    VYŘEČNOST:  " + FIALOVA + Hrac.getVyrecnost() + RESET
         };
 
         System.out.println("-------------------------------------------------------------------");
@@ -42,7 +42,7 @@ Batoh batoh = new Batoh();
         for (int i = 0; i < max; i++) {
             String levaCast = "";
             if (i < Batoh.getBatoh().size()) {
-                levaCast = Batoh.getBatoh().get(i).toStringDleTypu(); // použiješ svůj výpis předmětu
+                levaCast = Batoh.getBatoh().get(i).toStringDleTypu();
             }
 
             String pravaCast = (i < statistiky.length) ? statistiky[i] : "";

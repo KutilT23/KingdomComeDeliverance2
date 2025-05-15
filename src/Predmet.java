@@ -149,6 +149,10 @@ public class Predmet implements Comparable<Predmet>{
         return "NÁZEV: "  + FIALOVA+ nazev+RESET+ ",CENA: " +ZLUTA +  cena + RESET +",VAHA: " +MODRA +  vaha + RESET + "\n";
 
     }
+    public String toStringBylinky() {
+        return "NÁZEV: "  + ZELENA+ nazev+RESET+ ",CENA: " +ZLUTA +  cena + RESET +",VAHA: " +MODRA +  vaha + RESET + "\n";
+
+    }
 
     public String toStringJmeno() {
         return "\nNÁZEV: "  + FIALOVA+ nazev+RESET;
@@ -158,15 +162,15 @@ public class Predmet implements Comparable<Predmet>{
 
         switch (typPredmetu) {
             case ZBRAN:
-                text = String.format("NÁZEV: %-7s SILA: %-3d   CENA: %-3d VAHA: %-2d",
-                        nazev, sila, cena, vaha);
+                text = String.format("NÁZEV: %-8s SILA: \u001B[91m%-3d\u001B[0m   CENA: \u001B[38;5;220m%-3d\u001B[0m VAHA: %-2d",
+                         nazev,sila, cena, vaha);
                 break;
             case LEKTVAR:
-                text = String.format("NÁZEV: %-7s LÉČENÍ: %-3d CENA: %-3d VAHA: %-2d",
+                text = String.format("NÁZEV: %-8s LÉČENÍ: \u001B[92m%-3d\u001B[0m CENA: \u001B[38;5;220m%-3d\u001B[0m VAHA: %-2d",
                         nazev, leceni, cena, vaha);
                 break;
             case ULOVEK:
-                text = String.format("NÁZEV: %-7s             CENA: %-3d VAHA: %-2d",
+                text = String.format("NÁZEV: %-8s             CENA: \u001B[38;5;220m%-3d\u001B[0m VAHA: %-2d",
                         nazev, cena, vaha);
                 break;
             default:

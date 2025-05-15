@@ -201,7 +201,7 @@ public class Mapa{
         }
 
 
-        return kraje.get(newPosition).getName().toUpperCase();
+        return kraje.get(newPosition).getName().toUpperCase() + "\uD83D\uDCCD\uD83D\uDDFA\uFE0F";
     }
 
 

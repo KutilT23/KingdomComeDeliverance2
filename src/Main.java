@@ -25,6 +25,11 @@ public class Main {
         b.pridatPredmet(new Predmet("Meč",20,30,3,0,TypPredmetu.ZBRAN));
         b.pridatPredmet(new Predmet("Maso",20,30,1,0,TypPredmetu.ULOVEK));
         k.start();
+
+
+
+        //dodělat kytky
+        //začít načítat lidi do měst a enemáky do nepř. táboru
 /*
         Predmet p = new Predmet("něco",20,20,TypPredmetu.ULOVEK);
         p.setJeKradeny(true);
