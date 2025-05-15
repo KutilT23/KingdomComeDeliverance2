@@ -16,13 +16,12 @@ public class Main {
 
         Konzole k = new Konzole();
         Batoh b = new Batoh();
-        b.pridatPredmet(new Predmet("Předmět",20,20,2,0,TypPredmetu.ZBRAN));
+
         b.pridatPredmet(new Predmet("Odvar", 20,0, 1,50, TypPredmetu.LEKTVAR));
-        b.pridatPredmet(new Predmet("Meč",20,30,3,0,TypPredmetu.ZBRAN));
-        b.pridatPredmet(new Predmet("Maso",20,30,1,0,TypPredmetu.ULOVEK));
-        b.pridatPredmet(new Predmet("Předmět",20,20,2,0,TypPredmetu.ZBRAN));
+        b.pridatPredmet(new Predmet("Meč",20,30,30,0,TypPredmetu.ZBRAN));
+        b.pridatPredmet(new Predmet("Maso",20,30,15,0,TypPredmetu.ULOVEK));
         b.pridatPredmet(new Predmet("Odvar", 20,0, 1,50, TypPredmetu.LEKTVAR));
-        b.pridatPredmet(new Predmet("Meč",20,30,3,0,TypPredmetu.ZBRAN));
+        b.pridatPredmet(new Predmet("Meč",20,30,30,0,TypPredmetu.ZBRAN));
         b.pridatPredmet(new Predmet("Maso",20,30,1,0,TypPredmetu.ULOVEK));
         k.start();
 

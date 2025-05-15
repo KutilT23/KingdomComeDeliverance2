@@ -81,7 +81,7 @@ public class Batoh extends Command{
         }
     }
 
-    public void  pridatPredmet(Predmet predmet){
+    public void pridatPredmet(Predmet predmet){
         if(getAktualniKapacita() - predmet.getVaha()>=0){
             batoh.add(predmet);
             System.out.println("Předmět: " + predmet.getNazev() + " přidán do batohu");

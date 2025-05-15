@@ -2,26 +2,31 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class Sber extends Command {
 
-
+    private Random rd = new Random();
     private ArrayList<Predmet>bylinky = new ArrayList<>();
     private ArrayList<Predmet>sbirani = new ArrayList<>();
+    Batoh batoh = new Batoh();
 
     private static boolean kytkyNacteny = false;
 
     @Override
     public void execute() {
         nacistBylinky();
-        vyberBylin();
+        sbirat();
     }
     public void nacistBylinky(){
+        if(!kytkyNacteny){
+
+
         try (BufferedReader br = new BufferedReader(new FileReader("Bylinky.txt"))) {
             String radek;
 
-            while ((radek = br.readLine()) != null&&!kytkyNacteny) {
+            while ((radek = br.readLine()) != null) {
                 String[] lines = radek.split(";");
 
                 Predmet predmet = new Predmet(lines[0],Integer.parseInt(lines[1]),Integer.parseInt(lines[2]),TypPredmetu.valueOf(lines[3]));
@@ -35,6 +40,9 @@ public class Sber extends Command {
             System.out.println("Chyba při práci se souborem: " + e.getMessage());
         }
         getBylinkyNacteny();
+        vyberBylin();
+
+        }
     }
     public void getBylinkyNacteny(){
         for (int i = 0; i < bylinky.size(); i++) {
@@ -47,6 +55,23 @@ public class Sber extends Command {
             System.out.print(sbirani.get(i).toStringBylinky());
         }
         System.out.println("");
+    }
+    public void sbirat(){
+        if(!sbirani.isEmpty()){
+            getBylinkySber();
+            int nahoda = rd.nextInt(sbirani.size());
+            int velikost = Batoh.getBatoh().size();
+                batoh.pridatPredmet(sbirani.get(nahoda));
+                int velikost2 = Batoh.getBatoh().size();
+                if(velikost!=velikost2){
+                    sbirani.remove(nahoda);
+                }else{
+                    System.out.println("NEMÁŠ MÍSTO");
+                }
+
+        }else{
+            System.out.println("NENÍ CO SBÍRAT");
+        }
     }
     public void vyberBylin(){
         switch (Mapa.getNazevAktualniLokace()){
