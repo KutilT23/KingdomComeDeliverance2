@@ -24,6 +24,7 @@ Batoh batoh = new Batoh();
     String CYAN = "\u001B[95m";
     String FIALOVA =  "\u001B[38;5;135m";
     String BILA = "\u001B[37m";
+    String ORANZOVA = "\u001B[38;5;208m";
     public void vypisStatistik() {
 
         String[] statistiky = {
@@ -31,11 +32,11 @@ Batoh batoh = new Batoh();
                 "    ŽIVOTY:     " + ZELENA + Hrac.getZivoty() + RESET,
                 "    PENÍZE:     " + ZLUTA + Hrac.getPenize() + RESET,
                 "    REPUTACE:   " + FIALOVA + Hrac.getReputace() + RESET,
-                "    VYŘEČNOST:  " + FIALOVA + Hrac.getVyrecnost() + RESET
+                "    VYŘEČNOST:  " + ORANZOVA + Hrac.getVyrecnost() + RESET
         };
 
         System.out.println("-------------------------------------------------------------------");
-        System.out.println("BATOH:                                             STATISTIKY:");
+        System.out.println( MODRA + "BATOH:                                             STATISTIKY:" + RESET);
         System.out.println("-------------------------------------------------------------------");
 
         int max = Math.max(Batoh.getBatoh().size(), statistiky.length);
@@ -51,10 +52,10 @@ Batoh batoh = new Batoh();
         }
 
         System.out.println("------------------------------------------------------------------");
-        System.out.println("KAPACITA BATOHU: " + Batoh.getAktualniKapacita());
+        System.out.println("AKT. KAPACITA BATOHU:   " + CERVENA + Batoh.getAktualniKapacita() + RESET);
 
         // Výpis používaného předmětu
-        System.out.print("POUŽÍVANÝ PŘEDMĚT:");
+        System.out.print("POUŽÍVANÝ PŘEDMĚT: ");
         test();
 
         /*

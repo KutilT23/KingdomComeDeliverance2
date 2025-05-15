@@ -21,8 +21,7 @@ public class Sber extends Command {
     }
     public void nacistBylinky(){
         if(!kytkyNacteny){
-
-
+        bylinky.clear();
         try (BufferedReader br = new BufferedReader(new FileReader("Bylinky.txt"))) {
             String radek;
 
@@ -39,7 +38,6 @@ public class Sber extends Command {
         } catch (IOException e) {
             System.out.println("Chyba při práci se souborem: " + e.getMessage());
         }
-        getBylinkyNacteny();
         vyberBylin();
 
         }
@@ -58,13 +56,16 @@ public class Sber extends Command {
     }
     public void sbirat(){
         if(!sbirani.isEmpty()){
-            getBylinkySber();
+           // System.out.println(Mapa.getNazevAktualniLokace().toUpperCase() + " obsahuje: ");
+          //  getBylinkySber();
             int nahoda = rd.nextInt(sbirani.size());
             int velikost = Batoh.getBatoh().size();
                 batoh.pridatPredmet(sbirani.get(nahoda));
                 int velikost2 = Batoh.getBatoh().size();
                 if(velikost!=velikost2){
                     sbirani.remove(nahoda);
+                    System.out.println(Mapa.getNazevAktualniLokace().toUpperCase() + " obsahuje: ");
+                    getBylinkySber();
                 }else{
                     System.out.println("NEMÁŠ MÍSTO");
                 }
@@ -82,7 +83,7 @@ public class Sber extends Command {
                         sbirani.add(predmet);
                     }
                 }
-                getBylinkySber();
+
                 break;
             case "Les":
                 sbirani.clear();

@@ -112,6 +112,7 @@ public class Predmet implements Comparable<Predmet>{
     String CYAN = "\u001B[95m";
     String FIALOVA =  "\u001B[38;5;135m";
     String BILA = "\u001B[37m";
+    String ORANZOVA = "\u001B[38;5;208m";
     @Override
     public String toString() {
         return "\nNÁZEV: "  + FIALOVA + nazev+RESET+ ",SILA: " + CERVENA + sila + RESET +",CENA: " +ZLUTA +  cena + RESET +",VAHA: " +MODRA +  vaha + RESET+ ",LECENI: " + ZELENA + leceni + RESET + kradeny;
@@ -162,15 +163,15 @@ public class Predmet implements Comparable<Predmet>{
 
         switch (typPredmetu) {
             case ZBRAN:
-                text = String.format("NÁZEV: %-8s SILA: \u001B[91m%-3d\u001B[0m   CENA: \u001B[38;5;220m%-3d\u001B[0m VAHA: %-2d",
+                text = String.format("NÁZEV: \u001B[95m%-8s\u001B[0m SILA: \u001B[91m  %-3d\u001B[0m CENA: \u001B[38;5;220m%-3d\u001B[0m VAHA: \u001B[38;5;208m%-2d\u001B[0m",
                          nazev,sila, cena, vaha);
                 break;
             case LEKTVAR:
-                text = String.format("NÁZEV: %-8s LÉČENÍ: \u001B[92m%-3d\u001B[0m CENA: \u001B[38;5;220m%-3d\u001B[0m VAHA: %-2d",
+                text = String.format("NÁZEV: \u001B[95m%-8s\u001B[0m LÉČENÍ: \u001B[92m%-3d\u001B[0m CENA: \u001B[38;5;220m%-3d\u001B[0m VAHA: \u001B[38;5;208m%-2d\u001B[0m",
                         nazev, leceni, cena, vaha);
                 break;
             case ULOVEK:
-                text = String.format("NÁZEV: %-8s             CENA: \u001B[38;5;220m%-3d\u001B[0m VAHA: %-2d",
+                text = String.format("NÁZEV: \u001B[95m%-8s\u001B[0m             CENA: \u001B[38;5;220m%-3d\u001B[0m VAHA: \u001B[38;5;208m%-2d\u001B[0m",
                         nazev, cena, vaha);
                 break;
             default:
