@@ -2,17 +2,17 @@
 import java.util.Arrays;
 
 
-public class Lokace {
+public class Location {
     private String name;
     private int ID;
     private int[] locations;
     // do budoucna možná přidat zda byla již lokace načtena;
 
-    public Lokace(){
+    public Location(){
 
     }
 
-    public Lokace(String name, int ID, String[] locations) {
+    public Location(String name, int ID, String[] locations) {
         this.name = name;
         this.ID = ID;
         this.locations = new int[4];

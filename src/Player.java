@@ -1,0 +1,52 @@
+public class Player {
+    private static int strength = 10;
+    private static int health = 100;
+    private static int talk = 5;
+    private static int reputation = 50;
+    private static int money = 10; // later 0
+
+    public static int getStrength() {
+        return strength;
+    }
+
+    public static void setStrength(int strength) {
+        Player.strength = strength;
+    }
+
+    public static int getHealth() {
+        return health;
+    }
+
+    public static void setHealth(int health) {
+        if (health > 100) {
+            System.out.println("Cannot have more than 100");
+            Player.health = 100;
+        } else {
+            Player.health = health;
+        }
+    }
+
+    public static int getTalk() {
+        return talk;
+    }
+
+    public static void setTalk(int talk) {
+        Player.talk = talk;
+    }
+
+    public static int getReputation() {
+        return reputation;
+    }
+
+    public static void setReputation(int reputation) {
+        Player.reputation = reputation;
+    }
+
+    public static int getMoney() {
+        return money;
+    }
+
+    public static void setMoney(int money) {
+        Player.money = money;
+    }
+}

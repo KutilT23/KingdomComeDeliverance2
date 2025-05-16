@@ -1,10 +1,10 @@
-
-
 public abstract class Command {
-    protected String prikaz;
-    public void setPrikaz(String prikaz){
-        this.prikaz = prikaz;
+    protected String command;
+
+    public void setCommand(String command) {
+        this.command = command;
     }
+
     public abstract void execute();
     public abstract boolean exit();
 }

@@ -1,6 +1,0 @@
-Meč;100;50;5;0;ZBRAN;
-Sekyra;80;40;6;0;ZBRAN;
-DlouhýMeč;150;75;10;0;ZBRAN;
-Palcát;75;35;4;0;ZBRAN;
-Palice;60;30;8;0;ZBRAN;
-MěsíčkovýOdvar;50;0;2;50;LEKTVAR;

@@ -1,11 +1,11 @@
-public class Souboj extends Command{
+public class End extends Command {
     @Override
     public void execute() {
-
+        System.out.println("END...");
     }
 
     @Override
     public boolean exit() {
-        return false;
+        return true;
     }
 }

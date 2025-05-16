@@ -1,4 +1,4 @@
-public class Krast extends Command{
+public class Fight extends Command{
     @Override
     public void execute() {
 

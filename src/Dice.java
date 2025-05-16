@@ -1,4 +1,4 @@
-public class Kostky extends Command{
+public class Dice extends Command{
     @Override
     public void execute() {
 

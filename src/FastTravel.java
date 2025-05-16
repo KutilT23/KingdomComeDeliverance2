@@ -1,91 +1,83 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.TreeSet;
 
-public class FastTravel extends Command{
+public class FastTravel extends Command {
 
-
-    private static TreeSet<String> mestaT = new TreeSet<>();
-    private static TreeSet<String> mestaK = new TreeSet<>();
-    private boolean maMestoT = false;
-    private boolean maMestoK = false;
+    private static TreeSet<String> citiesT = new TreeSet<>();
+    private static TreeSet<String> citiesK = new TreeSet<>();
+    private boolean hasCityT = false;
+    private boolean hasCityK = false;
     Scanner sc = new Scanner(System.in);
 
-    public static TreeSet<String> getMestaT() {
-        return mestaT;
+    public static TreeSet<String> getCitiesT() {
+        return citiesT;
     }
 
-    public static TreeSet<String> getMestaK() {
-        return mestaK;
+    public static TreeSet<String> getCitiesK() {
+        return citiesK;
     }
-    public void TravelFast(){
-        if(Mapa.getRegion().equals(Region.TROSECKO)){
-            System.out.println("Do kterého města chcete cestovat?: ");
-            System.out.println(getMestaT());
-            String jmeno = sc.next().toLowerCase();
-                if(mestaT.contains(jmeno)){
-                    switch (jmeno){
-                        case "hradtrosky":
-                            Mapa.setCurrentPosition(13);
-                            System.out.println("Přesunuto na : " + Mapa.getNazevAktualniLokace());
-                            break;
-                        case "troskovice":
-                            Mapa.setCurrentPosition(36);
-                            System.out.println("Přesunuto na : " + Mapa.getNazevAktualniLokace());
-                            break;
-                        case "semín":
-                            Mapa.setCurrentPosition(49);
-                            System.out.println("Přesunuto na : " + Mapa.getNazevAktualniLokace());
-                            break;
-                        default:
-                            System.out.println("Město neobjeveno");
-                    }
-                }else{
-                    System.out.println("Město neobjeveno");
+
+    public void fastTravel() {
+        if (Map.getRegion().equals(Region.TROSECKO)) {
+            System.out.println("Which city do you want to travel to?: ");
+            System.out.println(getCitiesT());
+            String name = sc.next().toLowerCase();
+            if (citiesT.contains(name)) {
+                switch (name) {
+                    case "troskycastle":
+                        Map.setCurrentPosition(13);
+                        System.out.println("Moved to: " + Map.getCurrentLocationName());
+                        break;
+                    case "troskowitz":
+                        Map.setCurrentPosition(36);
+                        System.out.println("Moved to: " + Map.getCurrentLocationName());
+                        break;
+                    case "semin":
+                        Map.setCurrentPosition(49);
+                        System.out.println("Moved to: " + Map.getCurrentLocationName());
+                        break;
+                    default:
+                        System.out.println("City not discovered");
                 }
-
+            } else {
+                System.out.println("City not discovered");
+            }
         }
 
-
-        if (Mapa.getRegion().equals(Region.KUTNOHORSKO)){
-            if(mestaK.isEmpty()){
-                System.out.println("Dosud nebylo objeveno město v Kutnohorsku");
-            }else{
-
-                System.out.println("Do kterého města chcete cestovat?: ");
-                System.out.println(getMestaK());
-                String jmeno = sc.next().toLowerCase();
-                if (mestaK.contains(jmeno)){
-                    switch (jmeno){
-                        case "čertovka":
-                            Mapa.setCurrentPosition(68);
-                            System.out.println("Přesunuto na : " + Mapa.getNazevAktualniLokace());
+        if (Map.getRegion().equals(Region.KUTNOHORSKO)) {
+            if (citiesK.isEmpty()) {
+                System.out.println("No city discovered in Kutnohorsko yet");
+            } else {
+                System.out.println("Which city do you want to travel to?: ");
+                System.out.println(getCitiesK());
+                String name = sc.next().toLowerCase();
+                if (citiesK.contains(name)) {
+                    switch (name) {
+                        case "devilsden":
+                            Map.setCurrentPosition(68);
+                            System.out.println("Moved to: " + Map.getCurrentLocationName());
                             break;
                         case "suchdol":
-                            Mapa.setCurrentPosition(98);
-                            System.out.println("Přesunuto na : " + Mapa.getNazevAktualniLokace());
+                            Map.setCurrentPosition(98);
+                            System.out.println("Moved to: " + Map.getCurrentLocationName());
                             break;
-                        case "kutnáhora":
-                            Mapa.setCurrentPosition(110);
-                            System.out.println("Přesunuto na : " + Mapa.getNazevAktualniLokace());
+                        case "kuttenberg":
+                            Map.setCurrentPosition(110);
+                            System.out.println("Moved to: " + Map.getCurrentLocationName());
                             break;
                         default:
-                            System.out.println("Město neobjeveno");
+                            System.out.println("City not discovered");
                     }
-                }else{
-                    System.out.println("Město neobjeveno");
+                } else {
+                    System.out.println("City not discovered");
                 }
-
             }
-
-
         }
-
     }
 
     @Override
     public void execute() {
-    TravelFast();
+        fastTravel();
     }
 
     @Override

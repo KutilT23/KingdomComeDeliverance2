@@ -1,4 +1,4 @@
-public class Vstup extends Command{
+public class Enter extends Command{
     @Override
     public void execute() {
 

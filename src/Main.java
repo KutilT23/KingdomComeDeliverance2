@@ -3,47 +3,33 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
 
-
         Random rd = new Random();
-/*
+        /*
         for (int i = 0; i < 50; i++) {
-            int cislo = rd.nextInt(4);
-            System.out.println(cislo);
-
+            int number = rd.nextInt(4);
+            System.out.println(number);
         }
+        */
 
- */
+        Console console = new Console();
+        Backpack backpack = new Backpack();
 
-        Konzole k = new Konzole();
-        Batoh b = new Batoh();
+        backpack.addItem(new Item("Potion", 20, 0, 1, 50, ItemType.POTION));
+        backpack.addItem(new Item("Sword", 20, 30, 3, 0, ItemType.WEAPON));
+        backpack.addItem(new Item("Meat", 20, 30, 1, 0, ItemType.TROPHY));
+        backpack.addItem(new Item("Potion", 20, 0, 1, 50, ItemType.POTION));
+        backpack.addItem(new Item("Sword", 20, 30, 3, 0, ItemType.WEAPON));
+        backpack.addItem(new Item("Meat", 20, 30, 1, 0, ItemType.TROPHY));
 
-        b.pridatPredmet(new Predmet("Odvar", 20,0, 1,50, TypPredmetu.LEKTVAR));
-        b.pridatPredmet(new Predmet("Meč",20,30,3,0,TypPredmetu.ZBRAN));
-        b.pridatPredmet(new Predmet("Maso",20,30,1,0,TypPredmetu.ULOVEK));
-        b.pridatPredmet(new Predmet("Odvar", 20,0, 1,50, TypPredmetu.LEKTVAR));
-        b.pridatPredmet(new Predmet("Meč",20,30,3,0,TypPredmetu.ZBRAN));
-        b.pridatPredmet(new Predmet("Maso",20,30,1,0,TypPredmetu.ULOVEK));
-        k.start();
+        console.start();
 
+        // TODO: implement herbs
+        // TODO: start loading people into cities and enemies into enemy camps
 
-
-        //dodělat kytky
-        //začít načítat lidi do měst a enemáky do nepř. táboru
-/*
-        Predmet p = new Predmet("něco",20,20,TypPredmetu.ULOVEK);
-        p.setJeKradeny(true);
-        System.out.println(p);
-
- */
-
-
-
-
-
-
-
-
-
-
+        /*
+        Item item = new Item("something", 20, 20, ItemType.PREY);
+        item.setStolen(true);
+        System.out.println(item);
+        */
     }
 }

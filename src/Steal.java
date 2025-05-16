@@ -1,11 +1,11 @@
-public class Konec extends Command {
+public class Steal extends Command{
     @Override
     public void execute() {
-        System.out.println("Konec...");
+
     }
 
     @Override
     public boolean exit() {
-        return true;
+        return false;
     }
 }
