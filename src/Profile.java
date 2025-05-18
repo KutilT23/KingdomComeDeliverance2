@@ -35,9 +35,9 @@ public class Profile extends Command {
                 "    TALK:        " + ORANGE + Player.getTalk() + RESET
         };
 
-        System.out.println("-------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------");
         System.out.println(BLUE + "BACKPACK:                                              STATS:" + RESET);
-        System.out.println("-------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------");
 
         int max = Math.max(Backpack.getBackpack().size(), stats.length);
         for (int i = 0; i < max; i++) {
@@ -46,12 +46,19 @@ public class Profile extends Command {
                 leftPart = Backpack.getBackpack().get(i).toStringByType();
             }
 
-            String rightPart = (i < stats.length) ? stats[i] : "";
+            String rightPart;
+            if (i < stats.length) {
+                rightPart = stats[i];
+            } else {
+                rightPart = "";
+            }
+
+
 
             System.out.printf("%-50s %s%n", leftPart, rightPart);
         }
 
-        System.out.println("-------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------");
         System.out.println("CURRENT BACKPACK CAPACITY: " + RED + Backpack.getCurrentCapacity() + RESET);
 
         // Print equipped item

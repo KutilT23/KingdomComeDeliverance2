@@ -24,6 +24,7 @@ public class Move extends Command {
         System.out.println(worldMap.move(direction));
         Hunt.setAnimalsLoaded(false);
         Grab.setHerbsLoaded(false);
+        Fight.setEnemiesLoaded(false);
     }
 
     public void showPossibleDirections() {

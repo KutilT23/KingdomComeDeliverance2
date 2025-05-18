@@ -32,15 +32,6 @@ public class Item implements Comparable<Item> {
         this.stolen = stolen;
     }
 
-    public Item(Item other) {
-        // Empty copy constructor (should be implemented properly if needed)
-    }
-
-    public Item() {
-        // Default constructor
-    }
-
-    // Getters and setters
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 
