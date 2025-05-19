@@ -4,7 +4,6 @@ public class Enemy {
     private String name;
     private int health;
     private int damage;
-    private Item item;
     private ArrayList<Item> drop = new ArrayList<>();
 
     public Enemy(String name, int health,int damage, Item item, Item item1, Item item2) {

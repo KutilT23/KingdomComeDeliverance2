@@ -25,6 +25,7 @@ public class Move extends Command {
         Hunt.setAnimalsLoaded(false);
         Grab.setHerbsLoaded(false);
         Fight.setEnemiesLoaded(false);
+        Steal.setCitizensloaded(false);
     }
 
     public void showPossibleDirections() {

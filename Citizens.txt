@@ -1,0 +1,7 @@
+Henry;Nettle;2;1;TROPHY;GoldenRing;30;1;TROPHY;Bread;4;1;TROPHY;Money;13;
+William;Marigold;3;1;TROPHY;OldRing;5;1;TROPHY;Apple;2;1;TROPHY;Money;11;
+Richard;Valerian;3;1;TROPHY;GoldenNecklace;30;2;TROPHY;Carrot;2;1;TROPHY;Money;8;
+John;Mint;2;1;TROPHY;OldNecklace;5;2;TROPHY;Meat;5;2;TROPHY;Money;9;
+Robert;Nettle;2;1;TROPHY;SilverRing;15;1;TROPHY;Cabbage;2;1;TROPHY;Money;21;
+Thomas;Marigold;3;1;TROPHY;SilverNecklace;15;2;TROPHY;Pear;3;1;TROPHY;Money;3;
+Roger;Valerian;3;1;TROPHY;Amulet;20;2;TROPHY;Cherry;3;1;TROPHY;Money;17;

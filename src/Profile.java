@@ -1,17 +1,21 @@
+import java.util.ArrayList;
+
 public class Profile extends Command {
     Backpack backpack = new Backpack();
 
     @Override
     public void execute() {
         printStats();
-        /*
+            /*
         System.out.println("STATS: \nSTRENGTH: " + Player.getStrength() + ", HEALTH: " + Player.getHealth() + ", MONEY: " + Player.getMoney()
-                + "\nREPUTATION: " + Player.getReputation() + ", ELOQUENCE: " + Player.getEloquence());
+                + "\nREPUTATION: " + Player.getReputation() + ", TALK: " + Player.getTalk());
         System.out.print("EQUIPPED ITEM: ");
         showEquippedItem();
         System.out.println("BACKPACK CAPACITY:" + Backpack.getCurrentCapacity());
         backpack.printBackpack();
-        */
+
+
+             */
     }
 
     // ANSI color codes for console text styling
@@ -27,6 +31,7 @@ public class Profile extends Command {
     String ORANGE = "\u001B[38;5;208m";
 
     public void printStats() {
+
         String[] stats = {
                 "    STRENGTH:    " + RED + Player.getStrength() + RESET,
                 "    HEALTH:      " + GREEN + Player.getHealth() + RESET,
@@ -35,33 +40,45 @@ public class Profile extends Command {
                 "    TALK:        " + ORANGE + Player.getTalk() + RESET
         };
 
-        System.out.println("-----------------------------------------------------------------------");
-        System.out.println(BLUE + "BACKPACK:                                              STATS:" + RESET);
-        System.out.println("-----------------------------------------------------------------------");
+        ArrayList<Item> backpack = Backpack.getBackpack();
+        ArrayList<String> leftColumn = new ArrayList<>();
+        ArrayList<String> printedItems = new ArrayList<>();
 
-        int max = Math.max(Backpack.getBackpack().size(), stats.length);
-        for (int i = 0; i < max; i++) {
-            String leftPart = "";
-            if (i < Backpack.getBackpack().size()) {
-                leftPart = Backpack.getBackpack().get(i).toStringByType();
+        for (Item current : backpack) {
+            String itemStr = current.toStringByType();
+            if (!printedItems.contains(itemStr)) {
+                int count = 0;
+                for (Item item : backpack) {
+                    if (item.toStringByType().equals(itemStr)) {
+                        count++;
+                    }
+                }
+                leftColumn.add(count + "x " + itemStr);
+                printedItems.add(itemStr);
             }
-
-            String rightPart;
-            if (i < stats.length) {
-                rightPart = stats[i];
-            } else {
-                rightPart = "";
-            }
-
-
-
-            System.out.printf("%-50s %s%n", leftPart, rightPart);
         }
 
-        System.out.println("-----------------------------------------------------------------------");
-        System.out.println("CURRENT BACKPACK CAPACITY: " + RED + Backpack.getCurrentCapacity() + RESET);
+        System.out.println("--------------------------------------------------------------------------");
+        System.out.println(BLUE + "BACKPACK:                                                STATS:" + RESET);
+        System.out.println("--------------------------------------------------------------------------");
 
-        // Print equipped item
+        int max = Math.max(leftColumn.size(), stats.length);
+        for (int i = 0; i < max; i++) {
+            String left = "";
+            if (i < leftColumn.size()) {
+                left = leftColumn.get(i);
+            }
+
+            String right = "";
+            if (i < stats.length) {
+                right = stats[i];
+            }
+
+            System.out.printf("%-53s%s%n", left, right);
+        }
+
+        System.out.println("--------------------------------------------------------------------------");
+        System.out.println("CURRENT BACKPACK CAPACITY: " + RED + Backpack.getCurrentCapacity() + RESET);
         System.out.println("EQUIPPED ITEM: ");
         showEquippedItem();
     }

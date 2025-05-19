@@ -24,6 +24,11 @@ public class Item implements Comparable<Item> {
         this.itemType = itemType;
     }
 
+    public Item(String name, int price) {
+        this.name = name;
+        this.price = price;
+    }
+
     public Item(String name, int price, int weight, ItemType itemType, boolean stolen) {
         this.name = name;
         this.price = price;
@@ -125,6 +130,10 @@ public class Item implements Comparable<Item> {
         return "NAME: " + CYAN + name + RESET +
                 ", PRICE: " + YELLOW + price + RESET +
                 ", WEIGHT: " + ORANGE + weight + RESET + "\n";
+    }
+    public String toStringMoney() {
+        return "NAME: " + CYAN + name + RESET +
+                ", PRICE: " + YELLOW + price + RESET + "\n";
     }
 
     public String toStringHerbs() {
