@@ -120,27 +120,41 @@ public class Steal extends Command{
         return false;
     }
     public void steal() {
+
+        if (!citizens.isEmpty()) {
+
         int number = random.nextInt(citizens.size());
         Citizen citizen = citizens.get(number);
+            if(citizen.getPockets().isEmpty()){
+                citizens.remove(citizen);
+            }
         printPockets(citizen);
         System.out.println("What do you want to steal?");
         String input = sc.next();
-        while (!input.matches("\\d+") || Integer.parseInt(input) >= citizen.getPockets().size()) {
+            while (!input.matches("\\d+") || Integer.parseInt(input) >= citizen.getPockets().size()) {
             System.out.println("Invalid input >> INDEX:");
             input = sc.next();
-        }
-        int stealIndex = Integer.parseInt(input);
-        if (citizen.getPockets().get(stealIndex).getItemType() == null) {
+            }
+            int stealIndex = Integer.parseInt(input);
+            if (citizen.getPockets().get(stealIndex).getItemType() == null) {
             Player.setMoney(Player.getMoney()+ citizen.getPockets().get(stealIndex).getPrice());
             System.out.println("You stole " + citizen.getPockets().get(stealIndex).getPrice() + " gold coins");
             System.out.println("Your new balance: " + Player.getMoney());
             citizen.getPockets().remove(stealIndex);
-        }else{
+            }else{
             citizen.getPockets().get(stealIndex).setStolen(true);
             backpack.addItem(citizen.getPockets().get(stealIndex));
             citizen.getPockets().remove(stealIndex);
-        }
 
+            }
+
+            if (citizen.getPockets().isEmpty()) {
+                citizens.remove(citizen);
+            }
+
+        }else{
+            System.out.println("There are no citizens in the town.");
+        }
 
     }
 
