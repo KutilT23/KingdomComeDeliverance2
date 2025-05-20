@@ -57,9 +57,9 @@ public class Hunt extends Command {
     public void displayAllAnimalLoot() {
         for (int i = 0; i < animals.size(); i++) {
             System.out.println("ANIMAL: " + animals.get(i).getName() + ",HP: " + animals.get(i).getHealth() +
-                    ",LOOT: " + animals.get(i).getLoot().get(0).toString4() +
-                    animals.get(i).getLoot().get(1).toString4() +
-                    animals.get(i).getLoot().get(2).toString4());
+                    ",LOOT: " + animals.get(i).getLoot().get(0).toStringTrophy() +
+                    animals.get(i).getLoot().get(1).toStringTrophy() +
+                    animals.get(i).getLoot().get(2).toStringTrophy());
         }
         System.out.println("");
     }
@@ -67,9 +67,9 @@ public class Hunt extends Command {
     public void displayHuntLoot() {
         for (int i = 0; i < huntingList.size(); i++) {
             System.out.println("ANIMAL: " + huntingList.get(i).getName() + ",HP: " + huntingList.get(i).getHealth() +
-                    ",LOOT: " + huntingList.get(i).getLoot().get(0).toString4() +
-                    huntingList.get(i).getLoot().get(1).toString4() +
-                    huntingList.get(i).getLoot().get(2).toString4());
+                    ",LOOT: " + huntingList.get(i).getLoot().get(0).toStringTrophy() +
+                    huntingList.get(i).getLoot().get(1).toStringTrophy() +
+                    huntingList.get(i).getLoot().get(2).toStringTrophy());
         }
         System.out.println("");
     }
@@ -106,9 +106,9 @@ public class Hunt extends Command {
             Animal target = huntingList.get(index);
 
             System.out.println("ANIMAL: " + target.getName() + ",HP: " + target.getHealth() +
-                    ",LOOT: " + target.getLoot().get(0).toString4() +
-                    target.getLoot().get(1).toString4() +
-                    target.getLoot().get(2).toString4());
+                    ",LOOT: " + target.getLoot().get(0).toStringTrophy() +
+                    target.getLoot().get(1).toStringTrophy() +
+                    target.getLoot().get(2).toStringTrophy());
 
             if (Player.getStrength() * 10 > target.getHealth()) {
                 System.out.println("You hunted: " + target.getName());

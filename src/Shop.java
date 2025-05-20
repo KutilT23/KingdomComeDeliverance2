@@ -31,8 +31,9 @@ public class Shop {
             System.out.println("File error: " + e.getMessage());
         }
         Collections.sort(shopItems);
-        displayItems();
+
         }
+        displayItems();
     }
 
     public static ArrayList<Item> getShopItems() {
@@ -43,10 +44,10 @@ public class Shop {
         for (int i = 0; i < shopItems.size(); i++) {
             switch (shopItems.get(i).getItemType()) {
                 case WEAPON:
-                    System.out.print("I: " + i + ", " + shopItems.get(i).toString2Test()); //2test
+                    System.out.print("I: " + i + ", " + shopItems.get(i).toStringWeaponAdv()); //2test
                     break;
                 case POTION:
-                    System.out.print("I: " + i + ", " + shopItems.get(i).toString3Test()); //3test
+                    System.out.print("I: " + i + ", " + shopItems.get(i).toStringHealingAdv()); //3test
                     break;
                 default:
                     System.out.println("Error: Unknown item type");

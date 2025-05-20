@@ -33,34 +33,50 @@ public class Profile extends Command {
     public void printStats() {
 
         String[] stats = {
-                "    STRENGTH:    " + RED + Player.getStrength() + RESET,
-                "    HEALTH:      " + GREEN + Player.getHealth() + RESET,
-                "    MONEY:       " + YELLOW + Player.getMoney() + RESET,
-                "    REPUTATION:  " + PURPLE + Player.getReputation() + RESET,
-                "    TALK:        " + ORANGE + Player.getTalk() + RESET
+                "     STRENGTH:    " + RED + Player.getStrength() + RESET,
+                "     HEALTH:      " + GREEN + Player.getHealth() + RESET,
+                "     MONEY:       " + YELLOW + Player.getMoney() + RESET,
+                "     REPUTATION:  " + PURPLE + Player.getReputation() + RESET
         };
 
         ArrayList<Item> backpack = Backpack.getBackpack();
         ArrayList<String> leftColumn = new ArrayList<>();
         ArrayList<String> printedItems = new ArrayList<>();
 
-        for (Item current : backpack) {
-            String itemStr = current.toStringByType();
+        for (int i = 0; i < backpack.size(); i++) {
+            Item currentItem = backpack.get(i);
+
+            String emoji = "";
+            if (currentItem.isStolen()) {
+                emoji = "\uD83D\uDD90\uFE0F ";
+            }else{
+                emoji = "   ";
+            }
+
+            String itemStr = emoji + currentItem.toStringByType();
+
             if (!printedItems.contains(itemStr)) {
-                int count = 0;
-                for (Item item : backpack) {
-                    if (item.toStringByType().equals(itemStr)) {
+                int count = 1;
+
+
+                for (int j = i + 1; j < backpack.size(); j++) {
+                    Item compareItem = backpack.get(j);
+                    boolean sameType = compareItem.toStringByType().equals(currentItem.toStringByType());
+                    boolean sameStolenStatus = compareItem.isStolen() == currentItem.isStolen();
+
+                    if (sameType && sameStolenStatus) {
                         count++;
                     }
                 }
+
                 leftColumn.add(count + "x " + itemStr);
                 printedItems.add(itemStr);
             }
         }
 
-        System.out.println("--------------------------------------------------------------------------");
-        System.out.println(BLUE + "BACKPACK:                                                STATS:" + RESET);
-        System.out.println("--------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------");
+        System.out.println(BLUE + "BACKPACK:                                                    STATS:" + RESET);
+        System.out.println("-----------------------------------------------------------------------------");
 
         int max = Math.max(leftColumn.size(), stats.length);
         for (int i = 0; i < max; i++) {
@@ -74,10 +90,10 @@ public class Profile extends Command {
                 right = stats[i];
             }
 
-            System.out.printf("%-53s%s%n", left, right);
+            System.out.printf("%-56s%s%n", left, right);
         }
 
-        System.out.println("--------------------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------");
         System.out.println("CURRENT BACKPACK CAPACITY: " + RED + Backpack.getCurrentCapacity() + RESET);
         System.out.println("EQUIPPED ITEM: ");
         showEquippedItem();
@@ -88,7 +104,7 @@ public class Profile extends Command {
 
         for (Item item : Backpack.getBackpack()) {
             if (item.isInUse()) {
-                System.out.print(item.toString5Test());
+                System.out.print(item.toStringItemUse());
                 foundEquipped = true;
             }
         }

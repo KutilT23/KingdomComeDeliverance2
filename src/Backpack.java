@@ -39,7 +39,14 @@ public class Backpack extends Command {
                     index = Integer.parseInt(indexInput);
                     switch (backpack.get(index).getItemType()) {
                         case WEAPON:
-                            Player.setStrength(10);
+                            Item itemTest = new Item();
+                            for (Item item : backpack) {
+                                if (item.isInUse()) {
+                                    itemTest = item;
+                                    break;
+                                }
+                            }
+                            Player.setStrength(Player.getStrength()-itemTest.getStrength());
                             for (Item item : backpack) {
                                 item.setInUse(false);
                             }
@@ -47,7 +54,7 @@ public class Backpack extends Command {
                             for (Item item : backpack) {
                                 if (item.isInUse()) {
                                     Player.setStrength(Player.getStrength() + item.getStrength());
-                                    System.out.println(item.toString5Test());
+                                    System.out.println(item.toStringItemUse());
                                     // break;
                                 }
                             }
@@ -91,16 +98,21 @@ public class Backpack extends Command {
 
     public void printBackpack() {
         if (!backpack.isEmpty()) {
+            System.out.println("BACKPACK:");
             for (int i = 0; i < backpack.size(); i++) {
                 switch (backpack.get(i).getItemType()) {
                     case WEAPON:
-                        System.out.print("  I: " + i + ", " + backpack.get(i).toString2Test());
+                        System.out.print("  I: " + i + ", " + backpack.get(i).toStringWeaponAdv());
                         break;
                     case POTION:
-                        System.out.print("  I: " + i + ", " + backpack.get(i).toString3Test());
+                        System.out.print("  I: " + i + ", " + backpack.get(i).toStringHealingAdv());
                         break;
                     case TROPHY:
-                        System.out.print("  I: " + i + ", " + backpack.get(i).toString4Test());
+                        if (backpack.get(i).isStolen()) {
+                            System.out.print("  I: " + i + ", " + backpack.get(i).toStringTrophyAdv());
+                        }else{
+                            System.out.print("  I: " + i + ", " + backpack.get(i).toStringTrophyS());
+                        }
                         break;
                     default:
                         System.out.println("Error");

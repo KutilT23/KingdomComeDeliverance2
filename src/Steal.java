@@ -8,13 +8,35 @@ import java.util.Scanner;
 public class Steal extends Command{
     @Override
     public void execute() {
-        loadCitizens();
-        steal();
+        checkIfInTown();
+        if (isInTown()) {
+            loadCitizens();
+            steal();
+        } else {
+            System.out.println("You are not in a town.");
+        }
+
+    }
+    public void checkIfInTown() {
+        String location = Map.getCurrentLocationName();
+        if (!location.equalsIgnoreCase("HuntingSpot")
+                && !location.equalsIgnoreCase("Meadow")
+                && !location.equalsIgnoreCase("Forest")
+                && !location.equalsIgnoreCase("Ruins")
+                && !location.equalsIgnoreCase("EnemyCamp")
+                && !location.equalsIgnoreCase("Ferryman")
+                && !location.equalsIgnoreCase("Pathway")) {
+            setInTown(true);
+        } else {
+            setInTown(false);
+        }
     }
     private static boolean citizensloaded = false;
     private ArrayList<Citizen> citizens = new ArrayList<>();
     private Random random = new Random();
     private Scanner sc = new Scanner(System.in);
+    private Backpack backpack = new Backpack();
+    private boolean inTown = false;
     public void loadCitizens() {
 
         if (!citizensloaded) {
@@ -44,21 +66,36 @@ public class Steal extends Command{
     public void displayCitizens() {
         for (int i = 0; i < citizens.size(); i++) {
             System.out.println("CITIZEN: " + citizens.get(i).getName() + ",POCKETS: \n" +
-                    citizens.get(i).getPockets().get(0).toString4Test() +
-                    citizens.get(i).getPockets().get(1).toString4Test() +
-                    citizens.get(i).getPockets().get(2).toString4Test() +
+                    citizens.get(i).getPockets().get(0).toStringTrophyAdv() +
+                    citizens.get(i).getPockets().get(1).toStringTrophyAdv() +
+                    citizens.get(i).getPockets().get(2).toStringTrophyAdv() +
                     citizens.get(i).getPockets().get(3).toStringMoney());
         }
         System.out.println("");
     }
-    public void displayCitizen(Citizen citizen) {
-            System.out.println("CITIZEN: " + citizen.getName() + ",POCKETS: \n" +
-                    citizen.getPockets().get(0).toString4Test() +
-                    citizen.getPockets().get(1).toString4Test() +
-                    citizen.getPockets().get(2).toString4Test() +
-                    citizen.getPockets().get(3).toStringMoney());
+    public void printPockets(Citizen citizen){
+        System.out.println("You are stealing from: " + citizen.getName() + ", \nPOCKETS:");
+            for (int i = 0; i < citizen.getPockets().size(); i++) {
+                if (citizen.getPockets().get(i).getItemType() == null) {
+                    System.out.println("  I: " + i + ", " + citizen.getPockets().get(i).toStringMoney());
+                } else {
+                    switch (citizen.getPockets().get(i).getItemType()) {
+                        case WEAPON:
+                            System.out.print("  I: " + i + ", " + citizen.getPockets().get(i).toStringWeaponAdv());
+                            break;
+                        case POTION:
+                            System.out.print("  I: " + i + ", " + citizen.getPockets().get(i).toStringHealingAdv());
+                            break;
+                        case TROPHY:
+                            System.out.print("  I: " + i + ", " + citizen.getPockets().get(i).toStringTrophyS());
+                            break;
+                        default:
+                            System.out.println("  I: " + i + ", Unknown item type");
+                    }
+                }
+            }
+            System.out.println("");
 
-        System.out.println("");
     }
 
     @Override
@@ -68,7 +105,24 @@ public class Steal extends Command{
     public void steal() {
         int number = random.nextInt(citizens.size());
         Citizen citizen = citizens.get(number);
-        displayCitizen(citizen);
+        printPockets(citizen);
+        System.out.println("What do you want to steal?");
+        String input = sc.next();
+        while (!input.matches("\\d+") || Integer.parseInt(input) >= citizen.getPockets().size()) {
+            System.out.println("Invalid input >> INDEX:");
+            input = sc.next();
+        }
+        int stealIndex = Integer.parseInt(input);
+        if (citizen.getPockets().get(stealIndex).getItemType() == null) {
+            Player.setMoney(Player.getMoney()+ citizen.getPockets().get(stealIndex).getPrice());
+            System.out.println("You stole " + citizen.getPockets().get(stealIndex).getPrice() + " gold coins");
+            System.out.println("Your new balance: " + Player.getMoney());
+            citizen.getPockets().remove(stealIndex);
+        }else{
+            citizen.getPockets().get(stealIndex).setStolen(true);
+            backpack.addItem(citizen.getPockets().get(stealIndex));
+            citizen.getPockets().remove(stealIndex);
+        }
 
 
     }
@@ -79,5 +133,13 @@ public class Steal extends Command{
 
     public static void setCitizensloaded(boolean citizensloaded) {
         Steal.citizensloaded = citizensloaded;
+    }
+
+    public boolean isInTown() {
+        return inTown;
+    }
+
+    public void setInTown(boolean inTown) {
+        this.inTown = inTown;
     }
 }

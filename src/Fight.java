@@ -14,9 +14,14 @@ public class Fight extends Command{
     Backpack backpack = new Backpack();
     @Override
     public void execute() {
-        loadEnemies();
-        setEnemyDead(false);
-        fight();
+        if (Map.getCurrentLocationName().equals("EnemyCamp")) {
+            loadEnemies();
+            setEnemyDead(false);
+            fight();
+        }else{
+            System.out.println("You are not in Enemy Camp");
+        }
+
     }
 
     public void fight() {
@@ -192,18 +197,18 @@ public class Fight extends Command{
         for (int i = 0; i < enemies.size(); i++) {
             System.out.println("ENEMY: " + enemies.get(i).getName() + ",HP: "
                     + enemies.get(i).getHealth() + ",DROP: \n" +
-                    enemies.get(i).getDrop().get(0).toString3Test() +
-                    enemies.get(i).getDrop().get(1).toString2Test() +
-                    enemies.get(i).getDrop().get(2).toString4Test());
+                    enemies.get(i).getDrop().get(0).toStringHealingAdv() +
+                    enemies.get(i).getDrop().get(1).toStringWeaponAdv() +
+                    enemies.get(i).getDrop().get(2).toStringTrophyAdv());
         }
         System.out.println("");
     }
     public void displayEnemy(Enemy enemy) {
             System.out.println("ENEMY: " + enemy.getName() + ",HP: "
                     + enemy.getHealth() + ",DROP: \n" +
-                    enemy.getDrop().get(0).toString3Test() +
-                    enemy.getDrop().get(1).toString2Test() +
-                    enemy.getDrop().get(2).toString4Test());
+                    enemy.getDrop().get(0).toStringHealingAdv() +
+                    enemy.getDrop().get(1).toStringWeaponAdv() +
+                    enemy.getDrop().get(2).toStringTrophyAdv());
 
         System.out.println("");
     }

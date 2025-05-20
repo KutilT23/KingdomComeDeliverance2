@@ -37,6 +37,9 @@ public class Item implements Comparable<Item> {
         this.stolen = stolen;
     }
 
+    public Item() {
+    }
+
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 
@@ -73,7 +76,6 @@ public class Item implements Comparable<Item> {
     String WHITE = "\u001B[37m";
     String ORANGE = "\u001B[38;5;208m";
 
-    // Formatted string representations
     @Override
     public String toString() {
         return "\nNAME: " + CYAN + name + RESET +
@@ -84,21 +86,21 @@ public class Item implements Comparable<Item> {
                 ", STOLEN: " + stolen;
     }
 
-    public String toString2() {
+    public String toStringWeapon() {
         return "\nNAME: " + CYAN + name + RESET +
                 ", STRENGTH: " + RED + strength + RESET +
                 ", PRICE: " + YELLOW + price + RESET +
                 ", WEIGHT: " + ORANGE + weight + RESET;
     }
 
-    public String toString2Test() {
+    public String toStringWeaponAdv() {
         return "NAME: " + CYAN + name + RESET +
                 ", STRENGTH: " + RED + strength + RESET +
                 ", PRICE: " + YELLOW + price + RESET +
                 ", WEIGHT: " + ORANGE + weight + RESET + "\n";
     }
 
-    public String toString5Test() {
+    public String toStringItemUse() {
         return "NAME: " + CYAN + name + RESET +
                 ", STRENGTH: " + RED + strength + RESET +
                 ", PRICE: " + YELLOW + price + RESET +
@@ -106,34 +108,46 @@ public class Item implements Comparable<Item> {
                 ", IN USE: " + GREEN + inUse + RESET + "\n";
     }
 
-    public String toString3() {
+    public String toStringHealing() {
         return "\nNAME: " + CYAN + name + RESET +
                 ", HEALING: " + GREEN + healing + RESET +
                 ", PRICE: " + YELLOW + price + RESET +
                 ", WEIGHT: " + ORANGE + weight + RESET;
     }
 
-    public String toString3Test() {
+    public String toStringHealingAdv() {
         return "NAME: " + CYAN + name + RESET +
                 ", HEALING: " + GREEN + healing + RESET +
                 ", PRICE: " + YELLOW + price + RESET +
                 ", WEIGHT: " + ORANGE + weight + RESET + "\n";
     }
 
-    public String toString4() {
+    public String toStringTrophy() {
         return "\nNAME: " + CYAN + name + RESET +
                 ", PRICE: " + YELLOW + price + RESET +
                 ", WEIGHT: " + ORANGE + weight + RESET;
     }
-
-    public String toString4Test() {
+    public String toStringTrophyS() {
         return "NAME: " + CYAN + name + RESET +
                 ", PRICE: " + YELLOW + price + RESET +
                 ", WEIGHT: " + ORANGE + weight + RESET + "\n";
+    }
+
+    public String toStringTrophyAdv(){
+        String COLOR = "";
+        if (stolen) {
+            COLOR = GREEN;
+        }else{
+            COLOR = RED;
+        }
+        return "NAME: " + CYAN + name + RESET +
+                ", PRICE: " + YELLOW + price + RESET +
+                ", WEIGHT: " + ORANGE + weight + RESET +
+                ", STOLEN: " + COLOR + stolen + RESET +"\n";
     }
     public String toStringMoney() {
         return "NAME: " + CYAN + name + RESET +
-                ", PRICE: " + YELLOW + price + RESET + "\n";
+                ", PRICE: " + YELLOW + price + RESET;
     }
 
     public String toStringHerbs() {
@@ -167,17 +181,6 @@ public class Item implements Comparable<Item> {
         }
 
         return text;
-    }
-
-    public String toStringDebug() {
-        return "Item{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                ", strength=" + strength +
-                ", healing=" + healing +
-                ", weight=" + weight +
-                ", type=" + itemType +
-                '}';
     }
 
     @Override

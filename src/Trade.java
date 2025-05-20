@@ -18,13 +18,13 @@ public class Trade extends Command {
 
     public void checkIfInTown() {
         String location = Map.getCurrentLocationName();
-        if (!location.equalsIgnoreCase("Fishing Spot")
+        if (!location.equalsIgnoreCase("HuntingSpot")
                 && !location.equalsIgnoreCase("Meadow")
                 && !location.equalsIgnoreCase("Forest")
                 && !location.equalsIgnoreCase("Ruins")
-                && !location.equalsIgnoreCase("Enemy Camp")
-                && !location.equalsIgnoreCase("Ferry")
-                && !location.equalsIgnoreCase("Road")) {
+                && !location.equalsIgnoreCase("EnemyCamp")
+                && !location.equalsIgnoreCase("Ferryman")
+                && !location.equalsIgnoreCase("Pathway")) {
             setInTown(true);
         } else {
             setInTown(false);
@@ -50,16 +50,24 @@ public class Trade extends Command {
                         input = sc.next();
                     }
                     int sellIndex = Integer.parseInt(input);
-
+                    if(Backpack.getBackpack().get(sellIndex).isStolen()){
+                        Player.setReputation(Player.getReputation()-5);
+                        System.out.println("You sold a stolen item and lost 5 reputation points.");
+                    }else{
+                        Player.setReputation(Player.getReputation()+5);
+                        System.out.println("You sold an item and gained 5 reputation points.");
+                    }
                     Player.setMoney(Player.getMoney() + Backpack.getBackpack().get(sellIndex).getPrice());
                     Backpack.setCurrentCapacity(Backpack.getCurrentCapacity() + Backpack.getBackpack().get(sellIndex).getWeight());
 
                     if (Backpack.getBackpack().get(sellIndex).isInUse()) {
-                        Player.setStrength(10);  // Reset strength if used item sold
+                        Player.setStrength(Player.getStrength()-Backpack.getBackpack().get(sellIndex).getStrength());
                     }
+                    System.out.println("You gained " + Backpack.getBackpack().get(sellIndex).getPrice() + " gold coins.");
+                    System.out.println("Your new balance: " + Player.getMoney());
                     Backpack.getBackpack().remove(sellIndex);
-                    backpack.printBackpack();
-                    System.out.println("Money: " + Player.getMoney());
+
+
                 } else {
                     System.out.println("You have nothing to sell.");
                 }
@@ -82,8 +90,10 @@ public class Trade extends Command {
                         Player.setMoney(Player.getMoney() - itemToBuy.getPrice());
                         Backpack.setCurrentCapacity(Backpack.getCurrentCapacity() - itemToBuy.getWeight());
                         Backpack.getBackpack().add(itemToBuy);
-                        backpack.printBackpack();
-                        System.out.println("Money: " + Player.getMoney());
+                        System.out.println("You bought an item and gained 5 reputation points.");
+                        Player.setReputation(Player.getReputation()+5);
+                        System.out.println("You lost " + itemToBuy.getPrice() + " gold coins.");
+                        System.out.println("Your new balance: " + Player.getMoney());
                     } else {
                         System.out.println("You don't have enough money.");
                     }
