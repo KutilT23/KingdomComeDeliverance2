@@ -65,11 +65,28 @@ public class Steal extends Command{
     }
     public void displayCitizens() {
         for (int i = 0; i < citizens.size(); i++) {
-            System.out.println("CITIZEN: " + citizens.get(i).getName() + ",POCKETS: \n" +
-                    citizens.get(i).getPockets().get(0).toStringTrophyAdv() +
-                    citizens.get(i).getPockets().get(1).toStringTrophyAdv() +
-                    citizens.get(i).getPockets().get(2).toStringTrophyAdv() +
-                    citizens.get(i).getPockets().get(3).toStringMoney());
+            System.out.println("ANIMAL: " + citizens.get(i).getName() + ",DROP: ");
+            for (int j = 0; j < citizens.get(i).getPockets().size(); j++) {
+                if (citizens.get(i).getPockets().get(j).getItemType() == null) {
+                    System.out.println(citizens.get(i).getPockets().get(j).toStringMoney());
+                }else{
+                    switch (citizens.get(i).getPockets().get(j).getItemType() ) {
+                        case WEAPON:
+                            System.out.print(citizens.get(i).getPockets().get(j).toStringWeaponAdv());
+                            break;
+                        case POTION:
+                            System.out.print(citizens.get(i).getPockets().get(j).toStringHealingAdv());
+                            break;
+                        case TROPHY:
+                            System.out.print(citizens.get(i).getPockets().get(j).toStringTrophyS());
+
+                            break;
+                        default:
+                            System.out.println("Error");
+                    }
+                }
+
+            }
         }
         System.out.println("");
     }

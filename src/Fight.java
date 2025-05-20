@@ -195,11 +195,25 @@ public class Fight extends Command{
     }
     public void displayEnemies() {
         for (int i = 0; i < enemies.size(); i++) {
-            System.out.println("ENEMY: " + enemies.get(i).getName() + ",HP: "
-                    + enemies.get(i).getHealth() + ",DROP: \n" +
-                    enemies.get(i).getDrop().get(0).toStringHealingAdv() +
-                    enemies.get(i).getDrop().get(1).toStringWeaponAdv() +
-                    enemies.get(i).getDrop().get(2).toStringTrophyAdv());
+            System.out.println("ANIMAL: " + enemies.get(i).getName() + ",HP: " + enemies.get(i).getHealth() +
+                    ",DROP: ");
+            for (int j = 0; j < enemies.get(i).getDrop().size(); j++) {
+
+                switch (enemies.get(i).getDrop().get(j).getItemType() ) {
+                    case WEAPON:
+                        System.out.print(enemies.get(i).getDrop().get(j).toStringWeaponAdv());
+                        break;
+                    case POTION:
+                        System.out.print(enemies.get(i).getDrop().get(j).toStringHealingAdv());
+                        break;
+                    case TROPHY:
+                        System.out.print(enemies.get(i).getDrop().get(j).toStringTrophyS());
+
+                        break;
+                    default:
+                        System.out.println("Error");
+                }
+            }
         }
         System.out.println("");
     }
