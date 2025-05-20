@@ -67,9 +67,24 @@ public class Hunt extends Command {
     public void displayHuntLoot() {
         for (int i = 0; i < huntingList.size(); i++) {
             System.out.println("ANIMAL: " + huntingList.get(i).getName() + ",HP: " + huntingList.get(i).getHealth() +
-                    ",LOOT: " + huntingList.get(i).getLoot().get(0).toStringTrophy() +
-                    huntingList.get(i).getLoot().get(1).toStringTrophy() +
-                    huntingList.get(i).getLoot().get(2).toStringTrophy());
+                    ",LOOT: ");
+            for (int j = 0; j < huntingList.get(i).getLoot().size(); j++) {
+
+                switch (huntingList.get(i).getLoot().get(j).getItemType() ) {
+                    case WEAPON:
+                        System.out.print(huntingList.get(i).getLoot().get(j).toStringWeaponAdv());
+                        break;
+                    case POTION:
+                        System.out.print(huntingList.get(i).getLoot().get(j).toStringHealingAdv());
+                        break;
+                    case TROPHY:
+                        System.out.print(huntingList.get(i).getLoot().get(j).toStringTrophyS());
+
+                        break;
+                    default:
+                        System.out.println("Error");
+                }
+            }
         }
         System.out.println("");
     }
@@ -97,18 +112,14 @@ public class Hunt extends Command {
                 System.out.println("Error");
         }
 
-        displayHuntLoot();
+        //displayHuntLoot();
     }
 
     public void hunt() {
         if (!huntingList.isEmpty()) {
             int index = random.nextInt(huntingList.size());
             Animal target = huntingList.get(index);
-
-            System.out.println("ANIMAL: " + target.getName() + ",HP: " + target.getHealth() +
-                    ",LOOT: " + target.getLoot().get(0).toStringTrophy() +
-                    target.getLoot().get(1).toStringTrophy() +
-                    target.getLoot().get(2).toStringTrophy());
+            displayAnimal(target);
 
             if (Player.getStrength() * 10 > target.getHealth()) {
                 System.out.println("You hunted: " + target.getName());
@@ -120,6 +131,26 @@ public class Hunt extends Command {
             }
         } else {
             System.out.println("No animals left in the hunting spot");
+        }
+    }
+    public void displayAnimal(Animal target){
+        System.out.println("ANIMAL: " + target.getName() + ",HP: " + target.getHealth() +
+                ",LOOT: ");
+        for (int i = 0; i < target.getLoot().size(); i++) {
+            switch (target.getLoot().get(i).getItemType() ) {
+                case WEAPON:
+                    System.out.print("  I: " + i + ", " + target.getLoot().get(i).toStringWeaponAdv());
+                    break;
+                case POTION:
+                    System.out.print("  I: " + i + ", " + target.getLoot().get(i).toStringHealingAdv());
+                    break;
+                case TROPHY:
+                    System.out.print("  I: " + i + ", " + target.getLoot().get(i).toStringTrophyS());
+
+                    break;
+                default:
+                    System.out.println("Error");
+            }
         }
     }
 

@@ -188,7 +188,7 @@ public class Fight extends Command{
                 } catch (IOException e) {
                     System.out.println("Error reading file: " + e.getMessage());
                 }
-                displayEnemies();
+                //displayEnemies();
                 enemiesLoaded = true;
 
         }
@@ -205,10 +205,23 @@ public class Fight extends Command{
     }
     public void displayEnemy(Enemy enemy) {
             System.out.println("ENEMY: " + enemy.getName() + ",HP: "
-                    + enemy.getHealth() + ",DROP: \n" +
-                    enemy.getDrop().get(0).toStringHealingAdv() +
-                    enemy.getDrop().get(1).toStringWeaponAdv() +
-                    enemy.getDrop().get(2).toStringTrophyAdv());
+                    + enemy.getHealth() + ",DROPS:");
+        for (int i = 0; i < enemy.getDrop().size(); i++) {
+            switch (enemy.getDrop().get(i).getItemType() ) {
+                case WEAPON:
+                    System.out.print(enemy.getDrop().get(i).toStringWeaponAdv());
+                    break;
+                case POTION:
+                    System.out.print(enemy.getDrop().get(i).toStringHealingAdv());
+                    break;
+                case TROPHY:
+                        System.out.print(enemy.getDrop().get(i).toStringTrophyS());
+
+                    break;
+                default:
+                    System.out.println("Error");
+            }
+        }
 
         System.out.println("");
     }

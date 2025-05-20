@@ -31,7 +31,7 @@ public class Trade extends Command {
         }
     }
 
-    // Allows player to buy or sell items
+
     public void choice() {
         Shop shop = new Shop();
         Backpack backpack = new Backpack();

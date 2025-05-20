@@ -8,7 +8,7 @@ public class Profile extends Command {
         printStats();
             /*
         System.out.println("STATS: \nSTRENGTH: " + Player.getStrength() + ", HEALTH: " + Player.getHealth() + ", MONEY: " + Player.getMoney()
-                + "\nREPUTATION: " + Player.getReputation() + ", TALK: " + Player.getTalk());
+                + "\nREPUTATION: " + Player.getReputation());
         System.out.print("EQUIPPED ITEM: ");
         showEquippedItem();
         System.out.println("BACKPACK CAPACITY:" + Backpack.getCurrentCapacity());
@@ -18,7 +18,7 @@ public class Profile extends Command {
              */
     }
 
-    // ANSI color codes for console text styling
+
     String RESET = "\u001B[0m";
     String BLACK = "\u001B[30m";
     String RED = "\u001B[91m";
