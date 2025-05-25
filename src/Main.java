@@ -3,15 +3,6 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
 
-        Random rd = new Random();
-/*
-        for (int i = 0; i < 50; i++) {
-            int number = rd.nextInt(4);
-            System.out.println(number);
-        }
-
- */
-
 
         Console console = new Console();
         Backpack backpack = new Backpack();
@@ -30,12 +21,5 @@ public class Main {
         console.start();
 
 
-        // TODO: start loading people into cities and enemies into enemy camps
-
-        /*
-        Item item = new Item("something", 20, 20, ItemType.PREY);
-        item.setStolen(true);
-        System.out.println(item);
-        */
     }
 }

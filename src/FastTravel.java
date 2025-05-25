@@ -32,7 +32,7 @@ public class FastTravel extends Command {
                         Map.setCurrentPosition(36);
                         System.out.println("Moved to: " + Map.getCurrentLocationName());
                         break;
-                    case "semin":
+                    case "semine":
                         Map.setCurrentPosition(49);
                         System.out.println("Moved to: " + Map.getCurrentLocationName());
                         break;

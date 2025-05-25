@@ -137,9 +137,9 @@ public class Map {
                     System.out.println("Troskovice added to FastTravel");
                 }
                 break;
-            case "semin":
-                if (FastTravel.getCitiesT().add("semin")) {
-                    System.out.println("Semín added to FastTravel");
+            case "semine":
+                if (FastTravel.getCitiesT().add("semine")) {
+                    System.out.println("Semine added to FastTravel");
                 }
                 break;
             case "devilsden":
