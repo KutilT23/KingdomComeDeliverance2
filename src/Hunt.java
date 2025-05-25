@@ -121,7 +121,7 @@ public class Hunt extends Command {
             Animal target = huntingList.get(index);
             displayAnimal(target);
 
-            if (Player.getStrength() * 10 > target.getHealth()) {
+            if (Player.getDamage() * 5 > target.getHealth()) {
                 System.out.println("You hunted: " + target.getName());
                 backpack.addItem(target.getLoot().get(random.nextInt(3)));
                 huntingList.remove(index);

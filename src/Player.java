@@ -1,5 +1,6 @@
 public class Player {
-    private static int strength = 50;
+    private static int strength = 10;
+    private static int damage = strength;
     private static int health = 100;
     private static int reputation = 50;
     private static int money = 100; // later 0
@@ -57,5 +58,13 @@ public class Player {
 
     public static void setTalk(int talk) {
         Player.talk = talk;
+    }
+
+    public static int getDamage() {
+        return damage;
+    }
+
+    public static void setDamage(int damage) {
+        Player.damage = damage;
     }
 }

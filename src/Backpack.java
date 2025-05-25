@@ -41,7 +41,7 @@ public class Backpack extends Command {
                         case WEAPON:
                             for (Item item : backpack) {
                                 if (item.isInUse()) {
-                                    Player.setStrength(Player.getStrength() - item.getStrength());
+                                    Player.setDamage(Player.getDamage() - item.getDamage());
                                     break;
                                 }
                             }
@@ -51,12 +51,12 @@ public class Backpack extends Command {
                             backpack.get(index).setInUse(true);
                             for (Item item : backpack) {
                                 if (item.isInUse()) {
-                                    Player.setStrength(Player.getStrength() + item.getStrength());
+                                    Player.setDamage(Player.getDamage() + item.getDamage());
                                     System.out.println(item.toStringItemUse());
                                     // break;
                                 }
                             }
-                            System.out.println("CURRENT STRENGTH: " + Player.getStrength());
+                            System.out.println("CURRENT DAMAGE: " + Player.getDamage());
                             break;
                         case POTION:
                             if (Player.getHealth() != 100) {

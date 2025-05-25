@@ -29,15 +29,18 @@ public class Profile extends Command {
     String PURPLE = "\u001B[38;5;135m";
     String WHITE = "\u001B[37m";
     String ORANGE = "\u001B[38;5;208m";
+    String MAGENTA = "\u001B[35m";
 
     public void printStats() {
 
         String[] stats = {
                 "     STRENGTH:    " + RED + Player.getStrength() + RESET,
+                "     DAMAGE:      " + MAGENTA + Player.getDamage() + RESET,
                 "     HEALTH:      " + GREEN + Player.getHealth() + RESET,
                 "     MONEY:       " + YELLOW + Player.getMoney() + RESET,
                 "     REPUTATION:  " + PURPLE + Player.getReputation() + RESET,
                 "     TALK:        " + ORANGE + Player.getTalk() + RESET
+
         };
 
         ArrayList<Item> backpack = Backpack.getBackpack();

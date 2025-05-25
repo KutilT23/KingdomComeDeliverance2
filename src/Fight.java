@@ -57,16 +57,16 @@ public class Fight extends Command{
         switch (answer){
             case "up":
                 if(numberA!=0){
-                    enemy.setHealth(enemy.getHealth()-Player.getStrength());
-                    System.out.println("You attacked for " + Player.getStrength() + " damage, Enemy health: " + enemy.getHealth());
+                    enemy.setHealth(enemy.getHealth()-Player.getDamage());
+                    System.out.println("You attacked for " + Player.getDamage() + " damage, Enemy health: " + enemy.getHealth());
                 }else{
                     System.out.println("Attack blocked");
                 }
                 break;
             case "down":
                 if(numberA!=1){
-                    enemy.setHealth(enemy.getHealth()-Player.getStrength());
-                    System.out.println("You attacked for " + Player.getStrength() + " damage, Enemy health: " + enemy.getHealth());
+                    enemy.setHealth(enemy.getHealth()-Player.getDamage());
+                    System.out.println("You attacked for " + Player.getDamage() + " damage, Enemy health: " + enemy.getHealth());
 
                 }else{
                     System.out.println("Attack blocked");
@@ -75,8 +75,8 @@ public class Fight extends Command{
             case "left":
 
                 if(numberA!=2){
-                    enemy.setHealth(enemy.getHealth()-Player.getStrength());
-                    System.out.println("You attacked for " + Player.getStrength() + " damage, Enemy health: " + enemy.getHealth());
+                    enemy.setHealth(enemy.getHealth()-Player.getDamage());
+                    System.out.println("You attacked for " + Player.getDamage() + " damage, Enemy health: " + enemy.getHealth());
 
                 }else{
                     System.out.println("Attack blocked");
@@ -84,8 +84,8 @@ public class Fight extends Command{
                 break;
             case "right":
                 if(numberA!=3){
-                    enemy.setHealth(enemy.getHealth()-Player.getStrength());
-                    System.out.println("You attacked for " + Player.getStrength() + " damage, Enemy health: " + enemy.getHealth());
+                    enemy.setHealth(enemy.getHealth()-Player.getDamage());
+                    System.out.println("You attacked for " + Player.getDamage() + " damage, Enemy health: " + enemy.getHealth());
 
                 }else{
                     System.out.println("Attack blocked");

@@ -1,17 +1,17 @@
 public class Item implements Comparable<Item> {
     private String name;
     private int price;
-    private int strength;
+    private int damage;
     private int healing;
     private int weight;
     private ItemType itemType;
     private boolean stolen = false;
     private boolean inUse = false;
 
-    public Item(String name, int price, int strength, int weight, int healing, ItemType itemType) {
+    public Item(String name, int price, int damage, int weight, int healing, ItemType itemType) {
         this.name = name;
         this.price = price;
-        this.strength = strength;
+        this.damage = damage;
         this.weight = weight;
         this.healing = healing;
         this.itemType = itemType;
@@ -46,8 +46,8 @@ public class Item implements Comparable<Item> {
     public int getPrice() { return price; }
     public void setPrice(int price) { this.price = price; }
 
-    public int getStrength() { return strength; }
-    public void setStrength(int strength) { this.strength = strength; }
+    public int getDamage() { return damage; }
+    public void setDamage(int damage) { this.damage = damage; }
 
     public int getHealing() { return healing; }
     public void setHealing(int healing) { this.healing = healing; }
@@ -79,7 +79,7 @@ public class Item implements Comparable<Item> {
     @Override
     public String toString() {
         return "\nNAME: " + CYAN + name + RESET +
-                ", STRENGTH: " + RED + strength + RESET +
+                ", DAMAGE: " + RED + damage + RESET +
                 ", PRICE: " + YELLOW + price + RESET +
                 ", WEIGHT: " + ORANGE + weight + RESET +
                 ", HEALING: " + GREEN + healing + RESET +
@@ -88,21 +88,21 @@ public class Item implements Comparable<Item> {
 
     public String toStringWeapon() {
         return "\nNAME: " + CYAN + name + RESET +
-                ", STRENGTH: " + RED + strength + RESET +
+                ", DAMAGE: " + RED + damage + RESET +
                 ", PRICE: " + YELLOW + price + RESET +
                 ", WEIGHT: " + ORANGE + weight + RESET;
     }
 
     public String toStringWeaponAdv() {
         return "NAME: " + CYAN + name + RESET +
-                ", STRENGTH: " + RED + strength + RESET +
+                ", DAMAGE: " + RED + damage + RESET +
                 ", PRICE: " + YELLOW + price + RESET +
                 ", WEIGHT: " + ORANGE + weight + RESET + "\n";
     }
 
     public String toStringItemUse() {
         return "NAME: " + CYAN + name + RESET +
-                ", STRENGTH: " + RED + strength + RESET +
+                ", DAMAGE: " + RED + damage + RESET +
                 ", PRICE: " + YELLOW + price + RESET +
                 ", WEIGHT: " + ORANGE + weight + RESET +
                 ", IN USE: " + GREEN + inUse + RESET + "\n";
@@ -165,8 +165,8 @@ public class Item implements Comparable<Item> {
 
         switch (itemType) {
             case WEAPON:
-                text = String.format("NAME: \u001B[95m%-8s\u001B[0m STRENGTH: \u001B[91m%-3d\u001B[0m PRICE: \u001B[38;5;220m%-3d\u001B[0m WEIGHT: \u001B[38;5;208m%-2d\u001B[0m",
-                        name, strength, price, weight);
+                text = String.format("NAME: \u001B[95m%-8s\u001B[0m DAMAGE:   \u001B[91m%-3d\u001B[0m PRICE: \u001B[38;5;220m%-3d\u001B[0m WEIGHT: \u001B[38;5;208m%-2d\u001B[0m",
+                        name, damage, price, weight);
                 break;
             case POTION:
                 text = String.format("NAME: \u001B[95m%-8s\u001B[0m HEALING: \u001B[92m %-3d\u001B[0m PRICE: \u001B[38;5;220m%-3d\u001B[0m WEIGHT: \u001B[38;5;208m%-2d\u001B[0m",

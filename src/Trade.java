@@ -2,35 +2,16 @@ import java.util.Scanner;
 
 public class Trade extends Command {
 
-    private boolean inTown = false;
     private Scanner sc = new Scanner(System.in);
 
     @Override
     public void execute() {
-        checkIfInTown();
-        if (isInTown()) {
+        if (Enter.isInsideTown()) {
             choice();
         } else {
             System.out.println("You are not in a town.");
         }
     }
-
-
-    public void checkIfInTown() {
-        String location = Map.getCurrentLocationName();
-        if (!location.equalsIgnoreCase("HuntingSpot")
-                && !location.equalsIgnoreCase("Meadow")
-                && !location.equalsIgnoreCase("Forest")
-                && !location.equalsIgnoreCase("Ruins")
-                && !location.equalsIgnoreCase("EnemyCamp")
-                && !location.equalsIgnoreCase("Ferryman")
-                && !location.equalsIgnoreCase("Pathway")) {
-            setInTown(true);
-        } else {
-            setInTown(false);
-        }
-    }
-
 
     public void choice() {
         Shop shop = new Shop();
@@ -61,7 +42,7 @@ public class Trade extends Command {
                     Backpack.setCurrentCapacity(Backpack.getCurrentCapacity() + Backpack.getBackpack().get(sellIndex).getWeight());
 
                     if (Backpack.getBackpack().get(sellIndex).isInUse()) {
-                        Player.setStrength(Player.getStrength()-Backpack.getBackpack().get(sellIndex).getStrength());
+                        Player.setDamage(Player.getDamage()-Backpack.getBackpack().get(sellIndex).getDamage());
                     }
                     System.out.println("You gained " + Backpack.getBackpack().get(sellIndex).getPrice() + " gold coins.");
                     System.out.println("Your new balance: " + Player.getMoney());
@@ -106,14 +87,6 @@ public class Trade extends Command {
                 System.out.println("Invalid option.");
                 choice();
         }
-    }
-
-    public boolean isInTown() {
-        return inTown;
-    }
-
-    public void setInTown(boolean inTown) {
-        this.inTown = inTown;
     }
 
     @Override
