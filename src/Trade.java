@@ -6,10 +6,15 @@ public class Trade extends Command {
 
     @Override
     public void execute() {
-        if (Enter.isInsideTown()) {
+        if (Enter.isInsideTown()&&Map.getCurrentLocationName().equalsIgnoreCase("herbalist")||
+                Map.getCurrentLocationName().equalsIgnoreCase("merchant")||
+                Map.getCurrentLocationName().equalsIgnoreCase("armorer")||
+                Map.getCurrentLocationName().equalsIgnoreCase("hunter")||
+                Map.getCurrentLocationName().equalsIgnoreCase("tavern")||
+                Map.getCurrentLocationName().equalsIgnoreCase("potionmaker")) {
             choice();
         } else {
-            System.out.println("You are not in a town.");
+            System.out.println("You are not in a shop.");
         }
     }
 
@@ -57,7 +62,33 @@ public class Trade extends Command {
             case "buy":
                 if (Player.getMoney() > 0) {
                     System.out.println("Money: " + Player.getMoney());
-                    shop.loadItems();
+                    String shopName = "";
+
+                    switch (Map.getCurrentLocationName().toLowerCase()){
+                        case "herbalist":
+                            shopName = "Herbalist.txt";
+                            break;
+                        case "merchant" :
+                            shopName = "Merchant.txt";
+                            break;
+                        case "armorer" :
+                            shopName = "Armorer.txt";
+                            break;
+                        case "hunter" :
+                            shopName = "Hunter.txt";
+                            break;
+                        case "potionmaker" :
+                            shopName = "PotionMaker.txt";
+                            break;
+                        case "tavern" :
+                            shopName = "Tavern.txt";
+                            break;
+                        default:
+                            System.out.println("Error: Unknown shop.");
+                            return;
+
+                    }
+                    shop.loadItems(shopName);
                     System.out.println("Which item do you want to buy? >> INDEX:");
                     String input = sc.next();
                     while (!input.matches("\\d+") || Integer.parseInt(input) >= Shop.getShopItems().size()) {
@@ -73,7 +104,7 @@ public class Trade extends Command {
                         Backpack.getBackpack().add(itemToBuy);
                         System.out.println("You bought an item and gained 5 reputation points.");
                         Player.setReputation(Player.getReputation()+5);
-                        System.out.println("You lost " + itemToBuy.getPrice() + " gold coins.");
+                        System.out.println("You bought an item for " + itemToBuy.getPrice() + " gold coins.");
                         System.out.println("Your new balance: " + Player.getMoney());
                     } else {
                         System.out.println("You don't have enough money.");

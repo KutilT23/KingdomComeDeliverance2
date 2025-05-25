@@ -1,0 +1,5 @@
+Beer;20;0;2;10;POTION;
+SmallBeer;10;0;2;5;POTION;
+RedWine;30;0;2;15;POTION;
+WhiteWine;30;0;2;15;POTION;
+Mead;35;0;2;20;POTION;

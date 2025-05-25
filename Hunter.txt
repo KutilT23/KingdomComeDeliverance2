@@ -1,0 +1,6 @@
+Ear;10;0;1;0;TROPHY;
+Paw;30;0;1;0;TROPHY;
+MeatR;20;0;2;0;TROPHY;
+Antlers;50;0;5;0;TROPHY;
+Deerskin;40;0;3;0;TROPHY;
+MeatD;30;0;4;0;TROPHY;

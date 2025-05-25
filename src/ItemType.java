@@ -1,3 +1,3 @@
 public enum ItemType {
-    WEAPON, POTION, TROPHY
+    WEAPON, POTION, TROPHY,VALUABLE
 }

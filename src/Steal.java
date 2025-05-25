@@ -8,8 +8,6 @@ import java.util.Scanner;
 public class Steal extends Command{
     @Override
     public void execute() {
-        guard();
-        checkIfInTown();
         if (Enter.isInsideTown()) {
             loadCitizens();
             steal();
@@ -78,7 +76,7 @@ public class Steal extends Command{
                         case POTION:
                             System.out.print(citizens.get(i).getPockets().get(j).toStringHealingAdv());
                             break;
-                        case TROPHY:
+                        case TROPHY,VALUABLE:
                             System.out.print(citizens.get(i).getPockets().get(j).toStringTrophyS());
 
                             break;
@@ -104,7 +102,7 @@ public class Steal extends Command{
                         case POTION:
                             System.out.print("  I: " + i + ", " + citizen.getPockets().get(i).toStringHealingAdv());
                             break;
-                        case TROPHY:
+                        case TROPHY,VALUABLE:
                             System.out.print("  I: " + i + ", " + citizen.getPockets().get(i).toStringTrophyS());
                             break;
                         default:
@@ -113,24 +111,94 @@ public class Steal extends Command{
                 }
             }
             System.out.println("");
-
     }
-
     @Override
     public boolean exit() {
         return false;
     }
-    public void guard(){
+    public boolean guard() {
         int chance = random.nextInt(100);
-        int charisma = chance + Player.getReputation()/5;
-        System.out.println(chance +", " + Player.getReputation()/5);
-        System.out.println(charisma);
-        if(charisma<50){
-            System.out.println("You got caught");
-        }else{
-            System.out.println("Succesfully escaped from the guard.");
-        }
+        int charisma = chance + Player.getReputation() / 5;
+       // System.out.println("Chance: " + chance + ", Reputation bonus: " + Player.getReputation() / 5);
+        //System.out.println("Charisma: " + charisma);
 
+        if (charisma < 50) {
+            System.out.println("You were caught by a guard while trying to rob a citizen.");
+
+            boolean validChoice = false;
+            boolean haveStolen = false;
+
+            while (!validChoice) {
+                System.out.println("What are you gonna do? >> \n talk - try to talk your way out of the situation \n search - let him search your backpack");
+
+                String answer = sc.next().toLowerCase();
+
+                switch (answer) {
+                    case "talk":
+                        validChoice = true;
+                        int talkNeed;
+                        switch (Map.getRegion()) {
+                            case TROSECKO:
+                                talkNeed = 5;
+                                break;
+                            case KUTNOHORSKO:
+                                talkNeed = 7;
+                                break;
+                            default:
+                                System.out.println("Error: Unknown region.");
+                                return false;
+                        }
+
+                        if (Player.getTalk() >= talkNeed) {
+                            System.out.println("You talked to the guard and he let you through.");
+                            return true;
+                        } else {
+                            System.out.println("Your talk skill is too low.");
+                            ArrayList<Item> toRemove = new ArrayList<>();
+                            for (Item item : Backpack.getBackpack()) {
+                                if (item.isStolen()) {
+                                    toRemove.add(item);
+                                    haveStolen = true;
+                                }
+                            }
+                            Backpack.getBackpack().removeAll(toRemove);
+
+                            if (haveStolen) {
+                                System.out.println("Guard took all your stolen items + you lost 10 reputation points.");
+                                Player.setReputation(Player.getReputation() - 10);
+                            } else {
+                                System.out.println("You are lucky this time. Guard didn't find anything stolen.");
+                            }
+                            return false;
+                        }
+
+                    case "search":
+                        validChoice = true;
+                        ArrayList<Item> stolenItems = new ArrayList<>();
+                        for (Item item : Backpack.getBackpack()) {
+                            if (item.isStolen()) {
+                                stolenItems.add(item);
+                                haveStolen = true;
+                            }
+                        }
+
+                        Backpack.getBackpack().removeAll(stolenItems);
+
+                        if (haveStolen) {
+                            System.out.println("Guard found stolen items! He took them and you lost 10 reputation points.");
+                            Player.setReputation(Player.getReputation() - 10);
+                            return false;
+                        } else {
+                            System.out.println("Guard searched your backpack and found nothing. You are free to go.");
+                            return true;
+                        }
+
+                    default:
+                        System.out.println("Invalid choice. Type either talk or search.");
+                }
+            }
+        }
+        return true;
     }
     public void steal() {
 
@@ -149,20 +217,23 @@ public class Steal extends Command{
             input = sc.next();
             }
             int stealIndex = Integer.parseInt(input);
+
             if (citizen.getPockets().get(stealIndex).getItemType() == null) {
             Player.setMoney(Player.getMoney()+ citizen.getPockets().get(stealIndex).getPrice());
             System.out.println("You stole " + citizen.getPockets().get(stealIndex).getPrice() + " gold coins");
             System.out.println("Your new balance: " + Player.getMoney());
-            citizen.getPockets().remove(stealIndex);
             }else{
             citizen.getPockets().get(stealIndex).setStolen(true);
             backpack.addItem(citizen.getPockets().get(stealIndex));
-            citizen.getPockets().remove(stealIndex);
 
             }
+            citizen.getPockets().remove(stealIndex);
 
             if (citizen.getPockets().isEmpty()) {
                 citizens.remove(citizen);
+            }
+            if(!guard()){
+                System.out.println("Guard caught you.");
             }
 
         }else{

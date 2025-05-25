@@ -1,0 +1,4 @@
+Nettle;2;0;1;0;TROPHY;
+Marigold;3;0;1;0;TROPHY;
+Valerian;3;0;1;0;TROPHY;
+Mint;1;0;1;0;TROPHY;

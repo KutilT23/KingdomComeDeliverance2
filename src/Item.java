@@ -172,7 +172,7 @@ public class Item implements Comparable<Item> {
                 text = String.format("NAME: \u001B[95m%-8s\u001B[0m HEALING: \u001B[92m %-3d\u001B[0m PRICE: \u001B[38;5;220m%-3d\u001B[0m WEIGHT: \u001B[38;5;208m%-2d\u001B[0m",
                         name, healing, price, weight);
                 break;
-            case TROPHY:
+            case TROPHY, VALUABLE:
                 text = String.format("NAME: \u001B[95m%-8s\u001B[0m               PRICE: \u001B[38;5;220m%-3d\u001B[0m WEIGHT: \u001B[38;5;208m%-2d\u001B[0m",
                         name, price, weight);
                 break;

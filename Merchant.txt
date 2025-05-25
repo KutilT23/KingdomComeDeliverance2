@@ -1,0 +1,6 @@
+Ring;10;0;2;0;VALUABLE;
+Necklace;20;0;2;0;VALUABLE;
+Bracelet;15;0;2;0;VALUABLE;
+Amulet;25;0;2;0;VALUABLE;
+Brooch;10;0;2;0;VALUABLE;
+Earrings;20;0;2;0;VALUABLE;

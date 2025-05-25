@@ -6,10 +6,9 @@ public class Shop {
     private static ArrayList<Item> shopItems = new ArrayList<>();
     private static boolean itemsLoaded = false;
 
-    public void loadItems() {
-        if (!itemsLoaded) {
-
-        try (BufferedReader br = new BufferedReader(new FileReader("Shop.txt"))) {
+    public void loadItems(String shop) {
+        shopItems.clear();
+        try (BufferedReader br = new BufferedReader(new FileReader(shop))) {
             String line;
 
             while ((line = br.readLine()) != null) {
@@ -32,7 +31,7 @@ public class Shop {
         }
         Collections.sort(shopItems);
 
-        }
+
         displayItems();
     }
 
@@ -44,10 +43,13 @@ public class Shop {
         for (int i = 0; i < shopItems.size(); i++) {
             switch (shopItems.get(i).getItemType()) {
                 case WEAPON:
-                    System.out.print("I: " + i + ", " + shopItems.get(i).toStringWeaponAdv()); //2test
+                    System.out.print("I: " + i + ", " + shopItems.get(i).toStringWeaponAdv());
                     break;
                 case POTION:
-                    System.out.print("I: " + i + ", " + shopItems.get(i).toStringHealingAdv()); //3test
+                    System.out.print("I: " + i + ", " + shopItems.get(i).toStringHealingAdv());
+                    break;
+                case TROPHY,VALUABLE:
+                    System.out.print("I: " + i + ", " + shopItems.get(i).toStringTrophyS());
                     break;
                 default:
                     System.out.println("Error: Unknown item type");

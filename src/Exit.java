@@ -2,7 +2,6 @@ public class Exit extends Command {
     @Override
     public void execute() {
         Map map = new Map();
-        Steal.checkIfInTown();
         if(Enter.isInsideTown()&&Map.getCurrentLocationName().equalsIgnoreCase("entrance")){
             System.out.println("Leaving town...");
             switch (Map.getRegion()) {

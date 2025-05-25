@@ -3,4 +3,3 @@ Axe;80;40;6;0;WEAPON;
 LongSword;150;75;10;0;WEAPON;
 Mace;75;35;4;0;WEAPON;
 Club;60;30;8;0;WEAPON;
-MarigoldPotion;50;0;2;50;POTION;
