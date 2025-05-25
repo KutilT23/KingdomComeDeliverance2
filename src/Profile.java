@@ -36,7 +36,8 @@ public class Profile extends Command {
                 "     STRENGTH:    " + RED + Player.getStrength() + RESET,
                 "     HEALTH:      " + GREEN + Player.getHealth() + RESET,
                 "     MONEY:       " + YELLOW + Player.getMoney() + RESET,
-                "     REPUTATION:  " + PURPLE + Player.getReputation() + RESET
+                "     REPUTATION:  " + PURPLE + Player.getReputation() + RESET,
+                "     TALK:        " + ORANGE + Player.getTalk() + RESET
         };
 
         ArrayList<Item> backpack = Backpack.getBackpack();

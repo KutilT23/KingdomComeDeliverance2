@@ -39,14 +39,12 @@ public class Backpack extends Command {
                     index = Integer.parseInt(indexInput);
                     switch (backpack.get(index).getItemType()) {
                         case WEAPON:
-                            Item itemTest = new Item();
                             for (Item item : backpack) {
                                 if (item.isInUse()) {
-                                    itemTest = item;
+                                    Player.setStrength(Player.getStrength() - item.getStrength());
                                     break;
                                 }
                             }
-                            Player.setStrength(Player.getStrength()-itemTest.getStrength());
                             for (Item item : backpack) {
                                 item.setInUse(false);
                             }

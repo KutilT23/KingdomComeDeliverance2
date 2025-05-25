@@ -3,6 +3,7 @@ public class Player {
     private static int health = 100;
     private static int reputation = 50;
     private static int money = 100; // later 0
+    private static int talk = 5;
     private static boolean isDead = false;
     public static int getStrength() {
         return strength;
@@ -48,5 +49,13 @@ public class Player {
 
     public static void setMoney(int money) {
         Player.money = money;
+    }
+
+    public static int getTalk() {
+        return talk;
+    }
+
+    public static void setTalk(int talk) {
+        Player.talk = talk;
     }
 }

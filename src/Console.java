@@ -21,6 +21,7 @@ public class Console {
         commands.put("profile", new Profile());
         commands.put("backpack", new Backpack());
         commands.put("grab", new Grab());
+        commands.put("exit", new Exit());
     }
 
     private Scanner scanner = new Scanner(System.in);
@@ -39,7 +40,7 @@ public class Console {
     }
 
     public void start() {
-        // world.loadMapTros();
+        System.out.println("Welcome to Kingdom Come Deliverance 2");
         world.loadTrosMap();
 
         initialize();

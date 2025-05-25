@@ -48,15 +48,15 @@ public class Map {
         }
     }
 
-    public boolean loadCity(String mapFile, HashMap<Integer, Location> cityMap) {
-        try (BufferedReader br = new BufferedReader(new FileReader(mapFile))) {
+    public boolean loadTown() {
+        try (BufferedReader br = new BufferedReader(new FileReader("TownMap.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(";");
                 Location location = new Location(
                         parts[1], Integer.parseInt(parts[0]),
                         Arrays.copyOfRange(parts, 2, 6));
-                cityMap.put(Integer.valueOf(parts[0]), location);
+                regions.put(Integer.valueOf(parts[0]), location);
             }
             return true;
         } catch (IOException e) {

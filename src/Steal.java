@@ -8,8 +8,9 @@ import java.util.Scanner;
 public class Steal extends Command{
     @Override
     public void execute() {
+        guard();
         checkIfInTown();
-        if (isInTown()) {
+        if (Enter.isInsideTown()) {
             loadCitizens();
             steal();
         } else {
@@ -17,7 +18,7 @@ public class Steal extends Command{
         }
 
     }
-    public void checkIfInTown() {
+    public static void checkIfInTown() {
         String location = Map.getCurrentLocationName();
         if (!location.equalsIgnoreCase("HuntingSpot")
                 && !location.equalsIgnoreCase("Meadow")
@@ -36,7 +37,7 @@ public class Steal extends Command{
     private Random random = new Random();
     private Scanner sc = new Scanner(System.in);
     private Backpack backpack = new Backpack();
-    private boolean inTown = false;
+    private static boolean inTown = false;
     public void loadCitizens() {
 
         if (!citizensloaded) {
@@ -119,6 +120,18 @@ public class Steal extends Command{
     public boolean exit() {
         return false;
     }
+    public void guard(){
+        int chance = random.nextInt(100);
+        int charisma = chance + Player.getReputation()/5;
+        System.out.println(chance +", " + Player.getReputation()/5);
+        System.out.println(charisma);
+        if(charisma<50){
+            System.out.println("You got caught");
+        }else{
+            System.out.println("Succesfully escaped from the guard.");
+        }
+
+    }
     public void steal() {
 
         if (!citizens.isEmpty()) {
@@ -166,11 +179,11 @@ public class Steal extends Command{
         Steal.citizensloaded = citizensloaded;
     }
 
-    public boolean isInTown() {
+    public static boolean isInTown() {
         return inTown;
     }
 
-    public void setInTown(boolean inTown) {
-        this.inTown = inTown;
+    public static void setInTown(boolean inTown) {
+        Steal.inTown = inTown;
     }
 }
