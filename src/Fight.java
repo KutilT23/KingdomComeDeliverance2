@@ -206,7 +206,7 @@ public class Fight extends Command{
                     case POTION:
                         System.out.print(enemies.get(i).getDrop().get(j).toStringHealingAdv());
                         break;
-                    case TROPHY,VALUABLE:
+                    case TROPHY,VALUABLE,HERB:
                         System.out.print(enemies.get(i).getDrop().get(j).toStringTrophyS());
 
                         break;
@@ -228,7 +228,7 @@ public class Fight extends Command{
                 case POTION:
                     System.out.print(enemy.getDrop().get(i).toStringHealingAdv());
                     break;
-                case TROPHY,VALUABLE:
+                case TROPHY,VALUABLE,HERB:
                         System.out.print(enemy.getDrop().get(i).toStringTrophyS());
 
                     break;

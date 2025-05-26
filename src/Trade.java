@@ -1,17 +1,19 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Trade extends Command {
 
     private Scanner sc = new Scanner(System.in);
+    private ArrayList<Item>saleableItems  = new ArrayList<>();
 
     @Override
     public void execute() {
-        if (Enter.isInsideTown()&&Map.getCurrentLocationName().equalsIgnoreCase("herbalist")||
+        if (Enter.isInsideTown()&&(Map.getCurrentLocationName().equalsIgnoreCase("herbalist")||
                 Map.getCurrentLocationName().equalsIgnoreCase("merchant")||
                 Map.getCurrentLocationName().equalsIgnoreCase("armorer")||
                 Map.getCurrentLocationName().equalsIgnoreCase("hunter")||
                 Map.getCurrentLocationName().equalsIgnoreCase("tavern")||
-                Map.getCurrentLocationName().equalsIgnoreCase("potionmaker")) {
+                Map.getCurrentLocationName().equalsIgnoreCase("potionmaker"))) {
             choice();
         } else {
             System.out.println("You are not in a shop.");
@@ -27,35 +29,86 @@ public class Trade extends Command {
 
         switch (answer) {
             case "sell":
-                if (!Backpack.getBackpack().isEmpty()) {
-                    backpack.printBackpack();
+                boolean isSaleable = false;
+                saleableItems.clear();
+                switch (Map.getCurrentLocationName().toLowerCase()){
+                    case "herbalist":
+                        for (Item item : Backpack.getBackpack()) {
+                            if (item.getItemType() == ItemType.HERB) {
+                                saleableItems.add(item);
+                            }
+                        }
+                        isSaleable = true;
+                        break;
+                    case "merchant" :
+                        for (Item item : Backpack.getBackpack()) {
+                            if (item.getItemType() == ItemType.VALUABLE) {
+                                saleableItems.add(item);
+                            }
+                        }
+                        isSaleable = true;
+                        break;
+                    case "armorer" :
+                        for (Item item : Backpack.getBackpack()) {
+                            if(item.getItemType()==ItemType.WEAPON){
+                                saleableItems.add(item);
+                            }
+                        }
+                        isSaleable = true;
+                        break;
+                    case "hunter" :
+                        for (Item item : Backpack.getBackpack()) {
+                            if (item.getItemType() == ItemType.TROPHY) {
+                                saleableItems.add(item);
+                            }
+                        }
+                        isSaleable = true;
+                        break;
+                    case "potionmaker" :
+                        for (Item item : Backpack.getBackpack()) {
+                            if (item.getItemType() == ItemType.POTION) {
+                                saleableItems.add(item);
+                            }
+                        }
+                        isSaleable = true;
+                        break;
+                    case "tavern" :
+                        isSaleable = false;
+                        break;
+                }
+
+                if (!saleableItems.isEmpty()&&isSaleable) {
+                    printSaleableItems();
                     System.out.println("Which item do you want to sell? >> INDEX:");
                     String input = sc.next();
-                    while (!input.matches("\\d+") || Integer.parseInt(input) >= Backpack.getBackpack().size()) {
+                    while (!input.matches("\\d+") || Integer.parseInt(input) >= saleableItems.size()) {
                         System.out.println("Invalid input >> INDEX:");
                         input = sc.next();
                     }
                     int sellIndex = Integer.parseInt(input);
-                    if(Backpack.getBackpack().get(sellIndex).isStolen()){
-                        Player.setReputation(Player.getReputation()-5);
+                    Item saleableItem = saleableItems.get(sellIndex);
+                    if (saleableItem.isStolen()) {
+                        Player.setReputation(Player.getReputation() - 5);
                         System.out.println("You sold a stolen item and lost 5 reputation points.");
-                    }else{
-                        Player.setReputation(Player.getReputation()+5);
+                    } else {
+                        Player.setReputation(Player.getReputation() + 5);
                         System.out.println("You sold an item and gained 5 reputation points.");
                     }
-                    Player.setMoney(Player.getMoney() + Backpack.getBackpack().get(sellIndex).getPrice());
-                    Backpack.setCurrentCapacity(Backpack.getCurrentCapacity() + Backpack.getBackpack().get(sellIndex).getWeight());
 
-                    if (Backpack.getBackpack().get(sellIndex).isInUse()) {
-                        Player.setDamage(Player.getDamage()-Backpack.getBackpack().get(sellIndex).getDamage());
+                    Player.setMoney(Player.getMoney() + saleableItem.getPrice());
+                    Backpack.setCurrentCapacity(Backpack.getCurrentCapacity() + saleableItem.getWeight());
+
+                    if (saleableItem.isInUse()) {
+                        Player.setDamage(Player.getDamage() - saleableItem.getDamage());
                     }
-                    System.out.println("You gained " + Backpack.getBackpack().get(sellIndex).getPrice() + " gold coins.");
+
+                    System.out.println("You gained " + saleableItem.getPrice() + " groschen.");
                     System.out.println("Your new balance: " + Player.getMoney());
-                    Backpack.getBackpack().remove(sellIndex);
+                    Backpack.getBackpack().remove(saleableItem);
 
 
                 } else {
-                    System.out.println("You have nothing to sell.");
+                    System.out.println("Cannot sell items.");
                 }
                 break;
 
@@ -104,7 +157,7 @@ public class Trade extends Command {
                         Backpack.getBackpack().add(itemToBuy);
                         System.out.println("You bought an item and gained 5 reputation points.");
                         Player.setReputation(Player.getReputation()+5);
-                        System.out.println("You bought an item for " + itemToBuy.getPrice() + " gold coins.");
+                        System.out.println("You bought an item for " + itemToBuy.getPrice() + " groschen.");
                         System.out.println("Your new balance: " + Player.getMoney());
                     } else {
                         System.out.println("You don't have enough money.");
@@ -118,6 +171,41 @@ public class Trade extends Command {
                 System.out.println("Invalid option.");
                 choice();
         }
+    }
+    public void printSaleableItems(){
+        if (!saleableItems.isEmpty()) {
+            System.out.println("SALEABLE ITEMS:");
+            for (int i = 0; i < saleableItems.size(); i++) {
+                switch (saleableItems.get(i).getItemType()) {
+                    case WEAPON:
+                        System.out.print("  I: " + i + ", " + saleableItems.get(i).toStringWeaponAdv());
+                        break;
+                    case POTION:
+                        System.out.print("  I: " + i + ", " + saleableItems.get(i).toStringHealingAdv());
+                        break;
+                    case TROPHY,VALUABLE,HERB:
+                        if (saleableItems.get(i).isStolen()) {
+                            System.out.print("  I: " + i + ", " + saleableItems.get(i).toStringTrophyAdv());
+                        }else{
+                            System.out.print("  I: " + i + ", " + saleableItems.get(i).toStringTrophyS());
+                        }
+                        break;
+                    default:
+                        System.out.println("Error");
+                }
+            }
+            System.out.println("");
+        } else {
+            System.out.println("Saleable items are empty.");
+        }
+    }
+
+    public ArrayList<Item> getSaleableItems() {
+        return saleableItems;
+    }
+
+    public void setSaleableItems(ArrayList<Item> saleableItems) {
+        this.saleableItems = saleableItems;
     }
 
     @Override

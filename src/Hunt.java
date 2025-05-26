@@ -144,7 +144,7 @@ public class Hunt extends Command {
                 case POTION:
                     System.out.print("  I: " + i + ", " + target.getLoot().get(i).toStringHealingAdv());
                     break;
-                case TROPHY,VALUABLE:
+                case TROPHY,VALUABLE,HERB:
                     System.out.print("  I: " + i + ", " + target.getLoot().get(i).toStringTrophyS());
 
                     break;

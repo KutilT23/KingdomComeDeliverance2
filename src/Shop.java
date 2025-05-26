@@ -48,7 +48,7 @@ public class Shop {
                 case POTION:
                     System.out.print("I: " + i + ", " + shopItems.get(i).toStringHealingAdv());
                     break;
-                case TROPHY,VALUABLE:
+                case TROPHY,VALUABLE,HERB:
                     System.out.print("I: " + i + ", " + shopItems.get(i).toStringTrophyS());
                     break;
                 default:

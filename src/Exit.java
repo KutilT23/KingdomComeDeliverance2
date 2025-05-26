@@ -19,6 +19,7 @@ public class Exit extends Command {
                     System.out.println("error: unknown region");
             }
             Enter.setInsideTown(false);
+            Steal.setCitizensloaded(false);
         }else{
             System.out.println("You are not in a town exit");
         }

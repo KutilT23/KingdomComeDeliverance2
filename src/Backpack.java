@@ -68,7 +68,7 @@ public class Backpack extends Command {
                                 System.out.println("YOU ALREADY HAVE MAXIMUM HEALTH");
                             }
                             break;
-                        case TROPHY,VALUABLE:
+                        case TROPHY,VALUABLE,HERB:
                             System.out.println("Cannot be used");
                             break;
                         default:
@@ -105,7 +105,7 @@ public class Backpack extends Command {
                     case POTION:
                         System.out.print("  I: " + i + ", " + backpack.get(i).toStringHealingAdv());
                         break;
-                    case TROPHY,VALUABLE:
+                    case TROPHY,VALUABLE,HERB:
                         if (backpack.get(i).isStolen()) {
                             System.out.print("  I: " + i + ", " + backpack.get(i).toStringTrophyAdv());
                         }else{

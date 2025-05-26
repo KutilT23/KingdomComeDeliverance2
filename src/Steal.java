@@ -76,7 +76,7 @@ public class Steal extends Command{
                         case POTION:
                             System.out.print(citizens.get(i).getPockets().get(j).toStringHealingAdv());
                             break;
-                        case TROPHY,VALUABLE:
+                        case TROPHY,VALUABLE,HERB:
                             System.out.print(citizens.get(i).getPockets().get(j).toStringTrophyS());
 
                             break;
@@ -102,7 +102,7 @@ public class Steal extends Command{
                         case POTION:
                             System.out.print("  I: " + i + ", " + citizen.getPockets().get(i).toStringHealingAdv());
                             break;
-                        case TROPHY,VALUABLE:
+                        case TROPHY,VALUABLE,HERB:
                             System.out.print("  I: " + i + ", " + citizen.getPockets().get(i).toStringTrophyS());
                             break;
                         default:
@@ -220,7 +220,7 @@ public class Steal extends Command{
 
             if (citizen.getPockets().get(stealIndex).getItemType() == null) {
             Player.setMoney(Player.getMoney()+ citizen.getPockets().get(stealIndex).getPrice());
-            System.out.println("You stole " + citizen.getPockets().get(stealIndex).getPrice() + " gold coins");
+            System.out.println("You stole " + citizen.getPockets().get(stealIndex).getPrice() + " groschen");
             System.out.println("Your new balance: " + Player.getMoney());
             }else{
             citizen.getPockets().get(stealIndex).setStolen(true);

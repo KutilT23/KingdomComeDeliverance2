@@ -37,7 +37,7 @@ public class Profile extends Command {
                 "     STRENGTH:    " + RED + Player.getStrength() + RESET,
                 "     DAMAGE:      " + MAGENTA + Player.getDamage() + RESET,
                 "     HEALTH:      " + GREEN + Player.getHealth() + RESET,
-                "     MONEY:       " + YELLOW + Player.getMoney() + RESET,
+                "     GROSCHEN:    " + YELLOW + Player.getMoney() + RESET,
                 "     REPUTATION:  " + PURPLE + Player.getReputation() + RESET,
                 "     TALK:        " + ORANGE + Player.getTalk() + RESET
 
