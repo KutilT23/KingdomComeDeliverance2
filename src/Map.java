@@ -7,7 +7,7 @@ import java.util.HashMap;
 public class Map {
     private static HashMap<Integer, Location> regions = new HashMap<>();
 
-    private static int start = 36;
+    private static int start = 36;//36
     private static int currentPosition = start;
     private static Region region;
 

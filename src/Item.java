@@ -94,10 +94,20 @@ public class Item implements Comparable<Item> {
     }
 
     public String toStringWeaponAdv() {
-        return "NAME: " + CYAN + name + RESET +
-                ", DAMAGE: " + RED + damage + RESET +
-                ", PRICE: " + YELLOW + price + RESET +
-                ", WEIGHT: " + ORANGE + weight + RESET + "\n";
+        String text = "";
+        if(isInUse()){
+            text = "NAME: " + CYAN + name + RESET +
+                    ", DAMAGE: " + RED + damage + RESET +
+                    ", PRICE: " + YELLOW + price + RESET +
+                    ", WEIGHT: " + ORANGE + weight + RESET +
+                    ", USING: " + GREEN + inUse + RESET +  "\n";
+        }else{
+            text = "NAME: " + CYAN + name + RESET +
+                    ", DAMAGE: " + RED + damage + RESET +
+                    ", PRICE: " + YELLOW + price + RESET +
+                    ", WEIGHT: " + ORANGE + weight + RESET + "\n";
+        }
+        return text;
     }
 
     public String toStringItemUse() {

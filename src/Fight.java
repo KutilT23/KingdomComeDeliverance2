@@ -59,17 +59,18 @@ public class Fight extends Command{
                 if(numberA!=0){
                     enemy.setHealth(enemy.getHealth()-Player.getDamage());
                     System.out.println("You attacked for " + Player.getDamage() + " damage, Enemy health: " + enemy.getHealth());
+                    Player.setStrenghtXP(Player.getStrenghtXP()+2);
                 }else{
-                    System.out.println("Attack blocked");
+                    System.out.println("Enemy blocked");
                 }
                 break;
             case "down":
                 if(numberA!=1){
                     enemy.setHealth(enemy.getHealth()-Player.getDamage());
                     System.out.println("You attacked for " + Player.getDamage() + " damage, Enemy health: " + enemy.getHealth());
-
+                    Player.setStrenghtXP(Player.getStrenghtXP()+2);
                 }else{
-                    System.out.println("Attack blocked");
+                    System.out.println("Enemy blocked");
                 }
                 break;
             case "left":
@@ -77,18 +78,18 @@ public class Fight extends Command{
                 if(numberA!=2){
                     enemy.setHealth(enemy.getHealth()-Player.getDamage());
                     System.out.println("You attacked for " + Player.getDamage() + " damage, Enemy health: " + enemy.getHealth());
-
+                    Player.setStrenghtXP(Player.getStrenghtXP()+2);
                 }else{
-                    System.out.println("Attack blocked");
+                    System.out.println("Enemy blocked");
                 }
                 break;
             case "right":
                 if(numberA!=3){
                     enemy.setHealth(enemy.getHealth()-Player.getDamage());
                     System.out.println("You attacked for " + Player.getDamage() + " damage, Enemy health: " + enemy.getHealth());
-
+                    Player.setStrenghtXP(Player.getStrenghtXP()+2);
                 }else{
-                    System.out.println("Attack blocked");
+                    System.out.println("Enemy blocked");
                 }
                 break;
             default:
@@ -99,6 +100,8 @@ public class Fight extends Command{
          if (enemy.getHealth() <= 0) {
             setEnemyDead(true);
             System.out.println("Enemy defeated!");
+             System.out.println("Player strenght XP: " + Player.getStrenghtXP());
+            Player.levelUp();
             backpack.addItem(enemy.getDrop().get(random.nextInt(3)));
             enemies.remove(enemy);
         }
@@ -123,7 +126,9 @@ public class Fight extends Command{
                     System.out.println("Enemy attacked for " + enemy.getDamage() + " damage, Player health: " + Player.getHealth());
                 }else{
                     System.out.println("Attack blocked");
+                    Player.setStrenghtXP(Player.getStrenghtXP()+2);
                 }
+
                 break;
             case "down":
 
@@ -133,7 +138,9 @@ public class Fight extends Command{
 
                 }else{
                     System.out.println("Attack blocked");
+                    Player.setStrenghtXP(Player.getStrenghtXP()+2);
                 }
+
                 break;
             case "left":
 
@@ -143,7 +150,9 @@ public class Fight extends Command{
 
                 }else{
                     System.out.println("Attack blocked");
+                    Player.setStrenghtXP(Player.getStrenghtXP()+2);
                 }
+
                 break;
             case "right":
 
@@ -153,7 +162,9 @@ public class Fight extends Command{
 
                 }else{
                     System.out.println("Attack blocked");
+                    Player.setStrenghtXP(Player.getStrenghtXP()+2);
                 }
+
                 break;
             default:
                 System.out.println("Wrong answer");

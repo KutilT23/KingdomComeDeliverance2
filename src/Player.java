@@ -2,9 +2,11 @@ public class Player {
     private static int strength = 10;
     private static int damage = strength;
     private static int health = 100;
-    private static int reputation = 50;
+    private static int reputation = 30;
     private static int money = 100; // later 0
     private static int talk = 5;
+    private static int talkXP = 0;
+    private static int strenghtXP = 0;
     private static boolean isDead = false;
     public static int getStrength() {
         return strength;
@@ -26,7 +28,38 @@ public class Player {
             Player.health = health;
         }
     }
+    public static void levelUp() {
 
+        while (getTalkXP() >= 10) {
+            setTalkXP(getTalkXP() - 10);
+            setTalk(getTalk() + 1);
+            System.out.println("You leveled up your talk skill! New Talk level: " + getTalk());
+        }
+        while (getStrenghtXP() >= 10) {
+            setStrenghtXP(getStrenghtXP() - 10);
+            setStrength(getStrength() + 1);
+            setDamage(getDamage()+1);
+            System.out.println("You leveled up your strength! New Strength level: " + getStrength());
+
+        }
+
+    }
+
+    public static int getTalkXP() {
+        return talkXP;
+    }
+
+    public static void setTalkXP(int talkXP) {
+        Player.talkXP = talkXP;
+    }
+
+    public static int getStrenghtXP() {
+        return strenghtXP;
+    }
+
+    public static void setStrenghtXP(int strenghtXP) {
+        Player.strenghtXP = strenghtXP;
+    }
 
     public static int getReputation() {
         return reputation;

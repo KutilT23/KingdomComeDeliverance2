@@ -20,8 +20,9 @@ public class Console {
         commands.put("trade", new Trade());
         commands.put("profile", new Profile());
         commands.put("backpack", new Backpack());
-        commands.put("grab", new Grab());
+        commands.put("harvest", new Grab());
         commands.put("exit", new Exit());
+        commands.put("talk", new Talk());
     }
 
     private Scanner scanner = new Scanner(System.in);

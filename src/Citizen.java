@@ -4,6 +4,7 @@ public class Citizen {
 
     private String name;
     private ArrayList<Item> pockets = new ArrayList<>();
+    private String text = "";
 
     public Citizen(String name, Item item, Item item1, Item item2, Item item3) {
         this.name = name;
@@ -12,6 +13,12 @@ public class Citizen {
         this.pockets.add(item2);
         this.pockets.add(item3);
     }
+
+    public Citizen(String name, String text) {
+        this.name = name;
+        this.text = text;
+    }
+
     @Override
     public String toString() {
         return "\nNAME: " + name + " ,POCKETS: " + pockets;
@@ -27,6 +34,14 @@ public class Citizen {
 
     public ArrayList<Item> getPockets() {
         return pockets;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 
     public void setPockets(ArrayList<Item> pockets) {

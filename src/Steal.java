@@ -139,10 +139,10 @@ public class Steal extends Command{
                         int talkNeed;
                         switch (Map.getRegion()) {
                             case TROSECKO:
-                                talkNeed = 5;
+                                talkNeed = 7;
                                 break;
                             case KUTNOHORSKO:
-                                talkNeed = 7;
+                                talkNeed = 9;
                                 break;
                             default:
                                 System.out.println("Error: Unknown region.");

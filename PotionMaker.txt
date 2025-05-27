@@ -1,5 +1,5 @@
-MarigoldPotion;10;0;1;20;POTION;
-MarigoldPotion;20;0;2;40;POTION;
-MarigoldPotion;30;0;3;60;POTION;
-MarigoldPotion;40;0;4;80;POTION;
-MarigoldPotion;50;0;5;100;POTION;
+MgPotion;10;0;1;20;POTION;
+MgPotion;20;0;2;40;POTION;
+MgPotion;30;0;3;60;POTION;
+MgPotion;40;0;4;80;POTION;
+MgPotion;50;0;5;100;POTION;

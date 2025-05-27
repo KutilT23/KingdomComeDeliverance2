@@ -1,7 +1,7 @@
-Henry;Nettle;2;1;HERB;Ring;30;1;VALUABLE;Bread;4;1;TROPHY;Money;13;
-William;Marigold;3;1;HERB;OldRing;30;1;VALUABLE;Apple;2;1;TROPHY;Money;11;
-Richard;Valerian;3;1;HERB;Necklace;30;2;VALUABLE;Carrot;2;1;TROPHY;Money;8;
-John;Mint;2;1;HERB;Necklace;30;2;VALUABLE;Meat;5;2;TROPHY;Money;9;
-Robert;Nettle;2;1;HERB;Ring;30;1;VALUABLE;Cabbage;2;1;TROPHY;Money;21;
-Thomas;Marigold;3;1;HERB;Necklace;30;2;VALUABLE;Pear;3;1;TROPHY;Money;3;
-Roger;Valerian;3;1;HERB;Amulet;20;2;VALUABLE;Cherry;3;1;TROPHY;Money;17;
+Henry;Nettle;2;1;HERB;Ring;30;1;VALUABLE;Bread;4;1;VALUABLE;Money;13;Aye, I know of it, and I shall tell thee.;
+William;Marigold;3;1;HERB;OldRing;30;1;VALUABLE;Apple;2;1;VALUABLE;Money;11;I have heard the tidings, and can tell thee.;
+Richard;Valerian;3;1;HERB;Necklace;30;2;VALUABLE;Carrot;2;1;VALUABLE;Money;8;That I do know, and will speak plain to thee.;
+John;Mint;2;1;HERB;Necklace;30;2;VALUABLE;Meat;5;2;VALUABLE;Money;9;Naught do I know, yet I wish thee well upon thy way.;
+Robert;Nettle;2;1;HERB;Ring;30;1;VALUABLE;Cabbage;2;1;VALUABLE;Money;21;Be gone, meddler, and trouble me no more.;
+Thomas;Marigold;3;1;HERB;Necklace;30;2;VALUABLE;Pear;3;1;VALUABLE;Money;3;I wot not, good sir, but God grant thee fair fortune.;
+Roger;Valerian;3;1;HERB;Amulet;20;2;VALUABLE;Cherry;3;1;VALUABLE;Money;17;Mind thy own business and be gone.;

@@ -34,12 +34,12 @@ public class Profile extends Command {
     public void printStats() {
 
         String[] stats = {
-                "     STRENGTH:    " + RED + Player.getStrength() + RESET,
+                "     STRENGTH:    " + RED + Player.getStrength() + RESET + ", XP: " + RED + Player.getStrenghtXP() + RESET,
                 "     DAMAGE:      " + MAGENTA + Player.getDamage() + RESET,
                 "     HEALTH:      " + GREEN + Player.getHealth() + RESET,
                 "     GROSCHEN:    " + YELLOW + Player.getMoney() + RESET,
                 "     REPUTATION:  " + PURPLE + Player.getReputation() + RESET,
-                "     TALK:        " + ORANGE + Player.getTalk() + RESET
+                "     TALK:        " + ORANGE + Player.getTalk() + RESET+ ", XP:  " + ORANGE + Player.getTalkXP() + RESET
 
         };
 
@@ -78,9 +78,9 @@ public class Profile extends Command {
             }
         }
 
-        System.out.println("-----------------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------------------------");
         System.out.println(BLUE + "BACKPACK:                                                    STATS:" + RESET);
-        System.out.println("-----------------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------------------------");
 
         int max = Math.max(leftColumn.size(), stats.length);
         for (int i = 0; i < max; i++) {
@@ -97,7 +97,7 @@ public class Profile extends Command {
             System.out.printf("%-56s%s%n", left, right);
         }
 
-        System.out.println("-----------------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------------------------");
         System.out.println("CURRENT BACKPACK CAPACITY: " + RED + Backpack.getCurrentCapacity() + RESET);
         System.out.println("EQUIPPED ITEM: ");
         showEquippedItem();

@@ -101,8 +101,7 @@ public class Trade extends Command {
                     if (saleableItem.isInUse()) {
                         Player.setDamage(Player.getDamage() - saleableItem.getDamage());
                     }
-
-                    System.out.println("You gained " + saleableItem.getPrice() + " groschen.");
+                    System.out.println("You sold: " + saleableItem.getName() + " for " + saleableItem.getPrice() + " groschen." );
                     System.out.println("Your new balance: " + Player.getMoney());
                     Backpack.getBackpack().remove(saleableItem);
 
@@ -113,7 +112,7 @@ public class Trade extends Command {
                 break;
 
             case "buy":
-                if (Player.getMoney() > 0) {
+                if (Player.getMoney() > 0&&Player.getReputation()>=40) {
                     System.out.println("Money: " + Player.getMoney());
                     String shopName = "";
 
@@ -157,13 +156,13 @@ public class Trade extends Command {
                         Backpack.getBackpack().add(itemToBuy);
                         System.out.println("You bought an item and gained 5 reputation points.");
                         Player.setReputation(Player.getReputation()+5);
-                        System.out.println("You bought an item for " + itemToBuy.getPrice() + " groschen.");
+                        System.out.println("You bought: " +itemToBuy.getName() + " for " + itemToBuy.getPrice() + " groschen.");
                         System.out.println("Your new balance: " + Player.getMoney());
                     } else {
                         System.out.println("You don't have enough money.");
                     }
                 } else {
-                    System.out.println("You have no money.");
+                    System.out.println("You have no money/bad reputation.");
                 }
                 break;
 
