@@ -1,12 +1,10 @@
 Ring;10;0;2;0;VALUABLE;
 Necklace;20;0;2;0;VALUABLE;
-Bracelet;15;0;2;0;VALUABLE;
-Amulet;25;0;2;0;VALUABLE;
-Brooch;10;0;2;0;VALUABLE;
+Bracelet;16;0;2;0;VALUABLE;
+Amulet;26;0;2;0;VALUABLE;
 Earrings;20;0;2;0;VALUABLE;
 Bread;4;0;2;0;VALUABLE;
 Apple;2;0;1;0;VALUABLE;
 Carrot;2;0;1;0;VALUABLE;
 Cabbage;2;0;1;0;VALUABLE;
-Pear;3;0;2;1;VALUABLE;
-Cherry;3;0;1;0;VALUABLE;
+Cherry;4;0;1;0;VALUABLE;

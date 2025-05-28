@@ -1,3 +1,3 @@
-Enemy1;100;5;MgPotion;20;0;1;30;POTION;Axe;25;30;3;0;WEAPON;Bread;10;1;VALUABLE;
-Enemy2;100;5;MgPotion;20;0;1;30;POTION;Axe;25;30;3;0;WEAPON;Bread;10;1;VALUABLE;
-Enemy3;100;5;MgPotion;20;0;1;30;POTION;Axe;25;30;3;0;WEAPON;Bread;10;1;VALUABLE;
+Swordsman Lvl.1;100;75;Marigold Potion;30;0;3;60;POTION;Long Sword;50;75;10;0;WEAPON;Money;30;
+Axeman Lvl.1;140;40;Marigold Potion;20;0;2;40;POTION;Axe;25;40;6;0;WEAPON;Money;10;
+Defender Lvl.1;120;50;Marigold Potion;40;0;4;80;POTION;Sword;35;50;5;0;WEAPON;Money;23;

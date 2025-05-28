@@ -24,7 +24,7 @@ public class Trade extends Command {
         Shop shop = new Shop();
         Backpack backpack = new Backpack();
 
-        System.out.println(">> SELL or BUY?");
+        System.out.println(">> SELL, BUY or SHOW?");
         String answer = sc.next().toLowerCase();
 
         switch (answer) {
@@ -150,20 +150,54 @@ public class Trade extends Command {
                     int buyIndex = Integer.parseInt(input);
                     Item itemToBuy = Shop.getShopItems().get(buyIndex);
 
+
                     if (Player.getMoney() >= itemToBuy.getPrice()) {
                         Player.setMoney(Player.getMoney() - itemToBuy.getPrice());
                         Backpack.setCurrentCapacity(Backpack.getCurrentCapacity() - itemToBuy.getWeight());
-                        Backpack.getBackpack().add(itemToBuy);
+
                         System.out.println("You bought an item and gained 5 reputation points.");
                         Player.setReputation(Player.getReputation()+5);
                         System.out.println("You bought: " +itemToBuy.getName() + " for " + itemToBuy.getPrice() + " groschen.");
                         System.out.println("Your new balance: " + Player.getMoney());
+                        if(itemToBuy.getPrice()%2==0){
+                            itemToBuy.setPrice(itemToBuy.getPrice()/2);
+                        }
+                        Backpack.getBackpack().add(itemToBuy);
                     } else {
                         System.out.println("You don't have enough money.");
                     }
                 } else {
                     System.out.println("You have no money/bad reputation.");
                 }
+                break;
+            case "show":
+                String shopName = "";
+
+                switch (Map.getCurrentLocationName().toLowerCase()) {
+                    case "herbalist":
+                        shopName = "Herbalist.txt";
+                        break;
+                    case "merchant":
+                        shopName = "Merchant.txt";
+                        break;
+                    case "armorer":
+                        shopName = "Armorer.txt";
+                        break;
+                    case "hunter":
+                        shopName = "Hunter.txt";
+                        break;
+                    case "potionmaker":
+                        shopName = "PotionMaker.txt";
+                        break;
+                    case "tavern":
+                        shopName = "Tavern.txt";
+                        break;
+                    default:
+                        System.out.println("Error: Unknown shop.");
+                        return;
+                }
+                shop.loadItems(shopName);
+
                 break;
 
             default:
@@ -175,25 +209,8 @@ public class Trade extends Command {
         if (!saleableItems.isEmpty()) {
             System.out.println("SALEABLE ITEMS:");
             for (int i = 0; i < saleableItems.size(); i++) {
-                switch (saleableItems.get(i).getItemType()) {
-                    case WEAPON:
-                        System.out.print("  I: " + i + ", " + saleableItems.get(i).toStringWeaponAdv());
-                        break;
-                    case POTION:
-                        System.out.print("  I: " + i + ", " + saleableItems.get(i).toStringHealingAdv());
-                        break;
-                    case TROPHY,VALUABLE,HERB:
-                        if (saleableItems.get(i).isStolen()) {
-                            System.out.print("  I: " + i + ", " + saleableItems.get(i).toStringTrophyAdv());
-                        }else{
-                            System.out.print("  I: " + i + ", " + saleableItems.get(i).toStringTrophyS());
-                        }
-                        break;
-                    default:
-                        System.out.println("Error");
+                System.out.println("  I: " + i + ", " + saleableItems.get(i).toStringByTypeBackpack());
                 }
-            }
-            System.out.println("");
         } else {
             System.out.println("Saleable items are empty.");
         }

@@ -39,9 +39,9 @@ public class Talk extends Command {
             int randomText = rd.nextInt(citizens.size());
             System.out.println("You talk to: " + citizens.get(randomText).getName());
             System.out.println("What do you want to ask him?: >> " +
-                    "1)Where can i buy and sell my items?, " +
-                    "2)How can i get rich fast?, " +
-                    "3)What are all those different locations on the map for?" );
+                    "\n1)Where can i buy and sell my items?, " +
+                    "\n2)How can i get rich fast?, " +
+                    "\n3)What are all those different locations on the map for?" );
             String answer = sc.next();
             while (!answer.matches("\\d+") || Integer.parseInt(answer) < 1 || Integer.parseInt(answer) > 3) {
                 System.out.println("Invalid input >> NUMBER:");

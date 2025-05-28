@@ -1,8 +1,8 @@
-Rabbit;20;Ear;10;1;TROPHY;Paw;30;1;TROPHY;MeatR;20;2;TROPHY;
-Deer;80;Antlers;50;5;TROPHY;Deerskin;40;3;TROPHY;MeatD;30;4;TROPHY;
-Rabbit;20;Ear;10;1;TROPHY;Paw;30;1;TROPHY;MeatR;20;2;TROPHY;
-Deer;80;Antlers;50;5;TROPHY;Deerskin;40;3;TROPHY;MeatD;30;4;TROPHY;
-Rabbit;20;Ear;10;1;TROPHY;Paw;30;1;TROPHY;MeatR;20;2;TROPHY;
-Deer;80;Antlers;50;5;TROPHY;Deerskin;40;3;TROPHY;MeatD;30;4;TROPHY;
-Rabbit;20;Ear;10;1;TROPHY;Paw;30;1;TROPHY;MeatR;20;2;TROPHY;
-Deer;80;Antlers;50;5;TROPHY;Deerskin;40;3;TROPHY;MeatD;30;4;TROPHY;
+Rabbit;20;Ear;10;1;TROPHY;Paw;30;1;TROPHY;Rabbit Meat;20;2;TROPHY;
+Deer;80;Antlers;50;5;TROPHY;Deerskin;40;3;TROPHY;Deer Meat;30;4;TROPHY;
+Rabbit;20;Ear;10;1;TROPHY;Paw;30;1;TROPHY;Rabbit Meat;20;2;TROPHY;
+Deer;80;Antlers;50;5;TROPHY;Deerskin;40;3;TROPHY;Deer Meat;30;4;TROPHY;
+Rabbit;20;Ear;10;1;TROPHY;Paw;30;1;TROPHY;Rabbit Meat;20;2;TROPHY;
+Deer;80;Antlers;50;5;TROPHY;Deerskin;40;3;TROPHY;Deer Meat;30;4;TROPHY;
+Rabbit;20;Ear;10;1;TROPHY;Paw;30;1;TROPHY;Rabbit Meat;20;2;TROPHY;
+Deer;80;Antlers;50;5;TROPHY;Deerskin;40;3;TROPHY;Deer Meat;30;4;TROPHY;

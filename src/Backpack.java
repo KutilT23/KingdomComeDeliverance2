@@ -6,6 +6,7 @@ public class Backpack extends Command {
     private static ArrayList<Item> backpack = new ArrayList<>();
     private static int capacity = 30 + Player.getStrength() * 5;
     private static int currentCapacity = capacity;
+    private static int backpackValue = 0;
     Scanner sc = new Scanner(System.in);
 
     @Override
@@ -52,7 +53,7 @@ public class Backpack extends Command {
                             for (Item item : backpack) {
                                 if (item.isInUse()) {
                                     Player.setDamage(Player.getDamage() + item.getDamage());
-                                    System.out.println(item.toStringItemUse());
+                                    System.out.println(item.toStringByTypeBackpack());
                                     // break;
                                 }
                             }
@@ -98,28 +99,20 @@ public class Backpack extends Command {
         if (!backpack.isEmpty()) {
             System.out.println("BACKPACK:");
             for (int i = 0; i < backpack.size(); i++) {
-                switch (backpack.get(i).getItemType()) {
-                    case WEAPON:
-                        System.out.print("  I: " + i + ", " + backpack.get(i).toStringWeaponAdv());
-                        break;
-                    case POTION:
-                        System.out.print("  I: " + i + ", " + backpack.get(i).toStringHealingAdv());
-                        break;
-                    case TROPHY,VALUABLE,HERB:
-                        if (backpack.get(i).isStolen()) {
-                            System.out.print("  I: " + i + ", " + backpack.get(i).toStringTrophyAdv());
-                        }else{
-                            System.out.print("  I: " + i + ", " + backpack.get(i).toStringTrophyS());
-                        }
-                        break;
-                    default:
-                        System.out.println("Error");
-                }
+                System.out.println("  I: " + i + ", " + backpack.get(i).toStringByTypeBackpack());
             }
             System.out.println("");
         } else {
             System.out.println("Backpack is empty");
         }
+    }
+    public static int countValue(){
+        backpackValue = 0;
+        for(Item item:backpack){
+            backpackValue+= item.getPrice();
+        }
+        backpackValue = backpackValue + Player.getMoney();
+        return backpackValue;
     }
 
     public static ArrayList<Item> getBackpack() {
@@ -132,5 +125,13 @@ public class Backpack extends Command {
 
     public static void setCurrentCapacity(int currentCapacity) {
         Backpack.currentCapacity = currentCapacity;
+    }
+
+    public static int getBackpackValue() {
+        return backpackValue;
+    }
+
+    public static void setBackpackValue(int backpackValue) {
+        Backpack.backpackValue = backpackValue;
     }
 }

@@ -2,7 +2,7 @@ public class Player {
     private static int strength = 10;
     private static int damage = strength;
     private static int health = 100;
-    private static int reputation = 30;
+    private static int reputation = 50;
     private static int money = 100; // later 0
     private static int talk = 5;
     private static int talkXP = 0;

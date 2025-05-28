@@ -1,0 +1,7 @@
+Henry;Nettle;2;1;HERB;Golden Ring;90;1;VALUABLE;Golden Necklace;90;2;VALUABLE;Money;39;Aye, I know of it, and I shall tell thee.;
+William;Marigold;3;1;HERB;Old Ring;30;1;VALUABLE;Silver Necklace;60;2;VALUABLE;Money;33;I have heard the tidings, and can tell thee.;
+Richard;Valerian;3;1;HERB;Golden Necklace;90;2;VALUABLE;Golden Ring;90;1;VALUABLE;Money;24;That I do know, and will speak plain to thee.;
+John;Mint;2;1;HERB;Silver Necklace;60;2;VALUABLE;Old Ring;30;1;VALUABLE;Money;27;Naught do I know, yet I wish thee well upon thy way.;
+Robert;Nettle;2;1;HERB;Old Necklace;30;1;VALUABLE;Silver Ring;60;2;VALUABLE;Money;63;Be gone, meddler, and trouble me no more.;
+Thomas;Marigold;3;1;HERB;Silver Ring;60;2;VALUABLE;Amulet;75;2;VALUABLE;Money;48;I wot not, good sir, but God grant thee fair fortune.;
+Roger;Valerian;3;1;HERB;Amulet;75;2;VALUABLE;Old Necklace;30;1;VALUABLE;Money;51;Mind thy own business and be gone.;

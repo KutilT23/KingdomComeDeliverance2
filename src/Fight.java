@@ -58,7 +58,12 @@ public class Fight extends Command{
             case "up":
                 if(numberA!=0){
                     enemy.setHealth(enemy.getHealth()-Player.getDamage());
-                    System.out.println("You attacked for " + Player.getDamage() + " damage, Enemy health: " + enemy.getHealth());
+                    if(enemy.getHealth()>0){
+                        System.out.println("You attacked for " + Player.getDamage() + " damage, Enemy health: " + enemy.getHealth());
+                    }else{
+                        enemy.setHealth(0);
+                        System.out.println("You attacked for " + Player.getDamage() + " damage, Enemy health: " + enemy.getHealth());
+                    }
                     Player.setStrenghtXP(Player.getStrenghtXP()+2);
                 }else{
                     System.out.println("Enemy blocked");
@@ -67,7 +72,12 @@ public class Fight extends Command{
             case "down":
                 if(numberA!=1){
                     enemy.setHealth(enemy.getHealth()-Player.getDamage());
-                    System.out.println("You attacked for " + Player.getDamage() + " damage, Enemy health: " + enemy.getHealth());
+                    if(enemy.getHealth()>0){
+                        System.out.println("You attacked for " + Player.getDamage() + " damage, Enemy health: " + enemy.getHealth());
+                    }else{
+                        enemy.setHealth(0);
+                        System.out.println("You attacked for " + Player.getDamage() + " damage, Enemy health: " + enemy.getHealth());
+                    }
                     Player.setStrenghtXP(Player.getStrenghtXP()+2);
                 }else{
                     System.out.println("Enemy blocked");
@@ -77,7 +87,12 @@ public class Fight extends Command{
 
                 if(numberA!=2){
                     enemy.setHealth(enemy.getHealth()-Player.getDamage());
-                    System.out.println("You attacked for " + Player.getDamage() + " damage, Enemy health: " + enemy.getHealth());
+                    if(enemy.getHealth()>0){
+                        System.out.println("You attacked for " + Player.getDamage() + " damage, Enemy health: " + enemy.getHealth());
+                    }else{
+                        enemy.setHealth(0);
+                        System.out.println("You attacked for " + Player.getDamage() + " damage, Enemy health: " + enemy.getHealth());
+                    }
                     Player.setStrenghtXP(Player.getStrenghtXP()+2);
                 }else{
                     System.out.println("Enemy blocked");
@@ -86,7 +101,13 @@ public class Fight extends Command{
             case "right":
                 if(numberA!=3){
                     enemy.setHealth(enemy.getHealth()-Player.getDamage());
-                    System.out.println("You attacked for " + Player.getDamage() + " damage, Enemy health: " + enemy.getHealth());
+                    if(enemy.getHealth()>0){
+                        System.out.println("You attacked for " + Player.getDamage() + " damage, Enemy health: " + enemy.getHealth());
+                    }else{
+                        enemy.setHealth(0);
+                        System.out.println("You attacked for " + Player.getDamage() + " damage, Enemy health: " + enemy.getHealth());
+                    }
+
                     Player.setStrenghtXP(Player.getStrenghtXP()+2);
                 }else{
                     System.out.println("Enemy blocked");
@@ -102,12 +123,38 @@ public class Fight extends Command{
             System.out.println("Enemy defeated!");
              System.out.println("Player strenght XP: " + Player.getStrenghtXP());
             Player.levelUp();
-            backpack.addItem(enemy.getDrop().get(random.nextInt(3)));
+            Item itemToGet = enemy.getDrop().get(random.nextInt(3));
+            if (itemToGet.getItemType() == null) {
+                System.out.println("You got: " + itemToGet.getPrice() + " groschen");
+                Player.setMoney(Player.getMoney()+itemToGet.getPrice());
+                System.out.println("You now have: " + Player.getMoney() + " groschen");
+            }else{
+                backpack.addItem(itemToGet);
+            }
             enemies.remove(enemy);
         }
     }
     public void block(Enemy enemy){
         String answer = "";
+        int numberB = random.nextInt(4);
+        String direction = "";
+        switch (numberB){
+            case 0:
+                direction = "above";
+                break;
+            case 1:
+                direction = "below";
+                break;
+            case 2:
+                direction = "the left";
+                break;
+            case 3:
+                direction = "the right";
+                break;
+            default:
+                System.out.println("Error");
+        }
+        System.out.println("Enemy attacks from: " + direction);
         while (true) {
             System.out.println("From which direction do you want to block?>> up,down,left,right");
             answer = sc.next().toLowerCase();
@@ -117,13 +164,18 @@ public class Fight extends Command{
                 System.out.println("Wrong answer, try again.");
             }
         }
-        int numberB = random.nextInt(4);
+
         switch (answer.toLowerCase()){
             case "up":
 
                 if(numberB!=0){
                     Player.setHealth(Player.getHealth()-enemy.getDamage());
-                    System.out.println("Enemy attacked for " + enemy.getDamage() + " damage, Player health: " + Player.getHealth());
+                    if(Player.getHealth()>0){
+                        System.out.println("Enemy attacked for " + enemy.getDamage() + " damage, Player health: " + Player.getHealth());
+                    }else{
+                        Player.setHealth(0);
+                        System.out.println("Enemy attacked for " + enemy.getDamage() + " damage, Player health: " + Player.getHealth());
+                    }
                 }else{
                     System.out.println("Attack blocked");
                     Player.setStrenghtXP(Player.getStrenghtXP()+2);
@@ -134,7 +186,12 @@ public class Fight extends Command{
 
                 if(numberB!=1){
                     Player.setHealth(Player.getHealth()-enemy.getDamage());
-                    System.out.println("Enemy attacked for " + enemy.getDamage() + " damage, Player health: " + Player.getHealth());
+                    if(Player.getHealth()>0){
+                        System.out.println("Enemy attacked for " + enemy.getDamage() + " damage, Player health: " + Player.getHealth());
+                    }else{
+                        Player.setHealth(0);
+                        System.out.println("Enemy attacked for " + enemy.getDamage() + " damage, Player health: " + Player.getHealth());
+                    }
 
                 }else{
                     System.out.println("Attack blocked");
@@ -146,7 +203,12 @@ public class Fight extends Command{
 
                 if(numberB!=2){
                     Player.setHealth(Player.getHealth()-enemy.getDamage());
-                    System.out.println("Enemy attacked for " + enemy.getDamage() + " damage, Player health: " + Player.getHealth());
+                    if(Player.getHealth()>0){
+                        System.out.println("Enemy attacked for " + enemy.getDamage() + " damage, Player health: " + Player.getHealth());
+                    }else{
+                        Player.setHealth(0);
+                        System.out.println("Enemy attacked for " + enemy.getDamage() + " damage, Player health: " + Player.getHealth());
+                    }
 
                 }else{
                     System.out.println("Attack blocked");
@@ -158,7 +220,12 @@ public class Fight extends Command{
 
                 if(numberB!=3){
                     Player.setHealth(Player.getHealth()-enemy.getDamage());
-                    System.out.println("Enemy attacked for " + enemy.getDamage() + " damage, Player health: " + Player.getHealth());
+                    if(Player.getHealth()>0){
+                        System.out.println("Enemy attacked for " + enemy.getDamage() + " damage, Player health: " + Player.getHealth());
+                    }else{
+                        Player.setHealth(0);
+                        System.out.println("Enemy attacked for " + enemy.getDamage() + " damage, Player health: " + Player.getHealth());
+                    }
 
                 }else{
                     System.out.println("Attack blocked");
@@ -177,10 +244,20 @@ public class Fight extends Command{
         }
     }
     public void loadEnemies() {
-
             if (!enemiesLoaded) {
+                String difficulty = "";
+                switch (Map.getRegion()){
+                    case TROSECKO :
+                        difficulty = "Enemies.txt";
+                        break;
+                    case KUTNOHORSKO:
+                        difficulty = "Enemies2.txt";
+                        break;
+                    default:
+                        System.out.println("Error");
+                }
                 enemies.clear();
-                try (BufferedReader br = new BufferedReader(new FileReader("Enemies.txt"))) {
+                try (BufferedReader br = new BufferedReader(new FileReader(difficulty))) {
                     String line;
 
                     while ((line = br.readLine()) != null) {
@@ -191,7 +268,7 @@ public class Fight extends Command{
                                 Integer.parseInt(parts[1]),Integer.parseInt(parts[2]),
                                 new Item(parts[3], Integer.parseInt(parts[4]), Integer.parseInt(parts[5]),Integer.parseInt(parts[6]),Integer.parseInt(parts[7]), ItemType.valueOf(parts[8])),
                                 new Item(parts[9], Integer.parseInt(parts[10]), Integer.parseInt(parts[11]),Integer.parseInt(parts[12]),Integer.parseInt(parts[13]), ItemType.valueOf(parts[14])),
-                                new Item(parts[15], Integer.parseInt(parts[16]), Integer.parseInt(parts[17]),ItemType.valueOf(parts[18]))
+                                new Item(parts[15], Integer.parseInt(parts[16]))
                         );
                         enemies.add(enemy);
                     }
@@ -209,20 +286,10 @@ public class Fight extends Command{
             System.out.println("ANIMAL: " + enemies.get(i).getName() + ",HP: " + enemies.get(i).getHealth() +
                     ",DROP: ");
             for (int j = 0; j < enemies.get(i).getDrop().size(); j++) {
-
-                switch (enemies.get(i).getDrop().get(j).getItemType() ) {
-                    case WEAPON:
-                        System.out.print(enemies.get(i).getDrop().get(j).toStringWeaponAdv());
-                        break;
-                    case POTION:
-                        System.out.print(enemies.get(i).getDrop().get(j).toStringHealingAdv());
-                        break;
-                    case TROPHY,VALUABLE,HERB:
-                        System.out.print(enemies.get(i).getDrop().get(j).toStringTrophyS());
-
-                        break;
-                    default:
-                        System.out.println("Error");
+                if (enemies.get(i).getDrop().get(j).getItemType() == null) {
+                    System.out.println(enemies.get(i).getDrop().get(j).toStringMoney());
+                } else {
+                    System.out.println(enemies.get(i).getDrop().get(j).toStringByType());
                 }
             }
         }
@@ -232,22 +299,12 @@ public class Fight extends Command{
             System.out.println("ENEMY: " + enemy.getName() + ",HP: "
                     + enemy.getHealth() + ",DROPS:");
         for (int i = 0; i < enemy.getDrop().size(); i++) {
-            switch (enemy.getDrop().get(i).getItemType() ) {
-                case WEAPON:
-                    System.out.print(enemy.getDrop().get(i).toStringWeaponAdv());
-                    break;
-                case POTION:
-                    System.out.print(enemy.getDrop().get(i).toStringHealingAdv());
-                    break;
-                case TROPHY,VALUABLE,HERB:
-                        System.out.print(enemy.getDrop().get(i).toStringTrophyS());
-
-                    break;
-                default:
-                    System.out.println("Error");
+            if (enemy.getDrop().get(i).getItemType() == null) {
+                System.out.println(enemy.getDrop().get(i).toStringMoney());
+            } else {
+                System.out.println(enemy.getDrop().get(i).toStringByType());
             }
         }
-
         System.out.println("");
     }
 

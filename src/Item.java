@@ -85,105 +85,24 @@ public class Item implements Comparable<Item> {
                 ", HEALING: " + GREEN + healing + RESET +
                 ", STOLEN: " + stolen;
     }
-
-    public String toStringWeapon() {
-        return "\nNAME: " + CYAN + name + RESET +
-                ", DAMAGE: " + RED + damage + RESET +
-                ", PRICE: " + YELLOW + price + RESET +
-                ", WEIGHT: " + ORANGE + weight + RESET;
-    }
-
-    public String toStringWeaponAdv() {
-        String text = "";
-        if(isInUse()){
-            text = "NAME: " + CYAN + name + RESET +
-                    ", DAMAGE: " + RED + damage + RESET +
-                    ", PRICE: " + YELLOW + price + RESET +
-                    ", WEIGHT: " + ORANGE + weight + RESET +
-                    ", USING: " + GREEN + inUse + RESET +  "\n";
-        }else{
-            text = "NAME: " + CYAN + name + RESET +
-                    ", DAMAGE: " + RED + damage + RESET +
-                    ", PRICE: " + YELLOW + price + RESET +
-                    ", WEIGHT: " + ORANGE + weight + RESET + "\n";
-        }
-        return text;
-    }
-
-    public String toStringItemUse() {
-        return "NAME: " + CYAN + name + RESET +
-                ", DAMAGE: " + RED + damage + RESET +
-                ", PRICE: " + YELLOW + price + RESET +
-                ", WEIGHT: " + ORANGE + weight + RESET +
-                ", IN USE: " + GREEN + inUse + RESET + "\n";
-    }
-
-    public String toStringHealing() {
-        return "\nNAME: " + CYAN + name + RESET +
-                ", HEALING: " + GREEN + healing + RESET +
-                ", PRICE: " + YELLOW + price + RESET +
-                ", WEIGHT: " + ORANGE + weight + RESET;
-    }
-
-    public String toStringHealingAdv() {
-        return "NAME: " + CYAN + name + RESET +
-                ", HEALING: " + GREEN + healing + RESET +
-                ", PRICE: " + YELLOW + price + RESET +
-                ", WEIGHT: " + ORANGE + weight + RESET + "\n";
-    }
-
-    public String toStringTrophy() {
-        return "\nNAME: " + CYAN + name + RESET +
-                ", PRICE: " + YELLOW + price + RESET +
-                ", WEIGHT: " + ORANGE + weight + RESET;
-    }
-    public String toStringTrophyS() {
-        return "NAME: " + CYAN + name + RESET +
-                ", PRICE: " + YELLOW + price + RESET +
-                ", WEIGHT: " + ORANGE + weight + RESET + "\n";
-    }
-
-    public String toStringTrophyAdv(){
-        String COLOR = "";
-        if (stolen) {
-            COLOR = GREEN;
-        }else{
-            COLOR = RED;
-        }
-        return "NAME: " + CYAN + name + RESET +
-                ", PRICE: " + YELLOW + price + RESET +
-                ", WEIGHT: " + ORANGE + weight + RESET +
-                ", STOLEN: " + COLOR + stolen + RESET +"\n";
-    }
     public String toStringMoney() {
         return "NAME: " + CYAN + name + RESET +
-                ", PRICE: " + YELLOW + price + RESET;
+                "                         PRICE: " + YELLOW + price + RESET;
     }
-
-    public String toStringHerbs() {
-        return "NAME: " + GREEN + name + RESET +
-                ", PRICE: " + YELLOW + price + RESET +
-                ", WEIGHT: " + ORANGE + weight + RESET + "\n";
-    }
-
-    public String toStringNameOnly() {
-        return "\nNAME: " + CYAN + name + RESET;
-    }
-
     public String toStringByType() {
         String text = "";
 
         switch (itemType) {
             case WEAPON:
-                text = String.format("NAME: \u001B[95m%-8s\u001B[0m DAMAGE:   \u001B[91m%-3d\u001B[0m PRICE: \u001B[38;5;220m%-3d\u001B[0m WEIGHT: \u001B[38;5;208m%-2d\u001B[0m",
+                text = String.format("NAME: \u001B[95m%-15.15s\u001B[0m DAMAGE:   \u001B[91m%-3d\u001B[0m PRICE: \u001B[38;5;220m%-3d\u001B[0m WEIGHT: \u001B[38;5;208m%-2d\u001B[0m",
                         name, damage, price, weight);
                 break;
             case POTION:
-                text = String.format("NAME: \u001B[95m%-8s\u001B[0m HEALING: \u001B[92m %-3d\u001B[0m PRICE: \u001B[38;5;220m%-3d\u001B[0m WEIGHT: \u001B[38;5;208m%-2d\u001B[0m",
+                text = String.format("NAME: \u001B[95m%-15.15s\u001B[0m HEALING: \u001B[92m %-3d\u001B[0m PRICE: \u001B[38;5;220m%-3d\u001B[0m WEIGHT: \u001B[38;5;208m%-2d\u001B[0m",
                         name, healing, price, weight);
                 break;
             case TROPHY, VALUABLE,HERB:
-                text = String.format("NAME: \u001B[95m%-8s\u001B[0m               PRICE: \u001B[38;5;220m%-3d\u001B[0m WEIGHT: \u001B[38;5;208m%-2d\u001B[0m",
+                text = String.format("NAME: \u001B[95m%-15.15s\u001B[0m               PRICE: \u001B[38;5;220m%-3d\u001B[0m WEIGHT: \u001B[38;5;208m%-2d\u001B[0m",
                         name, price, weight);
                 break;
             default:
@@ -192,6 +111,36 @@ public class Item implements Comparable<Item> {
 
         return text;
     }
+    public String toStringByTypeBackpack() {
+        String text = "";
+
+        switch (itemType) {
+            case WEAPON:
+                text = String.format("NAME: \u001B[95m%-15.15s\u001B[0m DAMAGE:   \u001B[91m%-3d\u001B[0m PRICE: \u001B[38;5;220m%-3d\u001B[0m WEIGHT: \u001B[38;5;208m%-2d\u001B[0m",
+                        name, damage, price, weight);
+                break;
+            case POTION:
+                text = String.format("NAME: \u001B[95m%-15.15s\u001B[0m HEALING: \u001B[92m %-3d\u001B[0m PRICE: \u001B[38;5;220m%-3d\u001B[0m WEIGHT: \u001B[38;5;208m%-2d\u001B[0m",
+                        name, healing, price, weight);
+                break;
+            case TROPHY, VALUABLE,HERB:
+
+                text = String.format("NAME: \u001B[95m%-15.15s\u001B[0m               PRICE: \u001B[38;5;220m%-3d\u001B[0m WEIGHT: \u001B[38;5;208m%-2d\u001B[0m",
+                        name, price, weight);
+                break;
+            default:
+                text = "Error";
+        }
+        if (inUse) {
+            text += String.format(" USING: \u001B[92m%s\u001B[0m", true);
+        }
+        if (stolen) {
+            text += String.format(" STOLEN: \u001B[92m%s\u001B[0m", true);
+        }
+
+        return text;
+    }
+
 
     @Override
     public int compareTo(Item o) {

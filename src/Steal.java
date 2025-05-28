@@ -39,8 +39,19 @@ public class Steal extends Command{
     public void loadCitizens() {
 
         if (!citizensloaded) {
+            String difficulty = "";
+            switch (Map.getRegion()){
+                case TROSECKO :
+                    difficulty = "Citizens.txt";
+                    break;
+                case KUTNOHORSKO:
+                    difficulty = "Citizens2.txt";
+                    break;
+                default:
+                    System.out.println("Error");
+            }
             citizens.clear();
-            try (BufferedReader br = new BufferedReader(new FileReader("Citizens.txt"))) {
+            try (BufferedReader br = new BufferedReader(new FileReader(difficulty))) {
                 String line;
 
                 while ((line = br.readLine()) != null) {
@@ -58,31 +69,18 @@ public class Steal extends Command{
                 System.out.println("Error reading file: " + e.getMessage());
             }
             citizensloaded = true;
-            //displayCitizens();
+            //isplayCitizens();
 
         }
     }
     public void displayCitizens() {
         for (int i = 0; i < citizens.size(); i++) {
-            System.out.println("ANIMAL: " + citizens.get(i).getName() + ",DROP: ");
+            System.out.println("CITIZEN: " + citizens.get(i).getName() + ", POCKETS: ");
             for (int j = 0; j < citizens.get(i).getPockets().size(); j++) {
                 if (citizens.get(i).getPockets().get(j).getItemType() == null) {
                     System.out.println(citizens.get(i).getPockets().get(j).toStringMoney());
                 }else{
-                    switch (citizens.get(i).getPockets().get(j).getItemType() ) {
-                        case WEAPON:
-                            System.out.print(citizens.get(i).getPockets().get(j).toStringWeaponAdv());
-                            break;
-                        case POTION:
-                            System.out.print(citizens.get(i).getPockets().get(j).toStringHealingAdv());
-                            break;
-                        case TROPHY,VALUABLE,HERB:
-                            System.out.print(citizens.get(i).getPockets().get(j).toStringTrophyS());
-
-                            break;
-                        default:
-                            System.out.println("Error");
-                    }
+                    System.out.println(citizens.get(i).getPockets().get(j).toStringByType());
                 }
 
             }
@@ -95,19 +93,7 @@ public class Steal extends Command{
                 if (citizen.getPockets().get(i).getItemType() == null) {
                     System.out.println("  I: " + i + ", " + citizen.getPockets().get(i).toStringMoney());
                 } else {
-                    switch (citizen.getPockets().get(i).getItemType()) {
-                        case WEAPON:
-                            System.out.print("  I: " + i + ", " + citizen.getPockets().get(i).toStringWeaponAdv());
-                            break;
-                        case POTION:
-                            System.out.print("  I: " + i + ", " + citizen.getPockets().get(i).toStringHealingAdv());
-                            break;
-                        case TROPHY,VALUABLE,HERB:
-                            System.out.print("  I: " + i + ", " + citizen.getPockets().get(i).toStringTrophyS());
-                            break;
-                        default:
-                            System.out.println("  I: " + i + ", Unknown item type");
-                    }
+                    System.out.println("  I: " + i + ", " + citizen.getPockets().get(i).toStringByType());
                 }
             }
             System.out.println("");
@@ -116,11 +102,9 @@ public class Steal extends Command{
     public boolean exit() {
         return false;
     }
-    public boolean guard() {
+    public void guard() {
         int chance = random.nextInt(100);
         int charisma = chance + Player.getReputation() / 5;
-       // System.out.println("Chance: " + chance + ", Reputation bonus: " + Player.getReputation() / 5);
-        //System.out.println("Charisma: " + charisma);
 
         if (charisma < 50) {
             System.out.println("You were caught by a guard while trying to rob a citizen.");
@@ -146,12 +130,12 @@ public class Steal extends Command{
                                 break;
                             default:
                                 System.out.println("Error: Unknown region.");
-                                return false;
+                                return;
                         }
 
                         if (Player.getTalk() >= talkNeed) {
                             System.out.println("You talked to the guard and he let you through.");
-                            return true;
+
                         } else {
                             System.out.println("Your talk skill is too low.");
                             ArrayList<Item> toRemove = new ArrayList<>();
@@ -169,8 +153,9 @@ public class Steal extends Command{
                             } else {
                                 System.out.println("You are lucky this time. Guard didn't find anything stolen.");
                             }
-                            return false;
+
                         }
+                        break;
 
                     case "search":
                         validChoice = true;
@@ -187,18 +172,16 @@ public class Steal extends Command{
                         if (haveStolen) {
                             System.out.println("Guard found stolen items! He took them and you lost 10 reputation points.");
                             Player.setReputation(Player.getReputation() - 10);
-                            return false;
                         } else {
                             System.out.println("Guard searched your backpack and found nothing. You are free to go.");
-                            return true;
                         }
+                        break;
 
                     default:
                         System.out.println("Invalid choice. Type either talk or search.");
                 }
             }
         }
-        return true;
     }
     public void steal() {
 
@@ -221,7 +204,7 @@ public class Steal extends Command{
             if (citizen.getPockets().get(stealIndex).getItemType() == null) {
             Player.setMoney(Player.getMoney()+ citizen.getPockets().get(stealIndex).getPrice());
             System.out.println("You stole " + citizen.getPockets().get(stealIndex).getPrice() + " groschen");
-            System.out.println("Your new balance: " + Player.getMoney());
+            System.out.println("Your new balance: " + Player.getMoney() + " groschen.");
             }else{
             citizen.getPockets().get(stealIndex).setStolen(true);
             backpack.addItem(citizen.getPockets().get(stealIndex));
@@ -232,9 +215,7 @@ public class Steal extends Command{
             if (citizen.getPockets().isEmpty()) {
                 citizens.remove(citizen);
             }
-            if(!guard()){
-                System.out.println("Guard caught you.");
-            }
+            guard();
 
         }else{
             System.out.println("There are no citizens in the town.");

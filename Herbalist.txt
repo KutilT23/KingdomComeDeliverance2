@@ -1,4 +1,4 @@
 Nettle;2;0;1;0;HERB;
-Marigold;3;0;1;0;HERB;
-Valerian;3;0;1;0;HERB;
+Marigold;4;0;1;0;HERB;
+Valerian;4;0;1;0;HERB;
 Mint;1;0;1;0;HERB;

@@ -43,14 +43,14 @@ public class Grab extends Command {
 
     public void displayAllHerbs() {
         for (int i = 0; i < herbs.size(); i++) {
-            System.out.print(herbs.get(i).toStringHerbs());
+            System.out.print(herbs.get(i).toStringByType());
         }
         System.out.println("");
     }
 
     public void displayCollectableHerbs() {
         for (int i = 0; i < collected.size(); i++) {
-            System.out.print(collected.get(i).toStringHerbs());
+            System.out.print(collected.get(i).toStringByType());
         }
         System.out.println("");
     }

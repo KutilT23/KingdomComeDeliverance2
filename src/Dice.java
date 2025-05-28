@@ -24,6 +24,7 @@ public class Dice extends Command {
     public void dice(){
         if(Player.getMoney()>0){
             System.out.println("How much money do you want to bet? ");
+            System.out.println("You have " + Player.getMoney() + " groschen");
             String bet = sc.next();
             while (!bet.matches("\\d+") || Integer.parseInt(bet) > Player.getMoney() || Integer.parseInt(bet) < 1) {
                 System.out.println("Invalid input >> INDEX:");

@@ -78,9 +78,9 @@ public class Profile extends Command {
             }
         }
 
-        System.out.println("-------------------------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------------------------------");
         System.out.println(BLUE + "BACKPACK:                                                    STATS:" + RESET);
-        System.out.println("-------------------------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------------------------------");
 
         int max = Math.max(leftColumn.size(), stats.length);
         for (int i = 0; i < max; i++) {
@@ -94,11 +94,12 @@ public class Profile extends Command {
                 right = stats[i];
             }
 
-            System.out.printf("%-56s%s%n", left, right);
+            System.out.printf("%-63s%s%n", left, right);
         }
 
-        System.out.println("-------------------------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------------------------------");
         System.out.println("CURRENT BACKPACK CAPACITY: " + RED + Backpack.getCurrentCapacity() + RESET);
+        System.out.println("BACKPACK VALUE: " + YELLOW+ Backpack.countValue() + RESET + " GROSCHEN");
         System.out.println("EQUIPPED ITEM: ");
         showEquippedItem();
     }
@@ -108,7 +109,8 @@ public class Profile extends Command {
 
         for (Item item : Backpack.getBackpack()) {
             if (item.isInUse()) {
-                System.out.print(item.toStringItemUse());
+                System.out.print(item.toStringByTypeBackpack());
+                System.out.println("");
                 foundEquipped = true;
             }
         }

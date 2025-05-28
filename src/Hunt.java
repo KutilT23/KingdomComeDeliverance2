@@ -49,6 +49,7 @@ public class Hunt extends Command {
             } catch (IOException e) {
                 System.out.println("Error reading file: " + e.getMessage());
             }
+            //displayAllAnimalLoot();
             selectAnimal();
             animalsLoaded = true;
         }
@@ -56,34 +57,9 @@ public class Hunt extends Command {
 
     public void displayAllAnimalLoot() {
         for (int i = 0; i < animals.size(); i++) {
-            System.out.println("ANIMAL: " + animals.get(i).getName() + ",HP: " + animals.get(i).getHealth() +
-                    ",LOOT: " + animals.get(i).getLoot().get(0).toStringTrophy() +
-                    animals.get(i).getLoot().get(1).toStringTrophy() +
-                    animals.get(i).getLoot().get(2).toStringTrophy());
-        }
-        System.out.println("");
-    }
-
-    public void displayHuntLoot() {
-        for (int i = 0; i < huntingList.size(); i++) {
-            System.out.println("ANIMAL: " + huntingList.get(i).getName() + ",HP: " + huntingList.get(i).getHealth() +
-                    ",LOOT: ");
-            for (int j = 0; j < huntingList.get(i).getLoot().size(); j++) {
-
-                switch (huntingList.get(i).getLoot().get(j).getItemType() ) {
-                    case WEAPON:
-                        System.out.print(huntingList.get(i).getLoot().get(j).toStringWeaponAdv());
-                        break;
-                    case POTION:
-                        System.out.print(huntingList.get(i).getLoot().get(j).toStringHealingAdv());
-                        break;
-                    case TROPHY:
-                        System.out.print(huntingList.get(i).getLoot().get(j).toStringTrophyS());
-
-                        break;
-                    default:
-                        System.out.println("Error");
-                }
+            System.out.println("ANIMAL: " + animals.get(i).getName() + ", LOOT: ");
+            for (int j = 0; j < animals.get(i).getLoot().size(); j++) {
+                    System.out.println(animals.get(i).getLoot().get(j).toStringByType());
             }
         }
         System.out.println("");
@@ -137,20 +113,7 @@ public class Hunt extends Command {
         System.out.println("ANIMAL: " + target.getName() + ",HP: " + target.getHealth() +
                 ",LOOT: ");
         for (int i = 0; i < target.getLoot().size(); i++) {
-            switch (target.getLoot().get(i).getItemType() ) {
-                case WEAPON:
-                    System.out.print("  I: " + i + ", " + target.getLoot().get(i).toStringWeaponAdv());
-                    break;
-                case POTION:
-                    System.out.print("  I: " + i + ", " + target.getLoot().get(i).toStringHealingAdv());
-                    break;
-                case TROPHY,VALUABLE,HERB:
-                    System.out.print("  I: " + i + ", " + target.getLoot().get(i).toStringTrophyS());
-
-                    break;
-                default:
-                    System.out.println("Error");
-            }
+            System.out.println("  I: " + i + ", " + target.getLoot().get(i).toStringByType());
         }
     }
 
