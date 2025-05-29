@@ -91,37 +91,7 @@ public class Trade extends Command {
         if(Enter.isInsideTown()&&shopLocation){
             if (Player.getMoney() > 0&& Player.getReputation()>=40) {
                 System.out.println("Money: " + Player.getMoney());
-                String shopName = "";
-
-                switch (Map.getCurrentLocationName().toLowerCase()){
-                    case "herbalist":
-                        shopName = "Herbalist.txt";
-                        break;
-                    case "merchant" :
-                        shopName = "Merchant.txt";
-                        break;
-                    case "armorer" :
-                        if(Map.getRegion() == Region.TROSKY){
-                            shopName = "Armorer.txt";
-                        }else if(Map.getRegion() == Region.KUTTENBERG){
-                            shopName = "Armorer2.txt";
-                        }
-                        break;
-                    case "hunter" :
-                        shopName = "Hunter.txt";
-                        break;
-                    case "potionmaker" :
-                        shopName = "PotionMaker.txt";
-                        break;
-                    case "tavern" :
-                        shopName = "Tavern.txt";
-                        break;
-                    default:
-                        System.out.println("Error: Unknown shop.");
-                        return;
-
-                }
-                shop.loadItems(shopName);
+                show();
                 System.out.println("Which item do you want to buy? >> INDEX:");
                 String input = sc.next();
                 while (!input.matches("\\d+") || Integer.parseInt(input) >= Shop.getShopItems().size()) {
@@ -255,7 +225,6 @@ public class Trade extends Command {
         isShopLocation();
         if (Enter.isInsideTown()&&shopLocation) {
             String shopName = "";
-
             switch (Map.getCurrentLocationName().toLowerCase()) {
                 case "herbalist":
                     shopName = "Herbalist.txt";

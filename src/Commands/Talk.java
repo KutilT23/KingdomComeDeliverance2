@@ -78,7 +78,7 @@ public class Talk extends Command {
                                     "\nHunter - Sells: Animal drops, Buys: Animal drops" +
                                     "\nMerchant - Sells: Food,Valuables, Buys: Food,Valuables" +
                                     "\nHerbalist - Sells: Herbs, Buys: Herbs" +
-                                    "\nPotionMaker - Commands.Sell: Potions(Healing), Buys: (Healing) items");
+                                    "\nPotionMaker - Sells: Potions(Healing), Buys: (Healing) items");
                             break;
                         case 2:
                             System.out.println("You can get rich fast by " +

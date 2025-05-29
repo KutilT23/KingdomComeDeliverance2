@@ -21,9 +21,8 @@ public class Map {
 
     /**
      * method to load the troskyMap from the file
-     * @return
      */
-    public boolean loadTrosMap() {
+    public void loadTrosMap() {
         regions.clear();
         try (BufferedReader br = new BufferedReader(new FileReader("TroskyMap.txt"))) {
             String line;
@@ -36,17 +35,14 @@ public class Map {
                 region = Region.TROSKY;
                 FastTravel.getCitiesT().add("troskowitz");
             }
-            return true;
         } catch (IOException e) {
-            return false;
         }
     }
 
     /**
      * method to load the KuttenbergMap from the file
-     * @return
      */
-    public boolean loadKutMap() {
+    public void loadKutMap() {
         regions.clear();
         try (BufferedReader br = new BufferedReader(new FileReader("KuttenbergMap.txt"))) {
             String line;
@@ -58,17 +54,14 @@ public class Map {
                 regions.put(Integer.valueOf(parts[0]), location);
                 region = Region.KUTTENBERG;
             }
-            return true;
         } catch (IOException e) {
-            return false;
         }
     }
 
     /**
      * method to load the townMap from the file
-     * @return
      */
-    public boolean loadTown() {
+    public void loadTown() {
         try (BufferedReader br = new BufferedReader(new FileReader("TownMap.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -78,9 +71,7 @@ public class Map {
                         Arrays.copyOfRange(parts, 2, 6));
                 regions.put(Integer.valueOf(parts[0]), location);
             }
-            return true;
         } catch (IOException e) {
-            return false;
         }
     }
 
@@ -101,7 +92,7 @@ public class Map {
         if (currentLoc != null) {
             return currentLoc.getName();
         } else {
-            return "World.Location not found.";
+            return "Location not found.";
         }
     }
 
@@ -140,7 +131,7 @@ public class Map {
                 dirIndex = 3;
                 break;
             default:
-                return "Invalid direction! Commands.Use North, South, East or West.";
+                return "Invalid direction! Use: North, South, East or West.";
         }
 
         int newPosition = regions.get(currentPosition).getLocations()[dirIndex];
@@ -154,32 +145,32 @@ public class Map {
         switch (getCurrentLocationName().toLowerCase()) {
             case "troskycastle":
                 if (FastTravel.getCitiesT().add("troskycastle")) {
-                    System.out.println("HradTrosky added to Commands.FastTravel");
+                    System.out.println("HradTrosky added to FastTravel");
                 }
                 break;
             case "troskowitz":
                 if (FastTravel.getCitiesT().add("troskowitz")) {
-                    System.out.println("Troskovice added to Commands.FastTravel");
+                    System.out.println("Troskovice added to FastTravel");
                 }
                 break;
             case "semine":
                 if (FastTravel.getCitiesT().add("semine")) {
-                    System.out.println("Semine added to Commands.FastTravel");
+                    System.out.println("Semine added to FastTravel");
                 }
                 break;
             case "devilsden":
                 if (FastTravel.getCitiesK().add("devilsden")) {
-                    System.out.println("DevilsDen added to Commands.FastTravel");
+                    System.out.println("DevilsDen added to FastTravel");
                 }
                 break;
             case "kuttenberg":
                 if (FastTravel.getCitiesK().add("kuttenberg")) {
-                    System.out.println("Kuttenberg added to Commands.FastTravel");
+                    System.out.println("Kuttenberg added to FastTravel");
                 }
                 break;
             case "suchdol":
                 if (FastTravel.getCitiesK().add("suchdol")) {
-                    System.out.println("Suchdol added to Commands.FastTravel");
+                    System.out.println("Suchdol added to FastTravel");
                 }
                 break;
             default:

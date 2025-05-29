@@ -234,7 +234,7 @@ public class Steal extends Command {
                 citizens.remove(citizen);
             }
         printPockets(citizen);
-        System.out.println("What do you want to steal?");
+        System.out.println("What do you want to steal? >> INDEX:");
         String input = sc.next();
             while (!input.matches("\\d+") || Integer.parseInt(input) >= citizen.getPockets().size()) {
             System.out.println("Invalid input >> INDEX:");

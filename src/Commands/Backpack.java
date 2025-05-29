@@ -65,7 +65,7 @@ public class Backpack extends Command {
             System.out.println("Item: " + item.getName() + " added to backpack");
             setCurrentCapacity(getCurrentCapacity() - item.getWeight());
         } else {
-            System.out.println("Commands.Backpack is full");
+            System.out.println("Backpack is full");
         }
     }
 
@@ -75,7 +75,7 @@ public class Backpack extends Command {
     public void use(){
         if (!backpack.isEmpty()) {
             printBackpack();
-            System.out.println("Which item do you want to use? (INDEX):");
+            System.out.println("Which item do you want to use? >> INDEX:");
             int index = 0;
             String indexInput = sc.next();
             while (!indexInput.matches("[0-9]+") || Integer.parseInt(indexInput) >= Backpack.getBackpack().size()) {
@@ -135,9 +135,9 @@ public class Backpack extends Command {
             for (int i = 0; i < backpack.size(); i++) {
                 System.out.println("  I: " + i + ", " + backpack.get(i).toStringByTypeBackpack());
             }
-            System.out.println("");
+            System.out.println();
         } else {
-            System.out.println("Commands.Backpack is empty");
+            System.out.println("Backpack is empty");
         }
     }
 

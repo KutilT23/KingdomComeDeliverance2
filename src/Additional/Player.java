@@ -8,7 +8,7 @@ public class Player {
     private static int damage = strength;
     private static int health = 100;
     private static int reputation = 50;
-    private static int money = 3000; // later 0
+    private static int money = 0; // later 0
     private static int talk = 5;
     private static int talkXP = 0;
     private static int strenghtXP = 0;
@@ -42,7 +42,7 @@ public class Player {
         while (getTalkXP() >= 10) {
             setTalkXP(getTalkXP() - 10);
             setTalk(getTalk() + 1);
-            System.out.println("You leveled up your talk skill! New Commands.Talk level: " + getTalk());
+            System.out.println("You leveled up your talk skill! New Talk level: " + getTalk());
         }
         while (getStrenghtXP() >= 10) {
             setStrenghtXP(getStrenghtXP() - 10);

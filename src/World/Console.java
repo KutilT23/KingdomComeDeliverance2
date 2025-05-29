@@ -80,7 +80,7 @@ public class Console {
         world.loadTrosMap();
 
         initialize();
-        System.out.println("You are located at 📍🗺️: " + world.getCurrentLocation().getName().toUpperCase());
+        System.out.println("You are located at 📍🗺️: " + Map.getCurrentLocationName().toUpperCase());
         do {
             executeCommand();
         } while (!exit);

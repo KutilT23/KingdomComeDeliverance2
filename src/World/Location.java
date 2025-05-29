@@ -26,7 +26,7 @@ public class Location {
 
     @Override
     public String toString() {
-        return "world.World.Location{" +
+        return "Location{" +
                 "name='" + name + '\'' +
                 ", ID=" + ID +
                 ", locations=" + Arrays.toString(locations) +
