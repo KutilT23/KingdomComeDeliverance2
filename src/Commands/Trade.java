@@ -52,7 +52,7 @@ public class Trade extends Command {
     public void choice() {
 
         System.out.println(">> SELL, BUY or SHOW?");
-        String answer = sc.next().toLowerCase();
+        String answer = sc.nextLine().trim().toLowerCase();
         switch (answer) {
             case "sell":
                 sell();
@@ -93,10 +93,10 @@ public class Trade extends Command {
                 System.out.println("Money: " + Player.getMoney());
                 show();
                 System.out.println("Which item do you want to buy? >> INDEX:");
-                String input = sc.next();
+                String input = sc.nextLine().trim();
                 while (!input.matches("\\d+") || Integer.parseInt(input) >= Shop.getShopItems().size()) {
                     System.out.println("Invalid input >> INDEX:");
-                    input = sc.next();
+                    input = sc.nextLine().trim();
                 }
                 int buyIndex = Integer.parseInt(input);
                 Item itemToBuy = Shop.getShopItems().get(buyIndex);
@@ -183,10 +183,10 @@ public class Trade extends Command {
             if (!saleableItems.isEmpty()&&isSaleable) {
                 printSaleableItems();
                 System.out.println("Which item do you want to sell? >> INDEX:");
-                String input = sc.next();
+                String input = sc.nextLine().trim();
                 while (!input.matches("\\d+") || Integer.parseInt(input) >= saleableItems.size()) {
                     System.out.println("Invalid input >> INDEX:");
-                    input = sc.next();
+                    input = sc.nextLine().trim();
                 }
                 int sellIndex = Integer.parseInt(input);
                 Item saleableItem = saleableItems.get(sellIndex);

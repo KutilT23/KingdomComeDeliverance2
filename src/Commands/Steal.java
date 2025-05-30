@@ -152,7 +152,7 @@ public class Steal extends Command {
             while (!validChoice) {
                 System.out.println("What are you gonna do? >> \n talk - try to talk your way out of the situation \n search - let him search your backpack");
 
-                String answer = sc.next().toLowerCase();
+                String answer = sc.nextLine().trim().toLowerCase();
 
                 switch (answer) {
                     case "talk":

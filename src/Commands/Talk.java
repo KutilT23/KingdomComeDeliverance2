@@ -58,10 +58,10 @@ public class Talk extends Command {
                     "\n1)Where can i buy and sell my items?, " +
                     "\n2)How can i get rich fast?, " +
                     "\n3)What are all those different locations on the map for?" );
-            String answer = sc.next();
+            String answer = sc.nextLine().trim();
             while (!answer.matches("\\d+") || Integer.parseInt(answer) < 1 || Integer.parseInt(answer) > 3) {
                 System.out.println("Invalid input >> NUMBER:");
-                answer = sc.next();
+                answer = sc.nextLine().trim();
             }
             int chosen = Integer.parseInt(answer);
 
