@@ -2,6 +2,7 @@ package Commands;
 
 import Additional.Item;
 import Additional.ItemType;
+import Additional.Player;
 import World.Command;
 import World.Map;
 
@@ -71,7 +72,7 @@ public class Grab extends Command {
      */
     public void displayCollectableHerbs() {
         for (int i = 0; i < collected.size(); i++) {
-            System.out.print(collected.get(i).toStringByType());
+            System.out.println(collected.get(i).toStringByType());
         }
         System.out.println("");
     }
@@ -83,7 +84,9 @@ public class Grab extends Command {
         if (!collected.isEmpty()) {
             int randomIndex = random.nextInt(collected.size());
             int sizeBefore = Backpack.getBackpack().size();
-
+            Player.setStrengthXP(Player.getStrengthXP() + 1);
+            System.out.println("Strength xp + 1, Current strength xp: " + Player.getStrengthXP());
+            Player.levelUp();
             backpack.addItem(collected.get(randomIndex));
             int sizeAfter = Backpack.getBackpack().size();
 

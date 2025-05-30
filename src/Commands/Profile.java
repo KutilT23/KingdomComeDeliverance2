@@ -33,12 +33,13 @@ public class Profile extends Command {
     String MAGENTA = "\u001B[35m";
 
     /**
-     * method to print the player stats
+     * method to print the player stats.
+     * used the internet to find out how printf works and how to
      */
     public void printStats() {
 
         String[] stats = {
-                "     STRENGTH:    " + RED + Player.getStrength() + RESET + ", XP: " + RED + Player.getStrenghtXP() + RESET,
+                "     STRENGTH:    " + RED + Player.getStrength() + RESET + ", XP: " + RED + Player.getStrengthXP() + RESET,
                 "     DAMAGE:      " + MAGENTA + Player.getDamage() + RESET,
                 "     HEALTH:      " + GREEN + Player.getHealth() + RESET,
                 "     GROSCHEN:    " + YELLOW + Player.getMoney() + RESET,

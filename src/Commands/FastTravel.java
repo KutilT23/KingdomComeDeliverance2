@@ -52,21 +52,23 @@ public class FastTravel extends Command {
         if (Map.getRegion().equals(Region.TROSKY)) {
             System.out.println("Which city do you want to travel to?: ");
             System.out.println(getCitiesT());
-            String name = sc.next().toLowerCase();
+            String name = sc.nextLine().trim().toLowerCase();
             if (citiesT.contains(name)) {
                 travelWait(name);
+                Enter.setInsideTown(false);
+                Steal.setCitizensloaded(false);
                 switch (name) {
                     case "troskycastle":
                         Map.setCurrentPosition(13);
-                        System.out.println("Moved to: " + Map.getCurrentLocationName());
+                        System.out.println("Moved to: " + Map.getCurrentLocationName().toUpperCase() );
                         break;
                     case "troskowitz":
                         Map.setCurrentPosition(36);
-                        System.out.println("Moved to: " + Map.getCurrentLocationName());
+                        System.out.println("Moved to: " + Map.getCurrentLocationName().toUpperCase() );
                         break;
                     case "semine":
                         Map.setCurrentPosition(49);
-                        System.out.println("Moved to: " + Map.getCurrentLocationName());
+                        System.out.println("Moved to: " + Map.getCurrentLocationName().toUpperCase());
                         break;
                     default:
                         System.out.println("City not discovered");
@@ -82,21 +84,23 @@ public class FastTravel extends Command {
             } else {
                 System.out.println("Which city do you want to travel to?: ");
                 System.out.println(getCitiesK());
-                String name = sc.next().toLowerCase();
+                String name = sc.nextLine().trim().toLowerCase();
                 if (citiesK.contains(name)) {
                     travelWait(name);
+                    Enter.setInsideTown(false);
+                    Steal.setCitizensloaded(false);
                     switch (name) {
                         case "devilsden":
                             Map.setCurrentPosition(68);
-                            System.out.println("Moved to: " + Map.getCurrentLocationName());
+                            System.out.println("Moved to: " + Map.getCurrentLocationName().toUpperCase() );
                             break;
                         case "suchdol":
                             Map.setCurrentPosition(98);
-                            System.out.println("Moved to: " + Map.getCurrentLocationName());
+                            System.out.println("Moved to: " + Map.getCurrentLocationName().toUpperCase() );
                             break;
                         case "kuttenberg":
                             Map.setCurrentPosition(110);
-                            System.out.println("Moved to: " + Map.getCurrentLocationName());
+                            System.out.println("Moved to: " + Map.getCurrentLocationName().toUpperCase());
                             break;
                         default:
                             System.out.println("City not discovered");

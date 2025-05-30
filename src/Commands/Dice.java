@@ -44,10 +44,10 @@ public class Dice extends Command {
         if(Player.getMoney()>0){
             System.out.println("How much money do you want to bet? ");
             System.out.println("You have " + Player.getMoney() + " groschen");
-            String bet = sc.next();
+            String bet = sc.nextLine().trim();
             while (!bet.matches("\\d+") || Integer.parseInt(bet) > Player.getMoney() || Integer.parseInt(bet) < 1) {
                 System.out.println("Invalid input >> INDEX:");
-                bet = sc.next();
+                bet = sc.nextLine().trim();
             }
             int betMoney = Integer.parseInt(bet);
             int aiBetMoney = rd.nextInt(betMoney)+1;
@@ -58,10 +58,10 @@ public class Dice extends Command {
                 int diceRoll = rd.nextInt(6) + 1;
                 dice.add(diceRoll);
                 System.out.print((i + 1) + ": ");
-                String guess = sc.next();
+                String guess = sc.nextLine().trim();
                 while (!guess.matches("\\d+") || Integer.parseInt(guess) > 6 || Integer.parseInt(guess) < 1) {
                     System.out.println("Invalid input >> INDEX:");
-                    guess = sc.next();
+                    guess = sc.nextLine().trim();
                 }
                 int guessIndex = Integer.parseInt(guess);
                 guessDice.add(guessIndex);

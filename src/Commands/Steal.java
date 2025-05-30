@@ -235,10 +235,10 @@ public class Steal extends Command {
             }
         printPockets(citizen);
         System.out.println("What do you want to steal? >> INDEX:");
-        String input = sc.next();
+        String input = sc.nextLine().trim();
             while (!input.matches("\\d+") || Integer.parseInt(input) >= citizen.getPockets().size()) {
             System.out.println("Invalid input >> INDEX:");
-            input = sc.next();
+            input = sc.nextLine().trim();
             }
             int stealIndex = Integer.parseInt(input);
 

@@ -29,12 +29,12 @@ public class Move extends Command {
         showPossibleDirections();
 
         System.out.println("\"Choose the direction you want to go\uD83E\uDDED:\"");
-        String direction = scanner.next();
+        String direction = scanner.nextLine().trim();
         direction = direction.toLowerCase();
 
         while (!direction.equals("n") && !direction.equals("s") && !direction.equals("w") && !direction.equals("e")) {
             System.out.println("Invalid direction\uD83E\uDDED");
-            direction = scanner.next();
+            direction = scanner.nextLine().trim();
             direction = direction.toLowerCase();
         }
 

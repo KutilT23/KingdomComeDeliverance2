@@ -28,18 +28,18 @@ public class Transfer extends Command {
 
         if (Map.getCurrentLocationName().equals("Ferryman")) {
             System.out.println("The price of the ferry is 200 groschen. Do you want to pay? (y/n)");
-            String answer = sc.next();
+            String answer = sc.nextLine().trim().toLowerCase();
 
             while (!answer.equalsIgnoreCase("y") && !answer.equalsIgnoreCase("n")) {
                 System.out.println("Not valid answer.");
-                answer = sc.next();
+                answer = sc.nextLine().trim().toLowerCase();
             }
 
             if (answer.equalsIgnoreCase("y")) {
                 if (Player.getMoney() >= 200) {
                     Player.setMoney(Player.getMoney() - 200);
-                    System.out.println("You paid 200 groschen to transfer to another region. Traveling to another region in 5 seconds...");
-                    System.out.print("Traveling to another region  ");
+                    System.out.println("You paid 200 groschen to transfer to another region.");
+                    System.out.print("Traveling to another region in  ");
                     for (int i = 0; i < 5; i++) {
                         System.out.print( 5 - i + "...");
                         try {

@@ -10,7 +10,7 @@ import java.util.Scanner;
  */
 public class Console {
     private boolean exit = false;
-    private HashMap<String, Command> commands = new HashMap<>();
+    private static HashMap<String, Command> commands = new HashMap<>();
     Map world = new Map();
 
     /**
@@ -32,6 +32,7 @@ public class Console {
         commands.put("harvest", new Grab());
         commands.put("exit", new Exit());
         commands.put("talk", new Talk());
+        commands.put("help", new Help());
     }
 
     /**
@@ -94,7 +95,7 @@ public class Console {
         this.exit = exit;
     }
 
-    public HashMap<String, Command> getCommands() {
+    public static HashMap<String, Command> getCommands() {
         return commands;
     }
 }

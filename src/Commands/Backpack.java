@@ -40,7 +40,7 @@ public class Backpack extends Command {
      */
     public void chooseOption() {
         System.out.println(">> PRINT, USE");
-        String answer = sc.next();
+        String answer = sc.nextLine().trim();
         answer = answer.toLowerCase();
         switch (answer) {
             case "print":
@@ -77,10 +77,10 @@ public class Backpack extends Command {
             printBackpack();
             System.out.println("Which item do you want to use? >> INDEX:");
             int index = 0;
-            String indexInput = sc.next();
+            String indexInput = sc.nextLine().trim();
             while (!indexInput.matches("[0-9]+") || Integer.parseInt(indexInput) >= Backpack.getBackpack().size()) {
                 System.out.println("Invalid input >> INDEX:");
-                indexInput = sc.next();
+                indexInput = sc.nextLine().trim();
             }
             index = Integer.parseInt(indexInput);
             switch (backpack.get(index).getItemType()) {

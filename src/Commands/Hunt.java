@@ -130,6 +130,9 @@ public class Hunt extends Command {
             if (Player.getDamage() * 5 > target.getHealth()) {
                 System.out.println("You hunted: " + target.getName());
                 backpack.addItem(target.getLoot().get(random.nextInt(3)));
+                Player.setStrengthXP(Player.getStrengthXP() + 2);
+                System.out.println("Strength xp + 2, Current strength xp: " + Player.getStrengthXP());
+                Player.levelUp();
                 huntingList.remove(index);
             } else {
                 System.out.println("You lost: " + target.getName());
