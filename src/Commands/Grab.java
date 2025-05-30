@@ -84,13 +84,13 @@ public class Grab extends Command {
         if (!collected.isEmpty()) {
             int randomIndex = random.nextInt(collected.size());
             int sizeBefore = Backpack.getBackpack().size();
-            Player.setStrengthXP(Player.getStrengthXP() + 1);
-            System.out.println("Strength xp + 1, Current strength xp: " + Player.getStrengthXP());
-            Player.levelUp();
             backpack.addItem(collected.get(randomIndex));
             int sizeAfter = Backpack.getBackpack().size();
 
             if (sizeBefore != sizeAfter) {
+                Player.setStrengthXP(Player.getStrengthXP() + 1);
+                System.out.println("Strength xp + 1, Current strength xp: " + Player.getStrengthXP());
+                Player.levelUp();
                 collected.remove(randomIndex);
                 System.out.println(Map.getCurrentLocationName().toUpperCase() + " contains: ");
                 displayCollectableHerbs();
