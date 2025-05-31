@@ -76,7 +76,7 @@ public class Console {
      * method to start the game
      */
     public void start() {
-        System.out.println("Welcome to Kingdom Come Deliverance 2");
+        System.out.println("Welcome to Kingdom Come Deliverance 2 \nTo see all commands type 'help'");
         System.out.println("Audentes fortuna iuvat.");
         world.loadTrosMap();
 
