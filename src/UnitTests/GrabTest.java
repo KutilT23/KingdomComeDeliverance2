@@ -11,6 +11,7 @@ class GrabTest {
     @Test
     void loadHerbs() {
         Grab grab = new Grab();
+        Grab.setHerbsLoaded(false);
         grab.loadHerbs();
         assertEquals(16,grab.getHerbs().size());
     }
