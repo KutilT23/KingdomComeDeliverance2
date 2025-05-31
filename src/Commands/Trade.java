@@ -109,7 +109,7 @@ public class Trade extends Command {
                     System.out.println("You bought an item and gained 5 reputation points.");
                     Player.setReputation(Player.getReputation()+5);
                     System.out.println("You bought: " +itemToBuy.getName() + " for " + itemToBuy.getPrice() + " groschen.");
-                    System.out.println("Your new balance: " + Player.getMoney() + "groschen.");
+                    System.out.println("Your new balance: " + Player.getMoney() + " groschen.");
                     if(itemToBuy.getPrice()%2==0){
                         itemToBuy.setPrice(itemToBuy.getPrice()/2);
                     }
@@ -205,7 +205,7 @@ public class Trade extends Command {
                     Player.setDamage(Player.getDamage() - saleableItem.getDamage());
                 }
                 System.out.println("You sold: " + saleableItem.getName() + " for " + saleableItem.getPrice() + " groschen." );
-                System.out.println("Your new balance: " + Player.getMoney() + "groschen.");
+                System.out.println("Your new balance: " + Player.getMoney() + " groschen.");
                 Backpack.getBackpack().remove(saleableItem);
 
 
