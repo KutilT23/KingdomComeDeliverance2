@@ -8,7 +8,7 @@ public class Player {
     private static int damage = strength;
     private static int health = 100;
     private static int reputation = 50;
-    private static int money = 500; // later 0
+    private static int money = 0; // later 0
     private static int talk = 5;
     private static int talkXP = 0;
     private static int strengthXP = 0;
