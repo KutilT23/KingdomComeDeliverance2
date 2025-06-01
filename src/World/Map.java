@@ -54,6 +54,7 @@ public class Map {
                 regions.put(Integer.valueOf(parts[0]), location);
                 region = Region.KUTTENBERG;
             }
+            //System.out.println(getRegions());
         } catch (IOException e) {
         }
     }
@@ -62,6 +63,7 @@ public class Map {
      * method to load the townMap from the file
      */
     public void loadTown() {
+        regions.clear();
         try (BufferedReader br = new BufferedReader(new FileReader("TownMap.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -71,6 +73,7 @@ public class Map {
                         Arrays.copyOfRange(parts, 2, 6));
                 regions.put(Integer.valueOf(parts[0]), location);
             }
+            //System.out.println(getRegions());
         } catch (IOException e) {
         }
     }

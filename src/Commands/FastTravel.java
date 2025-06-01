@@ -17,6 +17,7 @@ public class FastTravel extends Command {
     private boolean hasCityT = false;
     private boolean hasCityK = false;
     Scanner sc = new Scanner(System.in);
+    Map map = new Map();
 
     public static TreeSet<String> getCitiesT() {
         return citiesT;
@@ -54,6 +55,7 @@ public class FastTravel extends Command {
             System.out.println(getCitiesT());
             String name = sc.nextLine().trim().toLowerCase();
             if (citiesT.contains(name)) {
+                map.loadTrosMap();
                 travelWait(name);
                 Enter.setInsideTown(false);
                 Steal.setCitizensloaded(false);
@@ -86,6 +88,7 @@ public class FastTravel extends Command {
                 System.out.println(getCitiesK());
                 String name = sc.nextLine().trim().toLowerCase();
                 if (citiesK.contains(name)) {
+                    map.loadKutMap();
                     travelWait(name);
                     Enter.setInsideTown(false);
                     Steal.setCitizensloaded(false);
